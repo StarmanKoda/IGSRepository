@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using TMPro;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -102,5 +104,16 @@ public class Movement : MonoBehaviour
         Vector3 meshScale = mesh.localScale;
         meshScale.x *= -1;
         mesh.localScale = meshScale;
+    }
+
+    public void knockBack(Transform source, float force)
+    {
+        int dir = 1;
+        if (transform.position.x < source.position.x)
+        {
+            dir = -1;
+        }
+
+        rig.AddForce(new Vector2(force * dir, 0));
     }
 }
