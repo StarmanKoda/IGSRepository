@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class JumpingEnemy : EntityScript
 {
+    [Header("For Patrolling")]
     private float moveDirection = 1f;
     private bool facingRight = true;
     [SerializeField] Transform groundCheckPoint;
@@ -31,7 +32,7 @@ public class JumpingEnemy : EntityScript
     
     void Patrolling()
     {
-        if (checkingWall || checkingWall)
+        if (checkingWall || !checkingGround)
         {
             if (facingRight)
             {
