@@ -1902,11 +1902,11 @@ Transform:
   m_GameObject: {fileID: 1566416962}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14495401, y: -0.09911714, z: 0.014595796, w: 0.9843532}
-  m_LocalPosition: {x: 2.29, y: 7.92, z: -10}
+  m_LocalPosition: {x: 1.7800001, y: 6.4300003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2141435378}
   m_LocalEulerAnglesHint: {x: 16.754, y: -11.5, z: 0}
 --- !u!1 &1654899627
 GameObject:
@@ -2310,6 +2310,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1566416965}
   - {fileID: 780455591}
   - {fileID: 2134642925}
   - {fileID: 108887069}
@@ -2395,6 +2396,10 @@ MonoBehaviour:
   speed: 50
   airSpd: 50
   jumpForce: 750
+  preJumpPeriod: 0.2
+  jumpGracePeriod: 0.2
+  gravFallMod: 1.5
+  maxFallSpeed: -50
   mesh: {fileID: 780455591}
   groundMask:
     serializedVersion: 2
@@ -2425,10 +2430,10 @@ MonoBehaviour:
   spriteU: {fileID: 2137821538}
   spriteD: {fileID: 1417957873}
   attkDel: 0.1
-  attkDur: 0.5
+  attkDur: 0.3
   attkRate: 0.1
   damage: 1
-  knockBackForce: 1000
+  knockBackForce: 750
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2444,5 +2449,4 @@ SceneRoots:
   - {fileID: 961932482}
   - {fileID: 670047026}
   - {fileID: 1347540917}
-  - {fileID: 1566416965}
   - {fileID: 2141435378}

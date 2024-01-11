@@ -17,6 +17,12 @@ public class Movement : MonoBehaviour
 
     public float jumpForce = 500f;
     bool jump = false;
+    public float preJumpPeriod = 0.2f;
+    float preJump = 0;
+    public float jumpGracePeriod = 0.2f;
+    float jumpGrace = 0;
+    public float gravFallMod = 1.5f;
+    public float maxFallSpeed = 100f;
 
     public Transform mesh;
 
@@ -40,16 +46,41 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        preJump -= Time.deltaTime;
+        jumpGrace -= Time.deltaTime;
+
         move = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+            preJump = preJumpPeriod;
+        }
+
+        //if (rig.velocity.y < 0 || (Input.GetButtonUp("Jump") && rig.velocity.y > 0f))
+        //{
+        //    rig.gravityScale = gravityScale * gravFallMod;
+
+        //    //rig.velocity = new Vector2(rig.velocity.x, Mathf.Max(rig.velocity.y, maxFallSpeed));
+        //}
+
+        if (rig.velocity.y < 0 && jumpGrace < 0)
+        {
+            rig.gravityScale = gravityScale * gravFallMod;
+
+            rig.velocity = new Vector2(rig.velocity.x, Mathf.Max(rig.velocity.y, maxFallSpeed));
+        }
+
+        if (Input.GetButtonUp("Jump") && rig.velocity.y > 0f)
+        {
+            rig.velocity = new Vector2(rig.velocity.x, 0);
         }
     }
 
     void FixedUpdate()
     {
+        bool recentlyGrounded = grounded;
+
         grounded = false;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, groundMask);
@@ -58,6 +89,7 @@ public class Movement : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 grounded = true;
+                rig.gravityScale = gravityScale;
             }
         }
 
@@ -68,6 +100,11 @@ public class Movement : MonoBehaviour
         else
         {
             Move(move * airSpd * Time.deltaTime, jump);
+
+            if (recentlyGrounded)
+            {
+                jumpGrace = jumpGracePeriod;
+            }
         }
 
         jump = false;
@@ -89,9 +126,10 @@ public class Movement : MonoBehaviour
                 Flip();
             }
         }
-        if (grounded && jump)
+        if ((grounded && (jump || preJump > 0)) || (jumpGrace > 0 && jump))
         {
             grounded = false;
+            rig.velocity = new Vector2(rig.velocity.x, 0);
             rig.AddForce(new Vector2(0f, jumpForce));
         }
     }
