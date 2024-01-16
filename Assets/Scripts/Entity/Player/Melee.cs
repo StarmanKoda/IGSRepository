@@ -45,7 +45,7 @@ public class Melee : MonoBehaviour
 
         if (nextAttack < 0)
         {
-            if (Input.GetButtonDown("Attack1"))
+            if (Input.GetButtonDown("Attack1")) //"Attack1"
             {
                 // GetAxisRaw works fine for keyboard but may need to be changed for controller, not sure
                 float upDown = Input.GetAxisRaw("Vertical");
