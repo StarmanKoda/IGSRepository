@@ -160,6 +160,7 @@ public class Movement : MonoBehaviour
 
         grounded = false;
         rig.velocity = new Vector2(rig.velocity.x, 0);
+        rig.gravityScale = gravityScale;
         rig.AddForce(new Vector2(0f, pogoForce));
     }
 }
