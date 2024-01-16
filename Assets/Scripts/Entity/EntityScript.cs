@@ -20,4 +20,15 @@ public class EntityScript : MonoBehaviour
     {
         
     }
+
+    public void takeDamage(double dmg)
+    {
+        health -= dmg;
+
+        //WILL NEED TO IMPROVE DEATH EFFECTS
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
