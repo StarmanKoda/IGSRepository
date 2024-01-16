@@ -21,9 +21,11 @@ public class JumpingEnemy : EntityScript
     [SerializeField] Transform groundCheck;
     [SerializeField] Vector2 boxSize;
     public bool trackPlayerJump;
+    public bool HopperType;
     public float timeToJump;
     private float jumpTimer;
     private bool isGrounded;
+    
 
     private Rigidbody2D enemyRB;
     // Start is called before the first frame update
@@ -43,7 +45,14 @@ public class JumpingEnemy : EntityScript
         checkingWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, groundLayer);
         isGrounded = Physics2D.OverlapBox(groundCheck.position, boxSize, 0, groundLayer);
         jumpTimer += Time.deltaTime;
-        Patrolling();
+        if (!HopperType)
+        { 
+            Patrolling(); 
+        }
+        else
+        {
+            PatrolHop();
+        }
         if (Input.GetButtonDown("Jump") && trackPlayerJump)
         {
             Jump();
@@ -57,7 +66,7 @@ public class JumpingEnemy : EntityScript
     
     void Patrolling()
     {
-        if (checkingWall || !checkingGround)
+        if ( checkingWall)
         {
             if (facingRight)
             {
@@ -70,6 +79,21 @@ public class JumpingEnemy : EntityScript
         }
         enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
         //UnityEngine.Debug.Log("moving!");
+    }
+
+    void PatrolHop()
+    {
+        if (checkingWall || !checkingGround)
+        {
+            if (facingRight)
+            {
+                Flip();
+            }
+            else if (!facingRight)
+            {
+                Flip();
+            }
+        }
     }
 
     void Jump()
