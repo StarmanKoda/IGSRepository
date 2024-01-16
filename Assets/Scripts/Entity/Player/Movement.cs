@@ -72,8 +72,6 @@ public class Movement : MonoBehaviour
         {
             rig.velocity = new Vector2(rig.velocity.x, 0);
         }
-
-        print(rig.gravityScale);
     }
 
     void FixedUpdate()
