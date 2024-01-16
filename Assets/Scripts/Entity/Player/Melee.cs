@@ -16,7 +16,13 @@ public class Melee : MonoBehaviour
     public SpriteRenderer spriteR;
     public SpriteRenderer spriteU;
     public SpriteRenderer spriteD;
-    int direction = 0;
+
+    public enum direction
+    {
+        UP, DOWN, LEFT, RIGHT
+    }
+
+    direction dir = direction.LEFT;
 
     public float attkDel;  //Time between player input and attack damaging
     public float attkDur;  //Time attack collider is active
@@ -48,27 +54,27 @@ public class Melee : MonoBehaviour
             if (Input.GetButtonDown("Attack1"))
             {
                 // GetAxisRaw works fine for keyboard but may need to be changed for controller, not sure
-                float upDown = Input.GetAxisRaw("Vertical");
-                if (upDown < -0.5f && !movement.grounded)
-                {
-                    //Down
-                    direction = 3;
-                }
-                else if (upDown > 0.5f)
-                {
-                    //Up
-                    direction = 2;
-                }
-                else if (movement.facingRight)
-                {
-                    //Right
-                    direction = 1;
-                }
-                else
-                {
-                    //Left
-                    direction = 0;
-                }
+                //float upDown = Input.GetAxisRaw("Vertical");
+                //if (upDown < -0.5f && !movement.grounded)
+                //{
+                //    //Down
+                //    dir = direction.DOWN;
+                //}
+                //else if (upDown > 0.5f)
+                //{
+                //    //Up
+                //    dir = direction.UP;
+                //}
+                //else if (movement.facingRight)
+                //{
+                //    //Right
+                //    dir = direction.RIGHT;
+                //}
+                //else
+                //{
+                //    //Left
+                //    dir = direction.LEFT;
+                //}
 
                 // This can be easily updated to use animation key frame events istead of invoke
 
@@ -82,19 +88,37 @@ public class Melee : MonoBehaviour
 
     public void enableAttk()
     {
-        if (direction == 0)
+        float upDown = Input.GetAxisRaw("Vertical");
+        if (upDown < -0.5f && !movement.grounded)
+        {
+            dir = direction.DOWN;
+        }
+        else if (upDown > 0.5f)
+        {
+            dir = direction.UP;
+        }
+        else if (movement.facingRight)
+        {
+            dir = direction.RIGHT;
+        }
+        else
+        {
+            dir = direction.LEFT;
+        }
+
+        if (dir == direction.LEFT)
         {
             meleeL.enabled = true;
             knockBack = true;
             spriteL.enabled = true;
         }
-        else if (direction == 1)
+        else if (dir == direction.RIGHT)
         {
             meleeR.enabled = true;
             knockBack = true;
             spriteR.enabled = true;
         }
-        else if (direction == 2)
+        else if (dir == direction.UP)
         {
             meleeU.enabled = true;
             spriteU.enabled = true;
@@ -108,17 +132,17 @@ public class Melee : MonoBehaviour
 
     public void disableAttk()
     {
-        if (direction == 0)
+        if (dir == direction.LEFT)
         {
             meleeL.enabled = false;
             spriteL.enabled = false;
         }
-        else if (direction == 1)
+        else if (dir == direction.RIGHT)
         {
             meleeR.enabled = false;
             spriteR.enabled = false;
         }
-        else if (direction == 2)
+        else if (dir == direction.UP)
         {
             meleeU.enabled = false;
             spriteU.enabled = false;
@@ -154,11 +178,9 @@ public class Melee : MonoBehaviour
             entity.takeDamage(damage);
         }
 
-        //if (direction == 3)
-        //{
-        //    movement.pogo();
-        //}
-
-        //ADD DAMAGE AND SUCH FOR ENEMY
+        if (dir == direction.DOWN && entity) //ADD ANY OTHER POGO OBJECTS (e.g. spikes)
+        {
+            movement.pogo();
+        }
     }
 }

@@ -72,6 +72,8 @@ public class Movement : MonoBehaviour
         {
             rig.velocity = new Vector2(rig.velocity.x, 0);
         }
+
+        print(rig.gravityScale);
     }
 
     void FixedUpdate()
@@ -160,6 +162,7 @@ public class Movement : MonoBehaviour
 
         grounded = false;
         rig.velocity = new Vector2(rig.velocity.x, 0);
+        rig.gravityScale = gravityScale;
         rig.AddForce(new Vector2(0f, pogoForce));
     }
 }
