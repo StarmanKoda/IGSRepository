@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
 {
@@ -17,12 +18,15 @@ public class Movement : MonoBehaviour
 
     public float jumpForce = 500f;
     bool jump = false;
+    bool jumping = false;
     public float preJumpPeriod = 0.2f;
     float preJump = 0;
     public float jumpGracePeriod = 0.2f;
     float jumpGrace = 0;
     public float gravFallMod = 1.5f;
     public float maxFallSpeed = 100f;
+
+    public float pogoForce = 750f;
 
     public Transform mesh;
 
@@ -57,13 +61,6 @@ public class Movement : MonoBehaviour
             preJump = preJumpPeriod;
         }
 
-        //if (rig.velocity.y < 0 || (Input.GetButtonUp("Jump") && rig.velocity.y > 0f))
-        //{
-        //    rig.gravityScale = gravityScale * gravFallMod;
-
-        //    //rig.velocity = new Vector2(rig.velocity.x, Mathf.Max(rig.velocity.y, maxFallSpeed));
-        //}
-
         if (rig.velocity.y < 0 && jumpGrace < 0)
         {
             rig.gravityScale = gravityScale * gravFallMod;
@@ -71,7 +68,7 @@ public class Movement : MonoBehaviour
             rig.velocity = new Vector2(rig.velocity.x, Mathf.Max(rig.velocity.y, maxFallSpeed));
         }
 
-        if (Input.GetButtonUp("Jump") && rig.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && jumping && rig.velocity.y > 0f)
         {
             rig.velocity = new Vector2(rig.velocity.x, 0);
         }
@@ -139,9 +136,11 @@ public class Movement : MonoBehaviour
         facingRight = !facingRight;
 
         // Just flips the player for now can add turn animation later
+
+        mesh.Rotate(new Vector3(0, 180, 0));
         Vector3 meshScale = mesh.localScale;
         meshScale.x *= -1;
-        mesh.localScale = meshScale;
+        //mesh.localScale = meshScale;
     }
 
     public void knockBack(Transform source, float force)
@@ -153,5 +152,14 @@ public class Movement : MonoBehaviour
         }
 
         rig.AddForce(new Vector2(force * dir, 0));
+    }
+
+    public void pogo()
+    {
+        jumping = false;
+
+        grounded = false;
+        rig.velocity = new Vector2(rig.velocity.x, 0);
+        rig.AddForce(new Vector2(0f, pogoForce));
     }
 }
