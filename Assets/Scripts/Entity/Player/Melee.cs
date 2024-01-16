@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Melee : MonoBehaviour
 {
+    public EntityScript playerEntity;
+
     public Movement movement;
     public Collider2D meleeL;
     public Collider2D meleeR;
@@ -21,7 +23,7 @@ public class Melee : MonoBehaviour
     public float attkRate; //Time between attack end and next attack
     float nextAttack = 0;
 
-    public int damage = 1;
+    public double damage = 20;
 
     Rigidbody2D playerRig;
     bool knockBack;
@@ -43,7 +45,7 @@ public class Melee : MonoBehaviour
 
         if (nextAttack < 0)
         {
-            if (Input.GetButtonDown("Fire1")) //"Attack1"
+            if (Input.GetButtonDown("Attack1"))
             {
                 // GetAxisRaw works fine for keyboard but may need to be changed for controller, not sure
                 float upDown = Input.GetAxisRaw("Vertical");
@@ -143,6 +145,13 @@ public class Melee : MonoBehaviour
         if (knockBack)
         {
             movement.knockBack(collision.transform, knockBackForce);
+        }
+
+        EntityScript entity = collision.GetComponent<EntityScript>();
+
+        if (entity)
+        {
+            entity.takeDamage(damage);
         }
 
         //if (direction == 3)
