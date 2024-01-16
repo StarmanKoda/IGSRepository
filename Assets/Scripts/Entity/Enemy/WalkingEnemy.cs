@@ -30,7 +30,7 @@ public class WalkingEnemy : EntityScript
     {
         checkingGround = Physics2D.OverlapCircle(groundCheckPoint.position, circleRadius, groundLayer);
         checkingWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, groundLayer);
-
+        Patrolling();
     }
 
     void Patrolling()
