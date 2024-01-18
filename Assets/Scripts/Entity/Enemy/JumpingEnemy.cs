@@ -120,4 +120,12 @@ public class JumpingEnemy : EntityScript
         Gizmos.color = Color.green;
         Gizmos.DrawCube(groundCheck.position, boxSize);
     }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.gameObject.tag == "Player" || coll.gameObject.layer == 6)
+        {
+            coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
+        }
+    }
 }

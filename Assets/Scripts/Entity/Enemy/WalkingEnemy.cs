@@ -63,4 +63,12 @@ public class WalkingEnemy : EntityScript
         Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
         Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
     }
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.gameObject.tag == "Player" || coll.gameObject.layer == 6)
+        {
+            coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
+        }
+    }
+
 }
