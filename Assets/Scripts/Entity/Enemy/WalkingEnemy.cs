@@ -11,16 +11,20 @@ public class WalkingEnemy : EntityScript
     [SerializeField] Transform wallCheckPoint;
     [SerializeField] float circleRadius;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask wallLayer;
     private bool checkingGround;
     private bool checkingWall;
     public bool walksOffLedge;
 
-    
+    [Header("For Damage")]
+    private float dmgTimer;
+    private float InvincibilityTime = 0.5f;
 
     private Rigidbody enemyRB;
     // Start is called before the first frame update
     void Start()
     {
+        dmgTimer = InvincibilityTime;
         enemyRB = GetComponent<Rigidbody>();
 
     }
@@ -28,8 +32,13 @@ public class WalkingEnemy : EntityScript
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        if (dmgTimer < InvincibilityTime)
+        {
+            dmgTimer += Time.deltaTime;
+        }
         checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius, groundLayer);
-        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, groundLayer);
+        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, wallLayer);
         Patrolling();
     }
 
@@ -65,7 +74,7 @@ public class WalkingEnemy : EntityScript
     }
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.tag == "Player" || coll.gameObject.layer == 6)
+        if ((coll.gameObject.tag == "Player" || coll.gameObject.layer == 6) && (dmgTimer >= InvincibilityTime))
         {
             coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
         }

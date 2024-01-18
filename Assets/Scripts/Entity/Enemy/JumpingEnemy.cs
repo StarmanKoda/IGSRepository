@@ -12,6 +12,7 @@ public class JumpingEnemy : EntityScript
     [SerializeField] Transform wallCheckPoint;
     [SerializeField] float circleRadius;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask wallLayer;
     private bool checkingGround;
     private bool checkingWall;
 
@@ -25,13 +26,19 @@ public class JumpingEnemy : EntityScript
     public float timeToJump;
     private float jumpTimer;
     private bool isGrounded;
+
+    [Header("For Damage")]
+    private float dmgTimer;
+    private float InvincibilityTime = 0.5f;
     
 
     private Rigidbody enemyRB;
     // Start is called before the first frame update
     void Start()
     {
+
         enemyRB = GetComponent<Rigidbody>();
+        dmgTimer = InvincibilityTime;
         if (player == null)
         {
             player = gameObject.transform.Find("Player");
@@ -42,9 +49,15 @@ public class JumpingEnemy : EntityScript
     void FixedUpdate()
     {
         checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius, groundLayer);
-        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, groundLayer);
+        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, wallLayer);
         isGrounded = Physics.CheckBox(groundCheck.position, boxSize, Quaternion.identity, groundLayer);
         jumpTimer += Time.deltaTime;
+        
+        if (dmgTimer < InvincibilityTime)
+        {
+            dmgTimer += Time.deltaTime;
+        }
+
         if (!HopperType)
         { 
             Patrolling(); 
@@ -123,7 +136,7 @@ public class JumpingEnemy : EntityScript
 
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.tag == "Player" || coll.gameObject.layer == 6)
+        if ((coll.gameObject.tag == "Player" || coll.gameObject.layer == 6)&& (dmgTimer >=InvincibilityTime))
         {
             coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
         }
