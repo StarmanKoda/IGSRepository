@@ -8,10 +8,12 @@ public class JumpingEnemy : EntityScript
     [Header("For Patrolling")]
     private float moveDirection = 1f;
     private bool facingRight = true;
+    public bool startFacingRight = true;
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] Transform wallCheckPoint;
     [SerializeField] float circleRadius;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask wallLayer;
     private bool checkingGround;
     private bool checkingWall;
 
@@ -25,13 +27,23 @@ public class JumpingEnemy : EntityScript
     public float timeToJump;
     private float jumpTimer;
     private bool isGrounded;
+
+    [Header("For Damage")]
+    private float dmgTimer;
+    private float InvincibilityTime = 0.5f;
     
 
-    private Rigidbody2D enemyRB;
+    private Rigidbody enemyRB;
     // Start is called before the first frame update
     void Start()
     {
-        enemyRB = GetComponent<Rigidbody2D>();
+        if (!startFacingRight)
+        {
+            Flip();
+        
+        }
+        enemyRB = GetComponent<Rigidbody>();
+        dmgTimer = InvincibilityTime;
         if (player == null)
         {
             player = gameObject.transform.Find("Player");
@@ -41,10 +53,16 @@ public class JumpingEnemy : EntityScript
     // Update is called once per frame
     void FixedUpdate()
     {
-        checkingGround = Physics2D.OverlapCircle(groundCheckPoint.position, circleRadius, groundLayer);
-        checkingWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, groundLayer);
-        isGrounded = Physics2D.OverlapBox(groundCheck.position, boxSize, 0, groundLayer);
+        checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius, groundLayer);
+        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, wallLayer);
+        isGrounded = Physics.CheckBox(groundCheck.position, boxSize, Quaternion.identity, groundLayer);
         jumpTimer += Time.deltaTime;
+        
+        if (dmgTimer < InvincibilityTime)
+        {
+            dmgTimer += Time.deltaTime;
+        }
+
         if (!HopperType)
         { 
             Patrolling(); 
@@ -102,7 +120,7 @@ public class JumpingEnemy : EntityScript
 
         if (isGrounded)
         {
-            enemyRB.AddForce(new Vector2(distancefromPlayer, jumpHeight), ForceMode2D.Impulse);
+            enemyRB.AddForce(new Vector2(distancefromPlayer, jumpHeight), ForceMode.Impulse);
         }
     }
 
@@ -119,5 +137,13 @@ public class JumpingEnemy : EntityScript
         Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
         Gizmos.color = Color.green;
         Gizmos.DrawCube(groundCheck.position, boxSize);
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if ((coll.gameObject.tag == "Player" || coll.gameObject.layer == 6)&& (dmgTimer >=InvincibilityTime))
+        {
+            coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
+        }
     }
 }
