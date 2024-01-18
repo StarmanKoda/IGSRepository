@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8593026374634770996}
   - component: {fileID: 5911377160942248486}
-  - component: {fileID: 3467194052150197275}
+  - component: {fileID: 3522427317216974821}
   m_Layer: 6
   m_Name: MeleeU
   m_TagString: Untagged
@@ -85,15 +85,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &3467194052150197275
-CapsuleCollider2D:
+--- !u!136 &3522427317216974821
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2520246207766669213}
-  m_Enabled: 0
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -102,24 +100,14 @@ CapsuleCollider2D:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00000011920929, y: 0.00000011920929}
-  m_Size: {x: 1.0000002, y: 2.0000005}
-  m_Direction: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5000002
+  m_Height: 2.0000005
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.00000023841858, z: 0}
 --- !u!1 &2860758940962448956
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6879768126575953401}
   - component: {fileID: 5417407875958047556}
-  - component: {fileID: 2328142485102924348}
+  - component: {fileID: 6525539070325020783}
   m_Layer: 6
   m_Name: MeleeD
   m_TagString: Untagged
@@ -290,15 +278,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &2328142485102924348
-CapsuleCollider2D:
+--- !u!136 &6525539070325020783
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5522495406198444848}
-  m_Enabled: 0
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -307,24 +293,14 @@ CapsuleCollider2D:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00000011920929, y: 0.00000011920929}
-  m_Size: {x: 1.0000002, y: 2.0000005}
-  m_Direction: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5000002
+  m_Height: 2.0000005
+  m_Direction: 1
+  m_Center: {x: 0.000000014901161, y: 0, z: 0}
 --- !u!1 &5577265937899183345
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 585744075023129357}
   - component: {fileID: 4855068431573897460}
-  - component: {fileID: 7483539165633602493}
+  - component: {fileID: 876471541006107593}
   m_Layer: 6
   m_Name: MeleeL
   m_TagString: Untagged
@@ -524,15 +500,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &7483539165633602493
-CapsuleCollider2D:
+--- !u!136 &876471541006107593
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7161895171578653711}
-  m_Enabled: 0
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -541,24 +515,14 @@ CapsuleCollider2D:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00000011920929, y: 0.00000011920929}
-  m_Size: {x: 1.0000002, y: 2.0000005}
-  m_Direction: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5000002
+  m_Height: 2.0000005
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.00000023841858, z: 0}
 --- !u!1 &7274001543766895796
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,13 +533,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3201016990435509459}
   - component: {fileID: 5615398073744922638}
-  - component: {fileID: 3388690937609541083}
-  - component: {fileID: 519097131286128151}
   - component: {fileID: 2686441744092152439}
   - component: {fileID: 5260239820494715679}
+  - component: {fileID: 167096963890194193}
+  - component: {fileID: 818577413188566567}
+  - component: {fileID: 7967694186152015757}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -628,70 +593,9 @@ MonoBehaviour:
     m_Bits: 8
   groundCheck: {fileID: 1397203081113871214}
   grounded: 1
+  gravityScale: 3
   airControl: 1
   facingRight: 1
---- !u!50 &3388690937609541083
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274001543766895796}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 3
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!70 &519097131286128151
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274001543766895796}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: d49faec1333f7f94582fb79bf142bfe1, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!114 &2686441744092152439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,10 +610,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerEntity: {fileID: 0}
   movement: {fileID: 5615398073744922638}
-  meleeL: {fileID: 7483539165633602493}
-  meleeR: {fileID: 6130345924321700507}
-  meleeU: {fileID: 3467194052150197275}
-  meleeD: {fileID: 2328142485102924348}
+  meleeL: {fileID: 876471541006107593}
+  meleeR: {fileID: 4108371780179646603}
+  meleeU: {fileID: 3522427317216974821}
+  meleeD: {fileID: 6525539070325020783}
   spriteL: {fileID: 4855068431573897460}
   spriteR: {fileID: 8446183586461653971}
   spriteU: {fileID: 5911377160942248486}
@@ -734,6 +638,67 @@ MonoBehaviour:
   health: 100
   moveSpeed: 1
   atkDMG: 1
+--- !u!114 &167096963890194193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274001543766895796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1af545075206b341af8ff8d415eaf32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gScale: 1
+--- !u!54 &818577413188566567
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274001543766895796}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 72
+  m_CollisionDetection: 1
+--- !u!65 &7967694186152015757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274001543766895796}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8551879, y: 1.911447, z: 1}
+  m_Center: {x: -0.008143425, y: -0.0025527477, z: 0}
 --- !u!1 &7739057660162433531
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5123136635963819893}
   - component: {fileID: 8446183586461653971}
-  - component: {fileID: 6130345924321700507}
+  - component: {fileID: 4108371780179646603}
   m_Layer: 6
   m_Name: MeleeR
   m_TagString: Untagged
@@ -850,15 +815,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &6130345924321700507
-CapsuleCollider2D:
+--- !u!136 &4108371780179646603
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8660140365624064838}
-  m_Enabled: 0
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -867,24 +830,14 @@ CapsuleCollider2D:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00000011920929, y: 0.00000011920929}
-  m_Size: {x: 1.0000002, y: 2.0000005}
-  m_Direction: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5000002
+  m_Height: 2.0000005
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.00000011920929, z: 0}
 --- !u!1001 &7951329042523311915
 PrefabInstance:
   m_ObjectHideFlags: 0
