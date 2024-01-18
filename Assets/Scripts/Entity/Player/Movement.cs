@@ -7,7 +7,8 @@ using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
 {
-    Rigidbody2D rig;
+    Rigidbody rig;
+    GravityScale gravityScaler;
 
     public float speed = 50f;
     float move = 0f;
@@ -35,7 +36,7 @@ public class Movement : MonoBehaviour
     public bool grounded;
     float groundedRadius = .2f;
 
-    float gravityScale = 3f;
+    public float gravityScale = 3f;
     
     public bool airControl = false;
 
@@ -44,8 +45,9 @@ public class Movement : MonoBehaviour
 
     private void Awake()
     {
-        rig = GetComponent<Rigidbody2D>();
-        gravityScale = rig.gravityScale;
+        rig = GetComponent<Rigidbody>();
+        gravityScaler = GetComponent<GravityScale>();
+        gravityScaler.gScale = gravityScale;
     }
 
     void Update()
@@ -63,13 +65,14 @@ public class Movement : MonoBehaviour
 
         if (rig.velocity.y < 0 && jumpGrace < 0)
         {
-            rig.gravityScale = gravityScale * gravFallMod;
+            gravityScaler.gScale = gravityScale * gravFallMod;
 
             rig.velocity = new Vector2(rig.velocity.x, Mathf.Max(rig.velocity.y, maxFallSpeed));
         }
 
         if (Input.GetButtonUp("Jump") && jumping && rig.velocity.y > 0f)
         {
+            jumping = false;
             rig.velocity = new Vector2(rig.velocity.x, 0);
         }
     }
@@ -80,14 +83,21 @@ public class Movement : MonoBehaviour
 
         grounded = false;
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, groundMask);
-        for (int i = 0; i < colliders.Length; i++)
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, groundMask);
+        //for (int i = 0; i < colliders.Length; i++)
+        //{
+        //    if (colliders[i].gameObject != gameObject)
+        //    {
+        //        grounded = true;
+        //        //rig.gravityScale = gravityScale;
+        //    }
+        //}
+
+        if (Physics.CheckSphere(groundCheck.position, groundedRadius, groundMask))
         {
-            if (colliders[i].gameObject != gameObject)
-            {
-                grounded = true;
-                rig.gravityScale = gravityScale;
-            }
+            grounded = true;
+            jumping = false;
+            gravityScaler.gScale = gravityScale;
         }
 
         if (grounded)
@@ -126,6 +136,7 @@ public class Movement : MonoBehaviour
         if ((grounded && (jump || preJump > 0)) || (jumpGrace > 0 && jump))
         {
             grounded = false;
+            jumping = true;
             rig.velocity = new Vector2(rig.velocity.x, 0);
             rig.AddForce(new Vector2(0f, jumpForce));
         }
@@ -160,7 +171,7 @@ public class Movement : MonoBehaviour
 
         grounded = false;
         rig.velocity = new Vector2(rig.velocity.x, 0);
-        rig.gravityScale = gravityScale;
+        gravityScaler.gScale = gravityScale;
         rig.AddForce(new Vector2(0f, pogoForce));
     }
 }
