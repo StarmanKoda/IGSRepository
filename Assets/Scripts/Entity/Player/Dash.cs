@@ -9,7 +9,7 @@ public class Dash : Upgrades
     public static double speed = 50;
     double dashTime = 0;
     public static double dashTimeCooldown = 0.1;
-    Vector2 dash = new Vector2(0f,0f);
+    Vector3 dash = new Vector3(0f,0f, 0f);
 
     public UpgradeEnum getId()
     {
@@ -22,9 +22,9 @@ public class Dash : Upgrades
         if (dashTime > 0)
         {
             dashTime -= Time.deltaTime;
-            Rigidbody2D body = obj.GetComponent<Rigidbody2D>();
+            Rigidbody body = obj.GetComponent<Rigidbody>();
             if (obj == null) return;
-            body.velocity = dash * (Time.deltaTime * 100f);
+            body.velocity = dash * (Time.deltaTime * 500f);
             if (dashTime < 0) { dashTime = 0; }
             return;
         }
@@ -41,10 +41,10 @@ public class Dash : Upgrades
         {
             if (cooldown != 0) return;
             //Trigger Dash velocity in direction (1 = Left, -1 = Right
-            Rigidbody2D body = obj.GetComponent<Rigidbody2D>();
+            Rigidbody body = obj.GetComponent<Rigidbody>();
             if (obj == null) return;
-            dash = new Vector2((float)(speed * Input.GetAxis("Dash")), 0);
-            body.velocity = dash * (Time.deltaTime * 100f);
+            dash = new Vector3((float)(speed * Input.GetAxis("Dash")), 0, 0);
+            body.velocity = dash * (Time.deltaTime * 500f);
             cooldown = dashCooldown;
             dashTime = dashTimeCooldown;
         }

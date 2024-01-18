@@ -5,7 +5,7 @@ using UnityEngine;
 public class UpgradeUnlocker : MonoBehaviour
 {
     public UpgradeEnum Upg;
-    private void OnTriggerEnter2D(Collider2D player)
+    private void OnTriggerEnter(Collider player)
     {
         //Check if the object has an upgrade connected and if the collider can have an upgrade
         if (player.GetComponent<UpgradeInventory>() == null) return;
