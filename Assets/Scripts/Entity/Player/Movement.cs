@@ -42,12 +42,14 @@ public class Movement : MonoBehaviour
 
     public bool facingRight = true;
 
+    public static Movement instance;
 
     private void Awake()
     {
         rig = GetComponent<Rigidbody>();
         gravityScaler = GetComponent<GravityScale>();
         gravityScaler.gScale = gravityScale;
+        instance = this;
     }
 
     void Update()
@@ -173,5 +175,10 @@ public class Movement : MonoBehaviour
         rig.velocity = new Vector2(rig.velocity.x, 0);
         gravityScaler.gScale = gravityScale;
         rig.AddForce(new Vector2(0f, pogoForce));
+    }
+
+    public static Movement getinstance()
+    {
+        return instance;
     }
 }
