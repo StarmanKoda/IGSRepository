@@ -49,7 +49,7 @@ public class WalkingEnemy : EntityScript
 
     void Patrolling()
     {
-        if ((checkingWall && !walksOffLedge) || ((checkingWall || !checkingGround) && walksOffLedge))
+        if ((checkingWall && walksOffLedge) || ((checkingWall || !checkingGround) && !walksOffLedge))
         {
             if (facingRight)
             {
@@ -82,6 +82,7 @@ public class WalkingEnemy : EntityScript
         if ((coll.gameObject.tag == "Player" || coll.gameObject.layer == 6) && (dmgTimer >= InvincibilityTime))
         {
             coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
+            Flip();
         }
     }
 
