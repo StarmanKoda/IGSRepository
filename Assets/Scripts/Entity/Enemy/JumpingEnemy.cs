@@ -8,6 +8,7 @@ public class JumpingEnemy : EntityScript
     [Header("For Patrolling")]
     private float moveDirection = 1f;
     private bool facingRight = true;
+    public bool startFacingRight = true;
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] Transform wallCheckPoint;
     [SerializeField] float circleRadius;
@@ -36,7 +37,11 @@ public class JumpingEnemy : EntityScript
     // Start is called before the first frame update
     void Start()
     {
-
+        if (!startFacingRight)
+        {
+            Flip();
+        
+        }
         enemyRB = GetComponent<Rigidbody>();
         dmgTimer = InvincibilityTime;
         if (player == null)

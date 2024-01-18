@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 7329401902467629285}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.61, y: 0, z: 0}
+  m_LocalPosition: {x: 1.36, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -450,6 +450,7 @@ MonoBehaviour:
   health: 100
   moveSpeed: 5
   atkDMG: 5
+  startFacingRight: 1
   groundCheckPoint: {fileID: 2147920025591071000}
   wallCheckPoint: {fileID: 6169706720373921533}
   circleRadius: 0

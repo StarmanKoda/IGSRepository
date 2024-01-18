@@ -7,6 +7,7 @@ public class WalkingEnemy : EntityScript
     [Header("For Patrolling")]
     private float moveDirection = 1f;
     private bool facingRight = true;
+    public bool startFacingRight = true;
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] Transform wallCheckPoint;
     [SerializeField] float circleRadius;
@@ -24,6 +25,10 @@ public class WalkingEnemy : EntityScript
     // Start is called before the first frame update
     void Start()
     {
+        if (!startFacingRight)
+        {
+            Flip();
+        }
         dmgTimer = InvincibilityTime;
         enemyRB = GetComponent<Rigidbody>();
 
