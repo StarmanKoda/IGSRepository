@@ -8,10 +8,10 @@ public class Melee : MonoBehaviour
     public EntityScript playerEntity;
 
     public Movement movement;
-    public Collider2D meleeL;
-    public Collider2D meleeR;
-    public Collider2D meleeU;
-    public Collider2D meleeD;
+    public Collider meleeL;
+    public Collider meleeR;
+    public Collider meleeU;
+    public Collider meleeD;
     public SpriteRenderer spriteL;
     public SpriteRenderer spriteR;
     public SpriteRenderer spriteU;
@@ -35,7 +35,7 @@ public class Melee : MonoBehaviour
     bool knockBack;
     public float knockBackForce;
 
-    List<Collider2D> hits = new List<Collider2D>();
+    List<Collider> hits = new List<Collider>();
 
     // Start is called before the first frame update
     void Start()
@@ -157,21 +157,21 @@ public class Melee : MonoBehaviour
         knockBack = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.layer == gameObject.layer || hits.Contains(collision))
+        if (other.gameObject.layer == gameObject.layer || hits.Contains(other))
         {
             return;
         }
 
-        hits.Add(collision);
+        hits.Add(other);
 
         if (knockBack)
         {
-            movement.knockBack(collision.transform, knockBackForce);
+            movement.knockBack(other.transform, knockBackForce);
         }
 
-        EntityScript entity = collision.GetComponent<EntityScript>();
+        EntityScript entity = other.GetComponent<EntityScript>();
 
         if (entity)
         {
