@@ -27,11 +27,11 @@ public class JumpingEnemy : EntityScript
     private bool isGrounded;
     
 
-    private Rigidbody2D enemyRB;
+    private Rigidbody enemyRB;
     // Start is called before the first frame update
     void Start()
     {
-        enemyRB = GetComponent<Rigidbody2D>();
+        enemyRB = GetComponent<Rigidbody>();
         if (player == null)
         {
             player = gameObject.transform.Find("Player");
@@ -41,9 +41,9 @@ public class JumpingEnemy : EntityScript
     // Update is called once per frame
     void FixedUpdate()
     {
-        checkingGround = Physics2D.OverlapCircle(groundCheckPoint.position, circleRadius, groundLayer);
-        checkingWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, groundLayer);
-        isGrounded = Physics2D.OverlapBox(groundCheck.position, boxSize, 0, groundLayer);
+        checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius, groundLayer);
+        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, groundLayer);
+        isGrounded = Physics.CheckBox(groundCheck.position, boxSize, Quaternion.identity, groundLayer);
         jumpTimer += Time.deltaTime;
         if (!HopperType)
         { 
@@ -102,7 +102,7 @@ public class JumpingEnemy : EntityScript
 
         if (isGrounded)
         {
-            enemyRB.AddForce(new Vector2(distancefromPlayer, jumpHeight), ForceMode2D.Impulse);
+            enemyRB.AddForce(new Vector2(distancefromPlayer, jumpHeight), ForceMode.Impulse);
         }
     }
 

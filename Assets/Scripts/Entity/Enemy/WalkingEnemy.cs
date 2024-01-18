@@ -17,19 +17,19 @@ public class WalkingEnemy : EntityScript
 
     
 
-    private Rigidbody2D enemyRB;
+    private Rigidbody enemyRB;
     // Start is called before the first frame update
     void Start()
     {
-        enemyRB = GetComponent<Rigidbody2D>();
+        enemyRB = GetComponent<Rigidbody>();
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        checkingGround = Physics2D.OverlapCircle(groundCheckPoint.position, circleRadius, groundLayer);
-        checkingWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, groundLayer);
+        checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius, groundLayer);
+        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, groundLayer);
         Patrolling();
     }
 
