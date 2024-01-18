@@ -453,7 +453,7 @@ MonoBehaviour:
   startFacingRight: 1
   groundCheckPoint: {fileID: 2147920025591071000}
   wallCheckPoint: {fileID: 6169706720373921533}
-  circleRadius: 0
+  circleRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
