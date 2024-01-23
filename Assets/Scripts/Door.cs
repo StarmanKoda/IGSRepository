@@ -35,8 +35,7 @@ public class Door : MonoBehaviour
 
     void Open()
     {
-
-        if (!inDoorWay)
+        if (!inDoorWay && gameObject.activeInHierarchy)
         {
             locked = false;
         }
@@ -71,6 +70,7 @@ public class Door : MonoBehaviour
         if (move)
         {
             locked = false;
+            inDoorWay = false;
         }
     }
 
