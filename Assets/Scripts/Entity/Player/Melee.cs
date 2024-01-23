@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum direction
+{
+    UP, DOWN, LEFT, RIGHT
+}
+
 public class Melee : MonoBehaviour
 {
     public EntityScript playerEntity;
@@ -16,11 +21,6 @@ public class Melee : MonoBehaviour
     public SpriteRenderer spriteR;
     public SpriteRenderer spriteU;
     public SpriteRenderer spriteD;
-
-    public enum direction
-    {
-        UP, DOWN, LEFT, RIGHT
-    }
 
     direction dir = direction.LEFT;
 
