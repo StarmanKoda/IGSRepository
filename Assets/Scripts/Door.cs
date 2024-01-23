@@ -5,26 +5,21 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-
-
     public RoomLoader roomLoader;
-    public CameraFollow cameraFol;
+
     public int roomTo;
 
-    public float maxX;
-    public float minX;
-    public float maxY;
-    public float minY;
+    Collider col;
 
-    public static float playerEnterTime = 1f;
-    public static float roomLoadDelay = 1f;
+    public direction exitDir;
 
-    GameObject player;
+    bool locked = true;
+    bool inDoorWay = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        col = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -35,35 +30,67 @@ public class Door : MonoBehaviour
 
     private void OnEnable()
     {
-        //FADE IN
-        Movement.getinstance().enabled = false;
-        Invoke("startRoom", playerEnterTime);
+        Invoke("Open", roomLoader.roomLoadDelay + roomLoader.fadeSpeed);
     }
 
-    void startRoom()
+    void Open()
     {
-        Movement.getinstance().enabled = true;
+
+        if (!inDoorWay)
+        {
+            locked = false;
+        }
+    }
+
+    private void OnDisable()
+    {
+        locked = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (locked)
+        {
+            inDoorWay = true;
+            return;
+        }
+
         Movement move = other.GetComponent<Movement>();
         if (move)
         {
-            player = move.gameObject;
-            player.SetActive(false);
-            Invoke("nextRoom", roomLoadDelay); 
-            //FADE OUT
+            move.enabled = false;
+            move.gameObject.SetActive(false);
+            Invoke("nextRoom", roomLoader.fadeSpeed);
+            roomLoader.fadeOut();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Movement move = other.GetComponent<Movement>();
+        if (move)
+        {
+            locked = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Movement move = other.GetComponent<Movement>();
+        if (move)
+        {
+            if ((exitDir == direction.RIGHT && move.facingRight) || (exitDir == direction.LEFT && !move.facingRight))
+            {
+                move.enabled = false;
+                move.gameObject.SetActive(false);
+                Invoke("nextRoom", roomLoader.fadeSpeed);
+                roomLoader.fadeOut();
+            }
         }
     }
 
     void nextRoom()
     {
-        cameraFol.maxX = maxX;
-        cameraFol.minX = minX;
-        cameraFol.maxY = maxY;
-        cameraFol.minY = minY;
-        player.SetActive(true);
-        roomLoader.LoadRoom(roomTo);
+        roomLoader.LoadRoom(roomTo, exitDir);
     }
 }

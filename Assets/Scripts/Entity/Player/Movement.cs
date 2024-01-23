@@ -181,4 +181,9 @@ public class Movement : MonoBehaviour
     {
         return instance;
     }
+
+    public void resetVelocity()
+    {
+        rig.velocity = new Vector2(0, 0);
+    }
 }
