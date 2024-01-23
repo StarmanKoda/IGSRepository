@@ -35,6 +35,7 @@ public class Movement : MonoBehaviour
     public Transform groundCheck;
     public bool grounded;
     float groundedRadius = .2f;
+    Vector2 lastGroundPos;
 
     public float gravityScale = 3f;
     
@@ -100,6 +101,8 @@ public class Movement : MonoBehaviour
             grounded = true;
             jumping = false;
             gravityScaler.gScale = gravityScale;
+
+            lastGroundPos = transform.position;
         }
 
         if (grounded)
@@ -185,5 +188,20 @@ public class Movement : MonoBehaviour
     public void resetVelocity()
     {
         rig.velocity = new Vector2(0, 0);
+    }
+
+    public float getMove()
+    {
+        return move;
+    }
+
+    public Rigidbody getRig()
+    {
+        return rig;
+    }
+
+    public Vector2 getLastGrounded()
+    {
+        return lastGroundPos;
     }
 }

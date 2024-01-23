@@ -9,8 +9,6 @@ public class Door : MonoBehaviour
 
     public int roomTo;
 
-    Collider col;
-
     public direction exitDir;
 
     bool locked = true;
@@ -19,7 +17,7 @@ public class Door : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        col = GetComponent<Collider>();
+        
     }
 
     // Update is called once per frame
@@ -79,7 +77,8 @@ public class Door : MonoBehaviour
         Movement move = other.GetComponent<Movement>();
         if (move)
         {
-            if ((exitDir == direction.RIGHT && move.facingRight) || (exitDir == direction.LEFT && !move.facingRight))
+            if ((exitDir == direction.RIGHT && (move.getMove() == 1 || Input.GetAxis("Dash") == 1)) || 
+                (exitDir == direction.LEFT && (move.getMove() == -1 || Input.GetAxis("Dash") == -1)))
             {
                 move.enabled = false;
                 move.gameObject.SetActive(false);
