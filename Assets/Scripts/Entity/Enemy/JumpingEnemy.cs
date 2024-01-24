@@ -143,7 +143,8 @@ public class JumpingEnemy : EntityScript
     {
         if ((coll.gameObject.tag == "Player" || coll.gameObject.layer == 6)&& (dmgTimer >=InvincibilityTime))
         {
-            coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
+            coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
+            coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
         }
     }
 }
