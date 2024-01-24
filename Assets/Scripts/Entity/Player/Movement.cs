@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
@@ -51,6 +52,11 @@ public class Movement : MonoBehaviour
         gravityScaler = GetComponent<GravityScale>();
         gravityScaler.gScale = gravityScale;
         instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene(1);
     }
 
     void Update()
