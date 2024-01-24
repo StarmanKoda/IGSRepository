@@ -210,4 +210,14 @@ public class Movement : MonoBehaviour
     {
         return lastGroundPos;
     }
+
+    public bool getJump()
+    {
+        return jump;
+    }
+
+    public bool getJumping()
+    {
+        return jumping;
+    }
 }

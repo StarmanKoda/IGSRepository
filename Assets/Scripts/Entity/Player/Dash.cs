@@ -11,7 +11,6 @@ public class Dash : Upgrades
     public static double dashTimeCooldown = 0.1;
     Vector3 dash = new Vector3(0f,0f, 0f);
     Rigidbody body;
-    Movement movement;
 
     public UpgradeEnum getId()
     {
@@ -26,15 +25,6 @@ public class Dash : Upgrades
             if(body == null)
             {
                 Debug.Log("No rigid body.");
-                return;
-            }
-        }
-        if(movement == null)
-        {
-            Movement movement = obj.GetComponent<Movement>();
-            if(movement == null)
-            {
-                Debug.Log("No movement script");
                 return;
             }
         }
