@@ -21,7 +21,7 @@ using UnityEngine;
                     val = new Dash();
                     break;
                 case UpgradeEnum.DBLJUMP:
-
+                    val = new DblJump();
                     break;
                 case UpgradeEnum.GLIDE:
 

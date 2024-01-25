@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
     public float maxFallSpeed = 100f;
 
     public float pogoForce = 750f;
+    public bool pogoing = false;
 
     public Transform mesh;
 
@@ -39,7 +40,8 @@ public class Movement : MonoBehaviour
     Vector2 lastGroundPos;
 
     public float gravityScale = 3f;
-    
+
+    public bool refreshdblJump = false;
     public bool airControl = false;
 
     public bool facingRight = true;
@@ -82,10 +84,13 @@ public class Movement : MonoBehaviour
             rig.velocity = new Vector2(rig.velocity.x, Mathf.Max(rig.velocity.y, maxFallSpeed));
         }
 
-        if (Input.GetButtonUp("Jump") && jumping && rig.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && jumping)
         {
             jumping = false;
-            rig.velocity = new Vector2(rig.velocity.x, 0);
+            if (rig.velocity.y > 0f)
+            {
+                rig.velocity = new Vector2(rig.velocity.x, 0);
+            }
         }
     }
 
@@ -94,16 +99,6 @@ public class Movement : MonoBehaviour
         bool recentlyGrounded = grounded;
 
         grounded = false;
-
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, groundMask);
-        //for (int i = 0; i < colliders.Length; i++)
-        //{
-        //    if (colliders[i].gameObject != gameObject)
-        //    {
-        //        grounded = true;
-        //        //rig.gravityScale = gravityScale;
-        //    }
-        //}
 
         if (Physics.CheckSphere(groundCheck.position, groundedRadius, groundMask))
         {
@@ -181,8 +176,10 @@ public class Movement : MonoBehaviour
 
     public void pogo()
     {
-        jumping = false;
+        pogoing = true;
 
+        jumping = false;
+        refreshdblJump = true;
         grounded = false;
         rig.velocity = new Vector2(rig.velocity.x, 0);
         gravityScaler.gScale = gravityScale;
