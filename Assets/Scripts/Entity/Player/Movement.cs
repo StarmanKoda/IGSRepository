@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
     public float maxFallSpeed = 100f;
 
     public float pogoForce = 750f;
+    public bool pogoing = false;
 
     public Transform mesh;
 
@@ -97,16 +98,6 @@ public class Movement : MonoBehaviour
         bool recentlyGrounded = grounded;
 
         grounded = false;
-
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, groundMask);
-        //for (int i = 0; i < colliders.Length; i++)
-        //{
-        //    if (colliders[i].gameObject != gameObject)
-        //    {
-        //        grounded = true;
-        //        //rig.gravityScale = gravityScale;
-        //    }
-        //}
 
         if (Physics.CheckSphere(groundCheck.position, groundedRadius, groundMask))
         {
@@ -184,6 +175,8 @@ public class Movement : MonoBehaviour
 
     public void pogo()
     {
+        pogoing = true;
+
         jumping = false;
 
         grounded = false;
