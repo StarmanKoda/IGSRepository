@@ -56,7 +56,10 @@ public class Movement : MonoBehaviour
 
     private void OnDestroy()
     {
-        SceneManager.LoadScene(1);
+        if (GetComponent<EntityScript>().health <= 0)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     void Update()
