@@ -29,6 +29,6 @@ public class DblJump : Upgrades
         //Cannot double jump? No need to continue.
         if (!doubleJump) { return; }
         if (!Movement.getinstance().getJumping()) { return; }
-        //DO LATER
+        //Player is not on ground and has finished jumping. We can now double jump
     }
 }

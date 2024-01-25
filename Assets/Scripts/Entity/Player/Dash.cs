@@ -6,7 +6,7 @@ public class Dash : Upgrades
 {
     public double dashCooldown = 3;
     double cooldown = 0;
-    public static double speed = 50;
+    public static double speed = 45;
     double dashTime = 0;
     public static double dashTimeCooldown = 0.1;
     Vector3 dash = new Vector3(0f,0f, 0f);
@@ -31,7 +31,7 @@ public class Dash : Upgrades
         if (dashTime > 0)
         {
             dashTime -= Time.deltaTime;
-            body.velocity = dash * (Time.deltaTime * 500f);
+            obj.transform.position += dash * (Time.deltaTime);
             if (dashTime < 0) { dashTime = 0; }
             return;
         }
@@ -53,7 +53,7 @@ public class Dash : Upgrades
             if (cooldown != 0) return;
             //Trigger Dash velocity in direction (1 = Left, -1 = Right
             dash = new Vector3((float)(speed * Input.GetAxis("Dash")), 0, 0);
-            body.velocity = dash * (Time.deltaTime * 500f);
+            obj.transform.position += dash * (Time.deltaTime);
             cooldown = dashCooldown;
             dashTime = dashTimeCooldown;
         }
