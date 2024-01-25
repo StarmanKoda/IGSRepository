@@ -82,10 +82,13 @@ public class Movement : MonoBehaviour
             rig.velocity = new Vector2(rig.velocity.x, Mathf.Max(rig.velocity.y, maxFallSpeed));
         }
 
-        if (Input.GetButtonUp("Jump") && jumping && rig.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && jumping)
         {
             jumping = false;
-            rig.velocity = new Vector2(rig.velocity.x, 0);
+            if (rig.velocity.y > 0f)
+            {
+                rig.velocity = new Vector2(rig.velocity.x, 0);
+            }
         }
     }
 
