@@ -56,6 +56,8 @@ public class JumpingEnemy : EntityScript
         checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius, groundLayer);
         checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, wallLayer);
         isGrounded = Physics.CheckBox(groundCheck.position, boxSize, Quaternion.identity, groundLayer);
+        
+        if(isGrounded)
         jumpTimer += Time.deltaTime;
         
         if (dmgTimer < InvincibilityTime)
@@ -95,6 +97,7 @@ public class JumpingEnemy : EntityScript
                 Flip();
             }
         }
+        if(!checkingWall)
         enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
         //UnityEngine.Debug.Log("moving!");
     }
