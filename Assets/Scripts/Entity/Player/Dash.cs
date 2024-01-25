@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Dash : Upgrades
 {
-    public double dashCooldown = 1.5;
+    public double dashCooldown = 3;
     double cooldown = 0;
-    public static double speed = 50;
+    public static double speed = 100;
     double dashTime = 0;
     public static double dashTimeCooldown = 0.1;
     Vector3 dash = new Vector3(0f,0f, 0f);
+    Rigidbody body;
 
     public UpgradeEnum getId()
     {
@@ -18,19 +19,29 @@ public class Dash : Upgrades
 
     public void upgradeUpdate(GameObject obj)
     {
-
+        if(body == null)
+        {
+            body = obj.GetComponent<Rigidbody>();
+            if(body == null)
+            {
+                Debug.Log("No rigid body.");
+                return;
+            }
+        }
         if (dashTime > 0)
         {
             dashTime -= Time.deltaTime;
-            Rigidbody body = obj.GetComponent<Rigidbody>();
-            if (obj == null) return;
-            body.velocity = dash * (Time.deltaTime * 500f);
+            //obj.transform.position += dash * (Time.deltaTime);
             if (dashTime < 0) { dashTime = 0; }
             return;
         }
 
         if(cooldown > 0) { 
-            cooldown -= Time.deltaTime; 
+            
+            int mult = 1;
+            //if(movement.grounded) { groundSinceDash = true; }
+            if(Movement.getinstance().grounded) { mult = 10; }
+            cooldown -= Time.deltaTime * mult; 
             if(cooldown <0) { cooldown = 0; }
         }
 
@@ -41,10 +52,8 @@ public class Dash : Upgrades
         {
             if (cooldown != 0) return;
             //Trigger Dash velocity in direction (1 = Left, -1 = Right
-            Rigidbody body = obj.GetComponent<Rigidbody>();
-            if (obj == null) return;
             dash = new Vector3((float)(speed * Input.GetAxis("Dash")), 0, 0);
-            body.velocity = dash * (Time.deltaTime * 500f);
+            body.velocity += (dash);
             cooldown = dashCooldown;
             dashTime = dashTimeCooldown;
         }

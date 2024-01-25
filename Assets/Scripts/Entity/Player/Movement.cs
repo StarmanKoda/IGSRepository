@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
@@ -35,6 +36,7 @@ public class Movement : MonoBehaviour
     public Transform groundCheck;
     public bool grounded;
     float groundedRadius = .2f;
+    Vector2 lastGroundPos;
 
     public float gravityScale = 3f;
     
@@ -42,12 +44,22 @@ public class Movement : MonoBehaviour
 
     public bool facingRight = true;
 
+    public static Movement instance;
 
     private void Awake()
     {
         rig = GetComponent<Rigidbody>();
         gravityScaler = GetComponent<GravityScale>();
         gravityScaler.gScale = gravityScale;
+        instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (GetComponent<EntityScript>().health <= 0)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     void Update()
@@ -98,6 +110,8 @@ public class Movement : MonoBehaviour
             grounded = true;
             jumping = false;
             gravityScaler.gScale = gravityScale;
+
+            lastGroundPos = transform.position;
         }
 
         if (grounded)
@@ -173,5 +187,40 @@ public class Movement : MonoBehaviour
         rig.velocity = new Vector2(rig.velocity.x, 0);
         gravityScaler.gScale = gravityScale;
         rig.AddForce(new Vector2(0f, pogoForce));
+    }
+
+    public static Movement getinstance()
+    {
+        return instance;
+    }
+
+    public void resetVelocity()
+    {
+        rig.velocity = new Vector2(0, 0);
+    }
+
+    public float getMove()
+    {
+        return move;
+    }
+
+    public Rigidbody getRig()
+    {
+        return rig;
+    }
+
+    public Vector2 getLastGrounded()
+    {
+        return lastGroundPos;
+    }
+
+    public bool getJump()
+    {
+        return jump;
+    }
+
+    public bool getJumping()
+    {
+        return jumping;
     }
 }
