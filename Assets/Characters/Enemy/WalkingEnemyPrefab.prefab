@@ -450,6 +450,7 @@ MonoBehaviour:
   health: 100
   moveSpeed: 5
   atkDMG: 5
+  knockBackForce: 0
   startFacingRight: 1
   groundCheckPoint: {fileID: 2147920025591071000}
   wallCheckPoint: {fileID: 6169706720373921533}
@@ -495,7 +496,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295068049301696008}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 57a48f16cf4a0ad47a3d557a9a8f4cd0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

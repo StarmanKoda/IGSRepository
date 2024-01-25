@@ -15,7 +15,7 @@ public class WalkingEnemy : EntityScript
     [SerializeField] LayerMask wallLayer;
     private bool checkingGround;
     private bool checkingWall;
-    public bool walksOffLedge;
+    public bool fallsOffLedge;
 
     [Header("For Damage")]
     private float dmgTimer;
@@ -49,7 +49,7 @@ public class WalkingEnemy : EntityScript
 
     void Patrolling()
     {
-        if ((checkingWall && walksOffLedge) || ((checkingWall || !checkingGround) && !walksOffLedge))
+        if ((checkingWall && fallsOffLedge) || ((checkingWall || !checkingGround) && !fallsOffLedge))
         {
             if (facingRight)
             {

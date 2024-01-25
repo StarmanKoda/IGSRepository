@@ -97,6 +97,7 @@ public class JumpingEnemy : EntityScript
                 Flip();
             }
         }
+        if(!checkingWall)
         enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
         //UnityEngine.Debug.Log("moving!");
     }
