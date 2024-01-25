@@ -25,6 +25,7 @@ public class DblJump : Upgrades
         }
         //Null Checks
         if(Movement.getinstance() == null) { return; }
+        if(Movement.getinstance().refreshdblJump) { Movement.getinstance().refreshdblJump = false; doubleJump = true; }
         //Reset Double Jump if on ground. No other checks needed since you have to jump before double jump. Can't double jump if grounded
         if (Movement.getinstance().grounded) { doubleJump = true; Debug.Log("Double Jump Refreshed"); return; }
         //Cannot double jump? No need to continue.
