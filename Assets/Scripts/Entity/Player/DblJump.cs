@@ -5,7 +5,7 @@ using UnityEngine;
 public class DblJump : Upgrades
 {
     Rigidbody body;
-    float jump = 25f;
+    float jump = 20f;
     bool doubleJump = false;
     UpgradeEnum Upgrades.getId()
     {
