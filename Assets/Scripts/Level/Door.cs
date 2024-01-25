@@ -69,6 +69,17 @@ public class Door : MonoBehaviour
         {
             locked = false;
             inDoorWay = false;
+
+            if (exitDir == direction.DOWN)
+            {
+                if (other.transform.position.y < transform.position.y)
+                {
+                    move.enabled = false;
+                    move.gameObject.SetActive(false);
+                    Invoke("nextRoom", roomLoader.fadeSpeed);
+                    roomLoader.fadeOut();
+                }
+            }
         }
     }
 
