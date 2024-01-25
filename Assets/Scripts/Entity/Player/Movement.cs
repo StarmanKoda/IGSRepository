@@ -40,7 +40,8 @@ public class Movement : MonoBehaviour
     Vector2 lastGroundPos;
 
     public float gravityScale = 3f;
-    
+
+    public bool refreshdblJump = false;
     public bool airControl = false;
 
     public bool facingRight = true;
@@ -178,7 +179,7 @@ public class Movement : MonoBehaviour
         pogoing = true;
 
         jumping = false;
-
+        refreshdblJump = true;
         grounded = false;
         rig.velocity = new Vector2(rig.velocity.x, 0);
         gravityScaler.gScale = gravityScale;
