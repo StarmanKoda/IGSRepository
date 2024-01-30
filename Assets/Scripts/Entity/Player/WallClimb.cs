@@ -8,6 +8,7 @@ public class WallClimb : Upgrades
     double wallJumpCooldown = 0.5;
     float jump = 20f;
     float horizontal = 50f;
+    Collider[] lastWall;
     UpgradeEnum Upgrades.getId()
     {
         return UpgradeEnum.WALLCLIMB;
@@ -33,11 +34,30 @@ public class WallClimb : Upgrades
         }
         //Checks
         if(Movement.getinstance().wallCheck == null) { return; }
-        if (Movement.getinstance().grounded) return;
+        if (Movement.getinstance().grounded)
+        {
+            if(lastWall != null) { lastWall = null; }
+            
+            return;
+        }
         if (Movement.getinstance().getJumping()) return;
         if(wallJumpCooldown > 0) { return; }
         if(Physics.CheckSphere(Movement.getinstance().wallCheck.position, 0.5f, Movement.getinstance().groundMask))
         {
+            Collider[] hit = Physics.OverlapSphere(Movement.getinstance().wallCheck.position, 0.5f, Movement.getinstance().groundMask);
+            if (lastWall != null)
+            {
+                foreach (Collider col in hit)
+                {
+                    foreach (Collider og in lastWall)
+                    {
+                        if (col == og)
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
             if (Input.GetButtonDown("Jump"))
             {
                 Movement.getinstance().Flip();
@@ -53,6 +73,7 @@ public class WallClimb : Upgrades
                 }
                 body.velocity += movement;
                 Movement.getinstance().refreshdblJump = true;
+                lastWall = hit;
             }
         }
     }
