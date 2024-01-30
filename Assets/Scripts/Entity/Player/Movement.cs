@@ -35,6 +35,7 @@ public class Movement : MonoBehaviour
 
     public LayerMask groundMask;
     public Transform groundCheck;
+    public Transform wallCheck;
     public bool grounded;
     float groundedRadius = .2f;
     Vector2 lastGroundPos;
@@ -151,7 +152,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         facingRight = !facingRight;
 
