@@ -8,6 +8,7 @@ public class Dash : Upgrades
     double cooldown = 0;
     public static double speed = 100;
     double dashTime = 0;
+    bool released = true;
     public static double dashTimeCooldown = 0.1;
     Vector3 dash = new Vector3(0f,0f, 0f);
     Rigidbody body;
@@ -48,7 +49,7 @@ public class Dash : Upgrades
 
 
         //Check for button press
-        if (Input.GetButtonDown("Dash"))
+        if ((Input.GetButtonDown("Dash") || Input.GetAxis("Dash") > 0.2 || Input.GetAxis("Dash") < -0.2) && released)
         {
             if (cooldown != 0) return;
             //Trigger Dash velocity in direction (1 = Left, -1 = Right
@@ -56,7 +57,12 @@ public class Dash : Upgrades
             body.velocity += (dash);
             cooldown = dashCooldown;
             dashTime = dashTimeCooldown;
+            released = false;
         }
 
+        if(!(Input.GetButtonDown("Dash") || Input.GetAxis("Dash") > 0.2 || Input.GetAxis("Dash") < -0.2) && !released)
+        {
+            released = true;
+        }
     }
 }
