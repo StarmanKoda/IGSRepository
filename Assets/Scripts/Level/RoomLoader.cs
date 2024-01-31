@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoomLoader : MonoBehaviour
 {
+    public ZoneDoor[] zoneDoors;
     public GameObject[] rooms;
     public int curRoom = 0;
 
@@ -67,6 +68,18 @@ public class RoomLoader : MonoBehaviour
         cameraSpeed = cameraFol.smoothSpeed;
     }
 
+    public void initialStart(float del)
+    {
+        move.enabled = false;
+        Invoke("setup", del + roomLoadDelay);
+    }
+
+    void setup()
+    {
+        move.enabled = true;
+        fadeIn();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -76,7 +89,6 @@ public class RoomLoader : MonoBehaviour
     public void fadeOut()
     {
         fadeAnim.Play("FadeOut");
-        cameraFol.smoothSpeed = cameraJumpSpeed;
     }
 
     public void fadeIn()
@@ -95,6 +107,8 @@ public class RoomLoader : MonoBehaviour
         cameraFol.minX = roomCamBounds[curRoom].minX;
         cameraFol.maxY = roomCamBounds[curRoom].maxY;
         cameraFol.minY = roomCamBounds[curRoom].minY;
+
+        cameraFol.smoothSpeed = cameraJumpSpeed;
 
         enterDir = dir;
 

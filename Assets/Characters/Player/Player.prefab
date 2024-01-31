@@ -588,6 +588,7 @@ MonoBehaviour:
   gravFallMod: 1.5
   maxFallSpeed: -35
   pogoForce: 750
+  pogoing: 0
   mesh: {fileID: 2300584151026361934}
   groundMask:
     serializedVersion: 2
@@ -595,6 +596,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1397203081113871214}
   grounded: 1
   gravityScale: 3
+  refreshdblJump: 0
   airControl: 1
   facingRight: 1
 --- !u!114 &2686441744092152439
@@ -620,7 +622,7 @@ MonoBehaviour:
   spriteU: {fileID: 5911377160942248486}
   spriteD: {fileID: 5417407875958047556}
   attkDel: 0.1
-  attkDur: 0.3
+  attkDur: 0.1
   attkRate: 0.1
   damage: 20
   knockBackForce: 750
