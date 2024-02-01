@@ -3399,6 +3399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32296d1f8ca72a42bae819a4b7b0cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoneDoors: []
   rooms:
   - {fileID: 1265328038}
   - {fileID: 1961739976}
@@ -3429,6 +3430,51 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.8162712, y: 16.201574, z: -22.23155}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1728203759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1728203761}
+  - component: {fileID: 1728203760}
+  m_Layer: 0
+  m_Name: Zone Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1728203760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728203759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bdb41b6dfad9e41beea04e97c53876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  extraZoneLoadDelay: 0.5
+--- !u!4 &1728203761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728203759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.272089, y: 2.2931004, z: 0.021703238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5217,3 +5263,4 @@ SceneRoots:
   - {fileID: 1559263545}
   - {fileID: 938734061}
   - {fileID: 391099551}
+  - {fileID: 1728203761}

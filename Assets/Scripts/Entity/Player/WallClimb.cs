@@ -9,6 +9,7 @@ public class WallClimb : Upgrades
     float jump = 20f;
     float horizontal = 50f;
     Collider[] lastWall;
+    float fallSpeed = 0.3f;
     UpgradeEnum Upgrades.getId()
     {
         return UpgradeEnum.WALLCLIMB;
@@ -44,6 +45,13 @@ public class WallClimb : Upgrades
         if(wallJumpCooldown > 0) { return; }
         if(Physics.CheckSphere(Movement.getinstance().wallCheck.position, 0.5f, Movement.getinstance().groundMask))
         {
+            if (Input.GetAxis("Vertical") > -0.5f)
+            {
+                //Wallslide
+                Vector3 newVel = new Vector3(body.velocity.x, fallSpeed, body.velocity.y);
+                body.velocity = Vector3.Lerp(body.velocity, newVel, 0.05f);
+            }
+            
             Collider[] hit = Physics.OverlapSphere(Movement.getinstance().wallCheck.position, 0.5f, Movement.getinstance().groundMask);
             if (lastWall != null)
             {
