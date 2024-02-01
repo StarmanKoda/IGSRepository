@@ -9,10 +9,11 @@ public class EntityScript : MonoBehaviour
     public double health = 100;
     public float moveSpeed = 1f;
     public double atkDMG = 1f;
+    public double knockBackForce = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

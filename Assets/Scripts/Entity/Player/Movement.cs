@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
@@ -28,26 +29,40 @@ public class Movement : MonoBehaviour
     public float maxFallSpeed = 100f;
 
     public float pogoForce = 750f;
+    public bool pogoing = false;
 
     public Transform mesh;
 
     public LayerMask groundMask;
     public Transform groundCheck;
+    public Transform wallCheck;
     public bool grounded;
     float groundedRadius = .2f;
+    Vector2 lastGroundPos;
 
     public float gravityScale = 3f;
-    
+
+    public bool refreshdblJump = false;
     public bool airControl = false;
 
     public bool facingRight = true;
 
+    public static Movement instance;
 
     private void Awake()
     {
         rig = GetComponent<Rigidbody>();
         gravityScaler = GetComponent<GravityScale>();
         gravityScaler.gScale = gravityScale;
+        instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (GetComponent<EntityScript>().health <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     void Update()
@@ -70,10 +85,13 @@ public class Movement : MonoBehaviour
             rig.velocity = new Vector2(rig.velocity.x, Mathf.Max(rig.velocity.y, maxFallSpeed));
         }
 
-        if (Input.GetButtonUp("Jump") && jumping && rig.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && jumping)
         {
             jumping = false;
-            rig.velocity = new Vector2(rig.velocity.x, 0);
+            if (rig.velocity.y > 0f)
+            {
+                rig.velocity = new Vector2(rig.velocity.x, 0);
+            }
         }
     }
 
@@ -83,21 +101,13 @@ public class Movement : MonoBehaviour
 
         grounded = false;
 
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, groundMask);
-        //for (int i = 0; i < colliders.Length; i++)
-        //{
-        //    if (colliders[i].gameObject != gameObject)
-        //    {
-        //        grounded = true;
-        //        //rig.gravityScale = gravityScale;
-        //    }
-        //}
-
         if (Physics.CheckSphere(groundCheck.position, groundedRadius, groundMask))
         {
             grounded = true;
             jumping = false;
             gravityScaler.gScale = gravityScale;
+
+            lastGroundPos = transform.position;
         }
 
         if (grounded)
@@ -142,7 +152,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         facingRight = !facingRight;
 
@@ -167,11 +177,48 @@ public class Movement : MonoBehaviour
 
     public void pogo()
     {
-        jumping = false;
+        pogoing = true;
 
+        jumping = false;
+        refreshdblJump = true;
         grounded = false;
         rig.velocity = new Vector2(rig.velocity.x, 0);
         gravityScaler.gScale = gravityScale;
         rig.AddForce(new Vector2(0f, pogoForce));
+    }
+
+    public static Movement getinstance()
+    {
+        return instance;
+    }
+
+    public void resetVelocity()
+    {
+        rig.velocity = new Vector2(0, 0);
+    }
+
+    public float getMove()
+    {
+        return move;
+    }
+
+    public Rigidbody getRig()
+    {
+        return rig;
+    }
+
+    public Vector2 getLastGrounded()
+    {
+        return lastGroundPos;
+    }
+
+    public bool getJump()
+    {
+        return jump;
+    }
+
+    public bool getJumping()
+    {
+        return jumping;
     }
 }

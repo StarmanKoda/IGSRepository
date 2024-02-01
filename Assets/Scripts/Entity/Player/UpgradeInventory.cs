@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,21 +18,25 @@ public class UpgradeInventory : MonoBehaviour
     {
         foreach (Upgrades upgrade in obtainedUpgrades) {
             if (upgrade == null) continue;
-            upgrade.upgradeUpdate(this.gameObject);
+            upgrade.upgradeUpdate(this.gameObject, this);
         }
+        getUnlockedUpgrade(UpgradeEnum.DASH);
     }
 
     public void unlockUpgrade(Upgrades upgrade)
     {
-        for(int i = 0; i < obtainedUpgrades.Length; i++)
-        {
-            if (obtainedUpgrades[i] == null)
-            {
-                obtainedUpgrades[i] = upgrade;
-                return;
-            }
-            if (obtainedUpgrades[i].getId() == upgrade.getId()) return;
-        }
+        if (getUnlockedUpgrade(upgrade.getId())) { return; }
+        if(UpgradeEnumMethods.getId(upgrade.getId()) == -1) { return; }
+        obtainedUpgrades[UpgradeEnumMethods.getId(upgrade.getId())] = upgrade;
         
+    }
+
+    public bool getUnlockedUpgrade(UpgradeEnum upgrade)
+    {
+        for(int i = 0; i < obtainedUpgrades.Length; i++) {
+            if (obtainedUpgrades[i] == null) continue;
+            if (obtainedUpgrades[i].getId().Equals(upgrade)) return true;
+        }
+        return false;
     }
 }

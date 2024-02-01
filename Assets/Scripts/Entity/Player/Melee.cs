@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum direction
+{
+    UP, DOWN, LEFT, RIGHT
+}
+
 public class Melee : MonoBehaviour
 {
     public EntityScript playerEntity;
@@ -16,11 +21,6 @@ public class Melee : MonoBehaviour
     public SpriteRenderer spriteR;
     public SpriteRenderer spriteU;
     public SpriteRenderer spriteD;
-
-    public enum direction
-    {
-        UP, DOWN, LEFT, RIGHT
-    }
 
     direction dir = direction.LEFT;
 
@@ -53,28 +53,6 @@ public class Melee : MonoBehaviour
         {
             if (Input.GetButtonDown("Attack1")) //"Attack1"
             {
-                // GetAxisRaw works fine for keyboard but may need to be changed for controller, not sure
-                //float upDown = Input.GetAxisRaw("Vertical");
-                //if (upDown < -0.5f && !movement.grounded)
-                //{
-                //    //Down
-                //    dir = direction.DOWN;
-                //}
-                //else if (upDown > 0.5f)
-                //{
-                //    //Up
-                //    dir = direction.UP;
-                //}
-                //else if (movement.facingRight)
-                //{
-                //    //Right
-                //    dir = direction.RIGHT;
-                //}
-                //else
-                //{
-                //    //Left
-                //    dir = direction.LEFT;
-                //}
 
                 // This can be easily updated to use animation key frame events istead of invoke
 
@@ -155,6 +133,7 @@ public class Melee : MonoBehaviour
 
         hits.Clear();
         knockBack = false;
+        movement.pogoing = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -178,7 +157,7 @@ public class Melee : MonoBehaviour
             entity.takeDamage(damage);
         }
 
-        if (dir == direction.DOWN && entity) //ADD ANY OTHER POGO OBJECTS (e.g. spikes)
+        if (dir == direction.DOWN && entity && !movement.pogoing) //ADD ANY OTHER POGO OBJECTS (e.g. spikes)
         {
             movement.pogo();
         }
