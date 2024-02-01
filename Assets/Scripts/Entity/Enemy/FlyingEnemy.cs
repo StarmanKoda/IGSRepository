@@ -71,7 +71,7 @@ public class FlyingEnemy : EntityScript
         if ((coll.gameObject.tag == "Player" || coll.gameObject.layer == 6) && (dmgTimer >= InvincibilityTime))
         {
             coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
-            coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
+            coll.gameObject.GetComponent<EntityScript>().knockBack(transform, (float)knockBackForce);
             dmgTimer = 0f;
         }
     }

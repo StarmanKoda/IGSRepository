@@ -7346,6 +7346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32296d1f8ca72a42bae819a4b7b0cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoneDoors: []
   rooms:
   - {fileID: 1815695316}
   - {fileID: 2125490016}
@@ -7519,7 +7520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1302466595
 Animator:
   serializedVersion: 5
