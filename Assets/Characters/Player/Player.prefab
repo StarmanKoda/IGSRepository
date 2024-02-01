@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 2300584151026361934}
   - component: {fileID: 1582546673911359060}
   - component: {fileID: 5180974123289143719}
+  - component: {fileID: 5655535278541696699}
   m_Layer: 6
   m_Name: Mesh
   m_TagString: Untagged
@@ -172,7 +173,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 76dd94b048f88e443969380621ba475f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,6 +195,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &5655535278541696699
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2860758940962448956}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ee66b971939a9f4ca1b577157a32426, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5522495406198444848
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +447,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 76dd94b048f88e443969380621ba475f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -566,7 +588,7 @@ GameObject:
   - component: {fileID: 3201016990435509459}
   - component: {fileID: 5615398073744922638}
   - component: {fileID: 2686441744092152439}
-  - component: {fileID: 5260239820494715679}
+  - component: {fileID: 4966103902073993831}
   - component: {fileID: 167096963890194193}
   - component: {fileID: 818577413188566567}
   - component: {fileID: 7967694186152015757}
@@ -644,7 +666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5f4db4eae3ae84cbf6080ca91e6e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEntity: {fileID: 0}
   movement: {fileID: 5615398073744922638}
   meleeL: {fileID: 876471541006107593}
   meleeR: {fileID: 4108371780179646603}
@@ -657,9 +678,8 @@ MonoBehaviour:
   attkDel: 0.1
   attkDur: 0.1
   attkRate: 0.1
-  damage: 20
   knockBackForce: 750
---- !u!114 &5260239820494715679
+--- !u!114 &4966103902073993831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -668,13 +688,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7274001543766895796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a73804fec4c6b4c8a27d17b7be685c, type: 3}
+  m_Script: {fileID: 11500000, guid: 525fcd8bffe698e419f3cdc10f43e50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
   moveSpeed: 1
-  atkDMG: 1
+  atkDMG: 20
   knockBackForce: 0
+  invincTime: 0.75
+  dmgAnim: {fileID: 5655535278541696699}
 --- !u!114 &167096963890194193
 MonoBehaviour:
   m_ObjectHideFlags: 0
