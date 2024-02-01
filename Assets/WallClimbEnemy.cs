@@ -19,6 +19,10 @@ public class WallClimbEnemy : EntityScript
     private float zAxisAdd;
     private int direction = 1;
 
+    [Header("For Damage")]
+    private float dmgTimer;
+    private float InvincibilityTime = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +41,10 @@ public class WallClimbEnemy : EntityScript
     {
         Movement();
         CheckGroundOrWall();
+        if (dmgTimer < InvincibilityTime)
+        {
+            dmgTimer += Time.deltaTime;
+        }
     }
 
     void CheckGroundOrWall()
@@ -50,34 +58,34 @@ public class WallClimbEnemy : EntityScript
             if (hasTurn == false)
             {
                 zAxisAdd -= 90;
-                if(direction == 1)
+                transform.eulerAngles = new Vector3(0, 0, zAxisAdd);
+                if (direction == 1)
                 {
-                    transform.eulerAngles = new Vector3(0, 0, zAxisAdd);
-                    transform.position = new Vector2(transform.position.x + 0.5f, transform.position.y - 0.5f);
+                    
+                    transform.position = new Vector2(transform.position.x + 0.3f, transform.position.y - 0.3f);
                     Debug.Log("Turning!");
                     direction = 2;
                     hasTurn = true;
                 }
                 else if (direction == 2)
                 {
-                    transform.eulerAngles = new Vector3(0, 0, zAxisAdd);
-                    transform.position = new Vector2(transform.position.x - 0.5f, transform.position.y - 0.5f);
+                    transform.position = new Vector2(transform.position.x - 0.3f, transform.position.y - 0.3f);
                     Debug.Log("Turning!");
                     direction = 3;
                     hasTurn = true;
                 }
                 else if (direction == 3)
                 {
-                    transform.eulerAngles = new Vector3(0, 0, zAxisAdd);
-                    transform.position = new Vector2(transform.position.x - 0.5f, transform.position.y + 0.5f);
+
+                    transform.position = new Vector2(transform.position.x - 0.3f, transform.position.y + 0.3f);
                     Debug.Log("Turning!");
                     direction = 4;
                     hasTurn = true;
                 }
                 else if (direction == 4)
                 {
-                    transform.eulerAngles = new Vector3(0, 0, zAxisAdd);
-                    transform.position = new Vector2(transform.position.x + 0.5f, transform.position.y + 0.5f);
+
+                    transform.position = new Vector2(transform.position.x + 0.3f, transform.position.y + 0.3f);
                     Debug.Log("Turning!");
                     direction = 1;
                     hasTurn = true;
@@ -88,42 +96,51 @@ public class WallClimbEnemy : EntityScript
         {
             hasTurn = false;
         }
+
         if(checkingWall)
         {
-            zAxisAdd -= 90;
-            if (direction == 1)
+            if (hasTurn == false)
             {
+                zAxisAdd += 90;
                 transform.eulerAngles = new Vector3(0, 0, zAxisAdd);
-                transform.position = new Vector2(transform.position.x - 0.5f, transform.position.y + 0.5f);
-                Debug.Log("Turning!");
-                direction = 4;
-                hasTurn = true;
-            }
-            else if (direction == 2)
-            {
-                transform.eulerAngles = new Vector3(0, 0, zAxisAdd);
-                transform.position = new Vector2(transform.position.x + 0.5f, transform.position.y + 0.5f);
-                Debug.Log("Turning!");
-                direction = 1;
-                hasTurn = true;
-            }
-            else if (direction == 3)
-            {
-                transform.eulerAngles = new Vector3(0, 0, zAxisAdd);
-                transform.position = new Vector2(transform.position.x + 0.5f, transform.position.y - 0.5f);
-                Debug.Log("Turning!");
-                direction = 2;
-                hasTurn = true;
-            }
-            else if (direction == 4)
-            {
-                transform.eulerAngles = new Vector3(0, 0, zAxisAdd);
-                transform.position = new Vector2(transform.position.x - 0.5f, transform.position.y - 0.5f);
-                Debug.Log("Turning!");
-                direction = 3;
-                hasTurn = true;
+                if (direction == 1)
+                {
+
+                    transform.position = new Vector2(transform.position.x, transform.position.y);
+                    Debug.Log("Turning from 1 to 4");
+                    hasTurn = true;
+                    direction = 4;
+
+                }
+                else if (direction == 2)
+                {
+
+                    transform.position = new Vector2(transform.position.x, transform.position.y);
+                    Debug.Log("Turning from 2 to 1");
+                    hasTurn = true;
+                    direction = 1;
+                    
+                }
+                else if (direction == 3)
+                {
+
+                    transform.position = new Vector2(transform.position.x, transform.position.y);
+                    Debug.Log("Turning from 3 to 2");
+                    hasTurn = true;
+                    direction = 2;
+                }
+                else if (direction == 4)
+                {
+
+                    transform.position = new Vector2(transform.position.x, transform.position.y);
+                    Debug.Log("Turning from 4 to 3");
+                    hasTurn = true;
+                    direction = 3;
+                    
+                }
             }
         }
+
     }
     void Movement()
     {
@@ -134,5 +151,15 @@ public class WallClimbEnemy : EntityScript
     {
         Gizmos.DrawLine(groundCheckPoint.position, new Vector2(groundCheckPoint.position.x, groundCheckPoint.position.y - groundCheckDistance));
         Gizmos.DrawLine(wallCheckPoint.position, new Vector2(wallCheckPoint.position.x + wallCheckDistance, wallCheckPoint.position.y));
+    }
+    
+    void OnCollisionEnter(Collision coll)
+    {
+        if ((coll.gameObject.tag == "Player" || coll.gameObject.layer == 6) && (dmgTimer >= InvincibilityTime))
+        {
+            coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
+            coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
+            dmgTimer = 0f;
+        }
     }
 }

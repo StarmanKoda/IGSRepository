@@ -84,6 +84,7 @@ public class WalkingEnemy : EntityScript
             coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
             Flip();
+            dmgTimer = 0f;
         }
     }
 
