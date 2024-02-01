@@ -10,7 +10,7 @@ public enum direction
 
 public class Melee : MonoBehaviour
 {
-    public EntityScript playerEntity;
+    EntityScript playerEntity;
 
     public Movement movement;
     public Collider meleeL;
@@ -29,7 +29,7 @@ public class Melee : MonoBehaviour
     public float attkRate; //Time between attack end and next attack
     float nextAttack = 0;
 
-    public double damage = 20;
+    double damage = 20;
 
     Rigidbody2D playerRig;
     bool knockBack;
@@ -41,6 +41,7 @@ public class Melee : MonoBehaviour
     void Start()
     {
         playerRig = GetComponent<Rigidbody2D>();
+        damage = GetComponent<EntityScript>().atkDMG;
     }
 
     // Update is called once per frame
