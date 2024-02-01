@@ -9,6 +9,7 @@ public class Dash : Upgrades
     public static double speed = 100;
     double dashTime = 0;
     bool released = true;
+    double triggerThreshold = 0.5;
     public static double dashTimeCooldown = 0.1;
     Vector3 dash = new Vector3(0f,0f, 0f);
     Rigidbody body;
@@ -18,7 +19,7 @@ public class Dash : Upgrades
         return UpgradeEnum.DASH;
     }
 
-    public void upgradeUpdate(GameObject obj)
+    public void upgradeUpdate(GameObject obj, UpgradeInventory inv)
     {
         if(body == null)
         {
@@ -49,7 +50,7 @@ public class Dash : Upgrades
 
 
         //Check for button press
-        if ((Input.GetButtonDown("Dash") || Input.GetAxis("Dash") > 0.2 || Input.GetAxis("Dash") < -0.2) && released)
+        if ((Input.GetButtonDown("Dash") || Input.GetAxis("Dash") > triggerThreshold || Input.GetAxis("Dash") < -triggerThreshold) && released)
         {
             if (cooldown != 0) return;
             //Trigger Dash velocity in direction (1 = Left, -1 = Right
@@ -60,7 +61,7 @@ public class Dash : Upgrades
             released = false;
         }
 
-        if(!(Input.GetButtonDown("Dash") || Input.GetAxis("Dash") > 0.2 || Input.GetAxis("Dash") < -0.2) && !released)
+        if(!(Input.GetButtonDown("Dash") || Input.GetAxis("Dash") > triggerThreshold || Input.GetAxis("Dash") < -triggerThreshold) && !released)
         {
             released = true;
         }

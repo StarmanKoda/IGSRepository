@@ -139,6 +139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 561480099335515094}
   - {fileID: 7625283423902640320}
   - {fileID: 5325502471700251457}
   m_Father: {fileID: 3201016990435509459}
@@ -331,6 +332,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3201016990435509459}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6224763652242938927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561480099335515094}
+  m_Layer: 6
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &561480099335515094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224763652242938927}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.51, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2300584151026361934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6755404734820045496
 GameObject:
@@ -588,13 +620,16 @@ MonoBehaviour:
   gravFallMod: 1.5
   maxFallSpeed: -35
   pogoForce: 750
+  pogoing: 0
   mesh: {fileID: 2300584151026361934}
   groundMask:
     serializedVersion: 2
     m_Bits: 8
   groundCheck: {fileID: 1397203081113871214}
+  wallCheck: {fileID: 561480099335515094}
   grounded: 1
   gravityScale: 3
+  refreshdblJump: 0
   airControl: 1
   facingRight: 1
 --- !u!114 &2686441744092152439
@@ -620,7 +655,7 @@ MonoBehaviour:
   spriteU: {fileID: 5911377160942248486}
   spriteD: {fileID: 5417407875958047556}
   attkDel: 0.1
-  attkDur: 0.3
+  attkDur: 0.1
   attkRate: 0.1
   damage: 20
   knockBackForce: 750

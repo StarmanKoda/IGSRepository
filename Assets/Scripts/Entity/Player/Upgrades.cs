@@ -6,5 +6,5 @@ public interface Upgrades
 {
     UpgradeEnum getId();
 
-    void upgradeUpdate(GameObject obj);
+    void upgradeUpdate(GameObject obj, UpgradeInventory inv);
 }
