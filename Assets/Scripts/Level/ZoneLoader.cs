@@ -10,7 +10,7 @@ public class ZoneLoader : MonoBehaviour
     Movement player;
     public static ZoneLoader zoneLoader;
 
-    public float extraZoneLoadDelay = 0.5f;
+    public float extraZoneLoadDelay = 0f;
 
     ZoneDoor entranceDoor;
 
@@ -18,6 +18,9 @@ public class ZoneLoader : MonoBehaviour
 
     Vector2 velocity;
     Vector3 offset;
+
+    public Upgrades[] obtainedUpgrades;
+    public double health;
 
     public void Awake()
     {
@@ -97,6 +100,8 @@ public class ZoneLoader : MonoBehaviour
 
     void LoadRoom()
     {
+        player.GetComponent<UpgradeInventory>().obtainedUpgrades = obtainedUpgrades;
+        player.GetComponent<EntityScript>().health = health;
         roomLoader.LoadRoom(entranceDoor.roomIn, entranceDoor.entranceDir);
     }
 

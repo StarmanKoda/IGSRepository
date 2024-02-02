@@ -61,7 +61,7 @@ public class Movement : MonoBehaviour
     {
         if (GetComponent<EntityScript>().health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("PlayTestZone0");
         }
     }
 
