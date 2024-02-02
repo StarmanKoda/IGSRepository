@@ -280,7 +280,7 @@ MonoBehaviour:
   doorNum: 0
   roomIn: 0
   doorTo: 0
-  sceneTo: 
+  sceneTo: MainMenu
   entranceDir: 0
 --- !u!1 &4714089829774176041
 GameObject:

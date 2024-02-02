@@ -526,5 +526,5 @@ MonoBehaviour:
   doorNum: 0
   roomIn: 0
   doorTo: 0
-  sceneTo: 
+  sceneTo: MainMenu
   entranceDir: 2
