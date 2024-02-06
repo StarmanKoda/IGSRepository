@@ -139,7 +139,7 @@ public class Melee : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == gameObject.layer || hits.Contains(other))
+        if (other.gameObject.layer == 6 || hits.Contains(other))
         {
             return;
         }
