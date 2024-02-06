@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CollectibleList : MonoBehaviour
 {
-    public List<int> collected;
+    public List<String> collected;
     public static CollectibleList instance;
     public void Start()
     {
@@ -14,12 +14,12 @@ public class CollectibleList : MonoBehaviour
             instance = this;
         }
     }
-    public void addObject(int objectID)
+    public void addObject(String objectID)
     {
         collected.Add(objectID);
     }
 
-    public Boolean containsObject(int objectID)
+    public Boolean containsObject(String objectID)
     {
         return collected.Contains(objectID);
     }
