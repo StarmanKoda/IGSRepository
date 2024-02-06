@@ -30,7 +30,8 @@ public class JumpingEnemy : EntityScript
     [SerializeField] Vector2 boxSize;
     public bool trackPlayerJump;
     public bool HopperType;
-    public float timeToJump;
+    public float maxTimeToJump = 3f;
+    private float timeToJump;
     private float jumpTimer;
     private bool isGrounded;
 
@@ -53,6 +54,7 @@ public class JumpingEnemy : EntityScript
             Flip();
         
         }
+        timeToJump = Random.Range(1.5f, maxTimeToJump);
         enemyRB = GetComponent<Rigidbody>();
         dmgTimer = InvincibilityTime;
         staggerTimer = staggerTime;
@@ -105,6 +107,7 @@ public class JumpingEnemy : EntityScript
         {
             jumpTimer = 0;
             Jump();
+            timeToJump = Random.Range(1.5f, maxTimeToJump);
         }
     }
     
@@ -128,7 +131,7 @@ public class JumpingEnemy : EntityScript
 
     void PatrolHop()
     {
-        if (checkingWall || checkingWall2 || !checkingGround)
+        if (checkingWall || checkingWall2 || checkingWall3 || checkingWall4 || !checkingGround)
         {
             if (facingRight)
             {
