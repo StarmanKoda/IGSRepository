@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : EntityScript
 {
@@ -10,11 +12,27 @@ public class PlayerHealth : EntityScript
 
     public Animator dmgAnim;
 
+    public Slider healthBar;
+
+    private void OnDestroy()
+    {
+        if (GetComponent<EntityScript>().health <= 0)
+        {
+            SceneManager.LoadScene("PlayTestZone0");
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         dmgAnim.speed = 1 / invincTime;
         Physics.IgnoreLayerCollision(6, 7, false);
+
+        healthBar = FindObjectOfType<Slider>();
+        if (healthBar)
+        {
+            //healthBar.maxValue = (float);
+        }
     }
 
     // Update is called once per frame
@@ -37,6 +55,10 @@ public class PlayerHealth : EntityScript
         if (!invincible)
         {
             base.takeDamage(dmg);
+            if (healthBar)
+            {
+                healthBar.value = (float)health;
+            }
             invincOver = 0;
             invincible = true;
             dmgAnim.SetBool("Invincible", invincible);
