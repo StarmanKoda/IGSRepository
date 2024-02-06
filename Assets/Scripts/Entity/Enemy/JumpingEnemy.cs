@@ -11,11 +11,17 @@ public class JumpingEnemy : EntityScript
     public bool startFacingRight = true;
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] Transform wallCheckPoint;
+    [SerializeField] Transform wallCheckPoint2;
+    [SerializeField] Transform wallCheckPoint3;
+    [SerializeField] Transform wallCheckPoint4;
     [SerializeField] float circleRadius;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask wallLayer;
     private bool checkingGround;
     private bool checkingWall;
+    private bool checkingWall2;
+    private bool checkingWall3;
+    private bool checkingWall4; 
 
     [Header("For Jumping")]
     [SerializeField] float jumpHeight;
@@ -24,14 +30,20 @@ public class JumpingEnemy : EntityScript
     [SerializeField] Vector2 boxSize;
     public bool trackPlayerJump;
     public bool HopperType;
-    public float timeToJump;
+    public float maxTimeToJump = 3f;
+    private float timeToJump;
     private float jumpTimer;
     private bool isGrounded;
 
     [Header("For Damage")]
     private float dmgTimer;
     private float InvincibilityTime = 0.5f;
-    
+
+    [Header("For Stagger Time")]
+    private float staggerTimer;
+    private float staggerTime = 0.5f;
+    private int isStaggered = 0;
+
 
     private Rigidbody enemyRB;
     // Start is called before the first frame update
@@ -42,8 +54,10 @@ public class JumpingEnemy : EntityScript
             Flip();
         
         }
+        timeToJump = Random.Range(1.5f, maxTimeToJump);
         enemyRB = GetComponent<Rigidbody>();
         dmgTimer = InvincibilityTime;
+        staggerTimer = staggerTime;
         if (player == null)
         {
             player = gameObject.transform.Find("Player");
@@ -56,13 +70,25 @@ public class JumpingEnemy : EntityScript
         checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius, groundLayer);
         checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, wallLayer);
         isGrounded = Physics.CheckBox(groundCheck.position, boxSize, Quaternion.identity, groundLayer);
-        
-        if(isGrounded)
+        checkingWall2 = Physics.CheckSphere(wallCheckPoint2.position, circleRadius, wallLayer);
+        checkingWall3 = Physics.CheckSphere(wallCheckPoint3.position, circleRadius, wallLayer);
+        checkingWall4 = Physics.CheckSphere(wallCheckPoint4.position, circleRadius, wallLayer);
+
+        if (isGrounded)
         jumpTimer += Time.deltaTime;
         
         if (dmgTimer < InvincibilityTime)
         {
             dmgTimer += Time.deltaTime;
+        }
+        if (staggerTimer < staggerTime && isStaggered == 0)
+        {
+            staggerTimer += Time.deltaTime;
+        }
+        if (isStaggered == 0 && staggerTimer >= staggerTime)
+        {
+            isStaggered = 1;
+            staggerTimer = 0;
         }
 
         if (!HopperType)
@@ -81,12 +107,13 @@ public class JumpingEnemy : EntityScript
         {
             jumpTimer = 0;
             Jump();
+            timeToJump = Random.Range(1.5f, maxTimeToJump);
         }
     }
     
     void Patrolling()
     {
-        if ( checkingWall)
+        if ( checkingWall || checkingWall2 || checkingWall3 || checkingWall4)
         {
             if (facingRight)
             {
@@ -97,14 +124,14 @@ public class JumpingEnemy : EntityScript
                 Flip();
             }
         }
-        if(!checkingWall)
+        if(!checkingWall || !checkingWall2 || !checkingWall3 || checkingWall4)
         enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
         //UnityEngine.Debug.Log("moving!");
     }
 
     void PatrolHop()
     {
-        if (checkingWall || !checkingGround)
+        if (checkingWall || checkingWall2 || checkingWall3 || checkingWall4 || !checkingGround)
         {
             if (facingRight)
             {
@@ -138,6 +165,9 @@ public class JumpingEnemy : EntityScript
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
         Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
+        Gizmos.DrawWireSphere(wallCheckPoint2.position, circleRadius);
+        Gizmos.DrawWireSphere(wallCheckPoint3.position, circleRadius);
+        Gizmos.DrawWireSphere(wallCheckPoint4.position, circleRadius);
         Gizmos.color = Color.green;
         Gizmos.DrawCube(groundCheck.position, boxSize);
     }
@@ -148,6 +178,8 @@ public class JumpingEnemy : EntityScript
         {
             coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
+            dmgTimer = 0f;
+            isStaggered = 0;
         }
     }
 }
