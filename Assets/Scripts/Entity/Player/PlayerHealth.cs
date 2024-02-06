@@ -31,7 +31,8 @@ public class PlayerHealth : EntityScript
         healthBar = FindObjectOfType<Slider>();
         if (healthBar)
         {
-            //healthBar.maxValue = (float);
+            healthBar.maxValue = (float)maxHealth;
+            healthBar.value = (float)health;
         }
     }
 
