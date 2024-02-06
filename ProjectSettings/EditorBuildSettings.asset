@@ -9,15 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/PlayTest Scene.unity
+    path: Assets/Scenes/PlayTestScenes/PlayTestZone0.unity
     guid: bac4c551c6361a541b843e9edf408088
   - enabled: 1
-    path: Assets/Scenes/TestT.unity
+    path: Assets/Scenes/PlayTestScenes/PlayTestZone1.unity
+    guid: 073175d9fd8e6c04287e7f8d5f6c4516
+  - enabled: 1
+    path: Assets/Scenes/PlayTestScenes/PlayTestZone2.unity
+    guid: 1fbd5c229d3919e46af78ddf31394793
+  - enabled: 1
+    path: Assets/Scenes/PlayTestScenes/PlayTestZone3.unity
+    guid: a1f6b84820ca27b448882e9065d82fa9
+  - enabled: 0
+    path: Assets/Scenes/TestT/TestT.unity
     guid: f9b63f03876a6c2478a267d2ddfb6fd3
-  - enabled: 1
-    path: Assets/Scenes/TestT1.unity
+  - enabled: 0
+    path: Assets/Scenes/TestT/TestT1.unity
     guid: 7322891f7136d3b4985ccda6d3cc9e05
-  - enabled: 1
-    path: Assets/Scenes/TestT2.unity
+  - enabled: 0
+    path: Assets/Scenes/TestT/TestT2.unity
     guid: 384d3b0e1fd9ab946983e823ed5df1a9
   m_configObjects: {}

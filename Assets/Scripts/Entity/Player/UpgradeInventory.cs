@@ -6,6 +6,7 @@ using UnityEngine;
 public class UpgradeInventory : MonoBehaviour
 {
     public Upgrades[] obtainedUpgrades = new Upgrades[sizeof(UpgradeEnum)];
+    static UpgradeInventory instance;
     void Start()
     {
         //Load Save Data
@@ -16,11 +17,11 @@ public class UpgradeInventory : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0) return;
         foreach (Upgrades upgrade in obtainedUpgrades) {
             if (upgrade == null) continue;
             upgrade.upgradeUpdate(this.gameObject, this);
         }
-        getUnlockedUpgrade(UpgradeEnum.DASH);
     }
 
     public void unlockUpgrade(Upgrades upgrade)

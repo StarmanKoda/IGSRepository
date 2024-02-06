@@ -61,7 +61,7 @@ public class Movement : MonoBehaviour
     {
         if (GetComponent<EntityScript>().health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("PlayTestZone0");
         }
     }
 
@@ -159,9 +159,6 @@ public class Movement : MonoBehaviour
         // Just flips the player for now can add turn animation later
 
         mesh.Rotate(new Vector3(0, 180, 0));
-        Vector3 meshScale = mesh.localScale;
-        meshScale.x *= -1;
-        //mesh.localScale = meshScale;
     }
 
     public void knockBack(Transform source, float force)
@@ -220,5 +217,10 @@ public class Movement : MonoBehaviour
     public bool getJumping()
     {
         return jumping;
+    }
+
+    public void doGravity(bool enabled)
+    {
+        gravityScaler.enabled = enabled;
     }
 }
