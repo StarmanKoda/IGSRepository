@@ -24,17 +24,7 @@ public class ZoneLoader : MonoBehaviour
 
     public void Awake()
     {
-        DontDestroyOnLoad(this);
 
-        if (zoneLoader == null)
-        {
-            zoneLoader = this;
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -45,7 +35,18 @@ public class ZoneLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        DontDestroyOnLoad(this);
+
+        if (zoneLoader == null)
+        {
+            zoneLoader = this;
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            InitializeZone();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -66,16 +67,17 @@ public class ZoneLoader : MonoBehaviour
     void InitializeZone()
     {
         roomLoader = FindObjectOfType<RoomLoader>();
-        player = Movement.getinstance();
-        player.gameObject.SetActive(false);
-        player.enabled = false;
 
         if (roomLoader == null)
         {
             zoneLoader = null;
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
             return;
         }
+
+        player = Movement.getinstance();
+        player.gameObject.SetActive(false);
+        player.enabled = false;
         
         if (doorTo >= 0)
         {
@@ -93,9 +95,11 @@ public class ZoneLoader : MonoBehaviour
         }
         else
         {
-            Invoke("InitialLoad", extraZoneLoadDelay);
+            if (zoneLoader)
+            {
+                Invoke("InitialLoad", extraZoneLoadDelay);
+            }    
         }
-
     }
 
     void LoadRoom()

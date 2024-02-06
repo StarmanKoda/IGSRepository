@@ -57,14 +57,6 @@ public class Movement : MonoBehaviour
         instance = this;
     }
 
-    private void OnDestroy()
-    {
-        if (GetComponent<EntityScript>().health <= 0)
-        {
-            SceneManager.LoadScene("PlayTestZone0");
-        }
-    }
-
     void Update()
     {
         preJump -= Time.deltaTime;
