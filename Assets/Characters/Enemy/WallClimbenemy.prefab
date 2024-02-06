@@ -83,7 +83,7 @@ MonoBehaviour:
   health: 100
   moveSpeed: 5
   atkDMG: 10
-  knockBackForce: 0
+  knockBackForce: 1500
   startLeft: 1
   groundCheckPoint: {fileID: 7219338367150047071}
   wallCheckPoint: {fileID: 6579033178667161337}
