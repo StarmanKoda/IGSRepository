@@ -40,7 +40,7 @@ public class Pause : MonoBehaviour
         }
     }
 
-    public void LoadScene(int scene)
+    public void LoadScene(string scene)
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(scene);

@@ -10,10 +10,13 @@ public class EntityScript : MonoBehaviour
     public float moveSpeed = 1f;
     public double atkDMG = 1f;
     public double knockBackForce = 0;
+
+    Rigidbody rig;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        rig = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -22,7 +25,7 @@ public class EntityScript : MonoBehaviour
         
     }
 
-    public void takeDamage(double dmg)
+    public virtual void takeDamage(double dmg)
     {
         health -= dmg;
 
@@ -31,5 +34,16 @@ public class EntityScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void knockBack(Transform source, float force)
+    {
+        int dir = 1;
+        if (transform.position.x < source.position.x)
+        {
+            dir = -1;
+        }
+
+        rig.AddForce(new Vector2(force * dir, 0));
     }
 }

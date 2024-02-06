@@ -65,6 +65,8 @@ public class ZoneDoor : MonoBehaviour
             player = move;
             move.enabled = false;
             move.gameObject.SetActive(false);
+            zoneLoader.obtainedUpgrades = move.GetComponent<UpgradeInventory>().obtainedUpgrades;
+            zoneLoader.health = move.GetComponent<EntityScript>().health;
             Invoke("nextZone", roomLoader.fadeSpeed);
             roomLoader.fadeOut();
         }
