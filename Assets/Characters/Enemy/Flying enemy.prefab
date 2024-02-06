@@ -202,13 +202,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   moveSpeed: 10
-  atkDMG: 1
-  knockBackForce: 1
+  atkDMG: 10
+  knockBackForce: 1500
   enemyRB: {fileID: 0}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  randomWaypoint: 0
   waypointIndex: 0
   waypointReachedDistance: 1

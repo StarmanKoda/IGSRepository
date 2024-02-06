@@ -72,6 +72,7 @@ public class FlyingEnemy : EntityScript
         {
             coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
+            dmgTimer = 0f;
         }
     }
 }

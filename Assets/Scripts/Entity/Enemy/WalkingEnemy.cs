@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class WalkingEnemy : EntityScript
@@ -21,6 +22,11 @@ public class WalkingEnemy : EntityScript
     private float dmgTimer;
     private float InvincibilityTime = 0.5f;
 
+    [Header("For Stagger Time")]
+    private float staggerTimer;
+    private float staggerTime = 0.5f;
+    private int isStaggered = 0;
+
     private Rigidbody enemyRB;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +36,7 @@ public class WalkingEnemy : EntityScript
             Flip();
         }
         dmgTimer = InvincibilityTime;
+        staggerTimer = staggerTime;
         enemyRB = GetComponent<Rigidbody>();
 
     }
@@ -37,6 +44,15 @@ public class WalkingEnemy : EntityScript
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (staggerTimer < staggerTime && isStaggered == 0)
+        {
+            staggerTimer += Time.deltaTime;
+        }
+        if(isStaggered == 0 && staggerTimer >= staggerTime)
+        {
+            isStaggered = 1;
+            staggerTimer = 0;
+        }
 
         if (dmgTimer < InvincibilityTime)
         {
@@ -60,7 +76,8 @@ public class WalkingEnemy : EntityScript
                 Flip();
             }
         }
-        enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
+        enemyRB.velocity = new Vector2(moveSpeed * moveDirection * isStaggered, enemyRB.velocity.y);
+
         //UnityEngine.Debug.Log("moving!");
     }
 
@@ -71,6 +88,9 @@ public class WalkingEnemy : EntityScript
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
+
+    
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
@@ -83,7 +103,10 @@ public class WalkingEnemy : EntityScript
         {
             coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
-            Flip();
+            dmgTimer = 0f;
+            isStaggered = 0;
+            
+            
         }
     }
 
