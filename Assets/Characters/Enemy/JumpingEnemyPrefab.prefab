@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7524249085053766021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2298716529136623009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5958822024973800465}
+  m_Layer: 7
+  m_Name: WallCheck (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5958822024973800465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2298716529136623009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.27, y: 1.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7524249085053766021}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4448270210467699684
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +93,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7524249085053766021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5093618901896170232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8765518389842698618}
+  m_Layer: 7
+  m_Name: WallCheck (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8765518389842698618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5093618901896170232}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.27, y: 2.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7524249085053766021}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5520575661431294527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3338786342921549906}
+  m_Layer: 7
+  m_Name: WallCheck (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3338786342921549906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5520575661431294527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.27, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7524249085053766021}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6946320522662273609
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 6946320522662273609}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.27, y: 0, z: 0}
+  m_LocalPosition: {x: 1.27, y: -0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -449,6 +542,15 @@ PrefabInstance:
       addedObject: {fileID: 8690180032506802567}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 704922ffbfa36ad4aa67ad3debf73d4e, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 5958822024973800465}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 704922ffbfa36ad4aa67ad3debf73d4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3338786342921549906}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 704922ffbfa36ad4aa67ad3debf73d4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8765518389842698618}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 704922ffbfa36ad4aa67ad3debf73d4e, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 758971446658379485}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 704922ffbfa36ad4aa67ad3debf73d4e, type: 3}
       insertIndex: -1
@@ -488,6 +590,9 @@ MonoBehaviour:
   startFacingRight: 1
   groundCheckPoint: {fileID: 758971446658379485}
   wallCheckPoint: {fileID: 8690180032506802567}
+  wallCheckPoint2: {fileID: 5958822024973800465}
+  wallCheckPoint3: {fileID: 8765518389842698618}
+  wallCheckPoint4: {fileID: 3338786342921549906}
   circleRadius: 0.2
   groundLayer:
     serializedVersion: 2

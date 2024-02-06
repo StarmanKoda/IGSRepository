@@ -20,8 +20,8 @@ public class WallClimbEnemy : EntityScript
     private int direction = 1;
 
     [Header("For Damage")]
-    private float dmgTimer;
-    private float InvincibilityTime = 0.5f;
+    public float dmgTimer;
+    public float InvincibilityTime = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -157,7 +157,7 @@ public class WallClimbEnemy : EntityScript
     {
         if ((coll.gameObject.tag == "Player" || coll.gameObject.layer == 6) && (dmgTimer >= InvincibilityTime))
         {
-            coll.gameObject.GetComponent<EntityScript>().health -= atkDMG;
+            coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
             dmgTimer = 0f;
         }
