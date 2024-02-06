@@ -7,7 +7,7 @@ using UnityEngine;
 //{
     public enum UpgradeEnum
     {
-        DASH = 0, DBLJUMP = 1, GLIDE = 2, WALLCLIMB = 3
+        DASH = 0, DBLJUMP = 1, GLIDE = 2, WALLCLIMB = 3, SPEAR = 4, GUN = 5, BLASTER = 6
     }
 
 static class UpgradeEnumMethods
@@ -29,6 +29,12 @@ static class UpgradeEnumMethods
             case UpgradeEnum.WALLCLIMB:
                 val = new WallClimb();
                 break;
+            case UpgradeEnum.SPEAR:
+                break;
+            case UpgradeEnum.GUN:
+                break;
+            case UpgradeEnum.BLASTER:
+                break;
         }
         return val;
     }
@@ -45,6 +51,12 @@ static class UpgradeEnumMethods
                 return 2;
             case UpgradeEnum.WALLCLIMB:
                 return 3;
+            case UpgradeEnum.SPEAR:
+                return 4;
+            case UpgradeEnum.GUN:
+                return 5;
+            case UpgradeEnum.BLASTER:
+                return 6;
             default: return -1;
         }
     }
