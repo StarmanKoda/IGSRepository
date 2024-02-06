@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,9 +17,21 @@ public class WeaponUpgrade : MonoBehaviour
         if (!(other.tag == "Player")) { return; }
         CollectibleList.getInstance().addObject(getID());
         //Run a check
-
+        int size = CollectibleList.getInstance().getCollected();
+        attemptUnlock(size, UpgradeEnum.SPEAR);
+        attemptUnlock(size, UpgradeEnum.GUN);
+        attemptUnlock(size, UpgradeEnum.BLASTER);
 
         Destroy(this.gameObject);
+    }
+
+    void attemptUnlock(int size, UpgradeEnum weapon)
+    {
+        if (size == UpgradeEnumMethods.getCollectibleUpgrade(weapon))
+        {
+            Debug.Log("Obtained " + weapon.ToString());
+            UpgradeInventory.getInstance().unlockUpgrade(UpgradeEnumMethods.getUpgrade(weapon));
+        }
     }
 
     public void Start()

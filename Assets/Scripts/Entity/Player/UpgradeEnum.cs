@@ -30,7 +30,7 @@ static class UpgradeEnumMethods
                 val = new WallClimb();
                 break;
             case UpgradeEnum.SPEAR:
-                break;
+                return new Spear();
             case UpgradeEnum.GUN:
                 break;
             case UpgradeEnum.BLASTER:
@@ -58,6 +58,21 @@ static class UpgradeEnumMethods
             case UpgradeEnum.BLASTER:
                 return 6;
             default: return -1;
+        }
+    }
+
+    public static int getCollectibleUpgrade(UpgradeEnum upg)
+    {
+        switch (upg)
+        {
+            case UpgradeEnum.SPEAR:
+                return 5;
+            case UpgradeEnum.GUN:
+                return 10;
+            case UpgradeEnum.BLASTER:
+                return 30;
+            default:
+                return 1000000000;
         }
     }
 }

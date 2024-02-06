@@ -13,6 +13,10 @@ public class UpgradeInventory : MonoBehaviour
 
         //Fill unlocked upgrade list
 
+        if(instance == null)
+        {
+            instance = this;
+        }
     }
 
     private void Update()
@@ -39,5 +43,10 @@ public class UpgradeInventory : MonoBehaviour
             if (obtainedUpgrades[i].getId().Equals(upgrade)) return true;
         }
         return false;
+    }
+
+    public static UpgradeInventory getInstance()
+    {
+        return instance;
     }
 }
