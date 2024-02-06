@@ -218,4 +218,9 @@ public class Movement : MonoBehaviour
     {
         return jumping;
     }
+
+    public void doGravity(bool enabled)
+    {
+        gravityScaler.enabled = enabled;
+    }
 }

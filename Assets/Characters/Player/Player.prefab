@@ -639,7 +639,7 @@ MonoBehaviour:
   jumpForce: 1000
   preJumpPeriod: 0.2
   jumpGracePeriod: 0.1
-  gravFallMod: 1.5
+  gravFallMod: 1.375
   maxFallSpeed: -35
   pogoForce: 750
   pogoing: 0
@@ -650,7 +650,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1397203081113871214}
   wallCheck: {fileID: 561480099335515094}
   grounded: 1
-  gravityScale: 3
+  gravityScale: 4
   refreshdblJump: 0
   airControl: 1
   facingRight: 1
@@ -732,7 +732,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
