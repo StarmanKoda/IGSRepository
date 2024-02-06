@@ -77,11 +77,11 @@ public class JumpingEnemy : EntityScript
         if (isGrounded)
         jumpTimer += Time.deltaTime;
         
-        if (dmgTimer < InvincibilityTime)
+        if (dmgTimer <= InvincibilityTime)
         {
             dmgTimer += Time.deltaTime;
         }
-        if (staggerTimer < staggerTime && isStaggered == 0)
+        if (staggerTimer < staggerTime && isStaggered == 0 && isGrounded)
         {
             staggerTimer += Time.deltaTime;
         }
@@ -103,7 +103,7 @@ public class JumpingEnemy : EntityScript
         {
             Jump();
         }
-        else if(!trackPlayerJump && jumpTimer >= timeToJump)
+        else if(!trackPlayerJump && jumpTimer >= timeToJump && isStaggered != 0)
         {
             jumpTimer = 0;
             Jump();
@@ -125,7 +125,7 @@ public class JumpingEnemy : EntityScript
             }
         }
         if(!checkingWall || !checkingWall2 || !checkingWall3 || checkingWall4)
-        enemyRB.velocity = new Vector2(moveSpeed * moveDirection, enemyRB.velocity.y);
+        enemyRB.velocity = new Vector2(moveSpeed * moveDirection * isStaggered, enemyRB.velocity.y);
         //UnityEngine.Debug.Log("moving!");
     }
 
