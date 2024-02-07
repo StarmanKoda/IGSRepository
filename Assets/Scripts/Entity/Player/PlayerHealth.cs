@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -51,7 +52,7 @@ public class PlayerHealth : EntityScript
         }
     }
 
-    public override void takeDamage(double dmg)
+    public override bool takeDamage(double dmg)
     {
         if (!invincible)
         {
@@ -64,6 +65,9 @@ public class PlayerHealth : EntityScript
             invincible = true;
             dmgAnim.SetBool("Invincible", invincible);
             Physics.IgnoreLayerCollision(6, 7, true);
+
+            return true;
         }
+        return false;
     }
 }

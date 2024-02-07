@@ -26,7 +26,7 @@ public class EntityScript : MonoBehaviour
         
     }
 
-    public virtual void takeDamage(double dmg)
+    public virtual bool takeDamage(double dmg)
     {
         health -= dmg;
 
@@ -35,6 +35,8 @@ public class EntityScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        return true;
     }
 
     public void knockBack(Transform source, float force)

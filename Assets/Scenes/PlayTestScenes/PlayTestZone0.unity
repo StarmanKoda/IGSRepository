@@ -2236,8 +2236,9 @@ GameObject:
   - component: {fileID: 328454262}
   - component: {fileID: 328454264}
   - component: {fileID: 328454263}
+  - component: {fileID: 328454265}
   m_Layer: 0
-  m_Name: Door 1to0
+  m_Name: Door Zone0toZone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2265,7 +2266,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328454261}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0acbefb1aa48b3140bc39825d85c6aeb, type: 3}
   m_Name: 
@@ -2294,6 +2295,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &328454265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328454261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb470f683e40a745b62936532004ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomLoader: {fileID: 1912030279}
+  doorNum: 4
+  roomIn: 1
+  doorTo: 1
+  sceneTo: PlayTestZone4
+  entranceDir: 3
 --- !u!1001 &342251137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12987,6 +13006,8 @@ MonoBehaviour:
   - {fileID: 949900626}
   - {fileID: 45228999}
   - {fileID: 8598702175696786062}
+  - {fileID: 2084020135}
+  - {fileID: 328454265}
   rooms:
   - {fileID: 1754285899}
   - {fileID: 520502997}
@@ -14982,8 +15003,9 @@ GameObject:
   - component: {fileID: 2084020132}
   - component: {fileID: 2084020134}
   - component: {fileID: 2084020133}
+  - component: {fileID: 2084020135}
   m_Layer: 0
-  m_Name: Door 0to1
+  m_Name: Door Zone0toZone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15011,7 +15033,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084020131}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0acbefb1aa48b3140bc39825d85c6aeb, type: 3}
   m_Name: 
@@ -15040,6 +15062,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2084020135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084020131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb470f683e40a745b62936532004ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomLoader: {fileID: 1912030279}
+  doorNum: 3
+  roomIn: 0
+  doorTo: 0
+  sceneTo: PlayTestZone4
+  entranceDir: 2
 --- !u!1 &2095324269
 GameObject:
   m_ObjectHideFlags: 0
