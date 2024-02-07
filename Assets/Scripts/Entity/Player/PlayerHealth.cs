@@ -70,4 +70,18 @@ public class PlayerHealth : EntityScript
         }
         return false;
     }
+
+    public override void constantDamage(double dps)
+    {
+        base.constantDamage(dps);
+        if (healthBar)
+        {
+            healthBar.value = (float)health;
+        }
+    }
+
+    public void acidAnim(bool active)
+    {
+        dmgAnim.SetBool("Acid", active);
+    }
 }

@@ -39,6 +39,16 @@ public class EntityScript : MonoBehaviour
         return true;
     }
 
+    public virtual void constantDamage(double dps)
+    {
+        health -= dps * Time.deltaTime;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void knockBack(Transform source, float force)
     {
         int dir = 1;
