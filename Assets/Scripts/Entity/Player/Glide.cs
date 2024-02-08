@@ -46,8 +46,8 @@ public class Glide : Upgrades
         if (gliding && glideCooldown <= 0)
         {
             //TODO: Change physics of glide to be more slippery like ice (Slow momentum to turn around)
-            Vector3 newVel = new Vector3(body.velocity.x, fallSpeed, body.velocity.y);
-            body.velocity = Vector3.Lerp(body.velocity, newVel, 0.05f);
+            Vector3 newVel = new Vector3(body.velocity.x, body.velocity.y * fallSpeed, body.velocity.z);
+            body.velocity = newVel;
         }
     }
 }
