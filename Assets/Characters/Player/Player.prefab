@@ -694,7 +694,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   moveSpeed: 1
-  atkDMG: 20
+  atkDMG: 35
   knockBackForce: 0
   invincTime: 0.75
   dmgAnim: {fileID: 5655535278541696699}
