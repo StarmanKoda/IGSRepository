@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6579033178667161337}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1409665915981352972}
   - component: {fileID: 7306010660697029003}
   - component: {fileID: 4472060088719265289}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallClimbenemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 0
   moveSpeed: 5
   atkDMG: 10
   knockBackForce: 1500
@@ -151,7 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7219338367150047071}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: floorCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +185,7 @@ GameObject:
   - component: {fileID: 4798518900408970713}
   - component: {fileID: 8734975523942275016}
   - component: {fileID: 8518821369521927389}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

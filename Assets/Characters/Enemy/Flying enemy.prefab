@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8118559295071723395}
   - component: {fileID: 3038170827081472674}
   - component: {fileID: 1476364660609729245}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 1101317966490534273}
   - component: {fileID: 3093075962622037498}
   - component: {fileID: 8446121490720702737}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Flying enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 0
   moveSpeed: 10
   atkDMG: 10
   knockBackForce: 1500

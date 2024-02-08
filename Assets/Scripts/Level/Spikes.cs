@@ -28,6 +28,8 @@ public class Spikes : MonoBehaviour
             Rigidbody rig = move.GetComponent<Rigidbody>();
             if (rig && damaged)
             {
+                rig.velocity = new Vector3(0, -.1f, 0);
+
                 Vector3 point = collision.contacts[0].normal;
                 Vector3 dir = -transform.up;
 
@@ -43,13 +45,25 @@ public class Spikes : MonoBehaviour
                 {
                     dir = -transform.right;
                 }
-                print(dir);
                 Vector2 forceDir = new Vector2(dir.x * force, 0);
                 if (dir.y > 0)
                 {
                     forceDir.y = dir.y * force / 2;
                 }
                 rig.AddForce(forceDir);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Movement move = other.gameObject.GetComponent<Movement>();
+        if (move)
+        {
+            bool damaged = move.GetComponent<EntityScript>().takeDamage(dmg);
+            if (damaged)
+            {
+                move.knockBack(transform, force);
             }
         }
     }
