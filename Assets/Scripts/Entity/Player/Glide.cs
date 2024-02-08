@@ -45,8 +45,15 @@ public class Glide : Upgrades
         if (body.velocity.y >= 0) { gliding = false; }
         if (gliding && glideCooldown <= 0)
         {
+
+            float passiveMove = 1f;
+            if (!Movement.getinstance().facingRight)
+            {
+                passiveMove = -passiveMove;
+            }
             //TODO: Change physics of glide to be more slippery like ice (Slow momentum to turn around)
-            Vector3 newVel = new Vector3(body.velocity.x, body.velocity.y * fallSpeed, body.velocity.z);
+            Vector3 newVel = new Vector3(body.velocity.x + passiveMove, body.velocity.y * fallSpeed, body.velocity.z);
+            
             body.velocity = newVel;
         }
     }
