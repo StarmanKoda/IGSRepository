@@ -22,6 +22,8 @@ public class ZoneLoader : MonoBehaviour
     public Upgrades[] obtainedUpgrades;
     public double health;
 
+    bool dead = false;
+
     public void Awake()
     {
 
@@ -29,7 +31,10 @@ public class ZoneLoader : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        InitializeZone();
+        if (!dead)
+        {
+            InitializeZone();
+        }
     }
 
     // Start is called before the first frame update
@@ -46,6 +51,7 @@ public class ZoneLoader : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+            dead = true;
         }
     }
 
@@ -71,7 +77,8 @@ public class ZoneLoader : MonoBehaviour
         if (roomLoader == null)
         {
             zoneLoader = null;
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
+            dead = true;
             return;
         }
 
@@ -95,10 +102,10 @@ public class ZoneLoader : MonoBehaviour
         }
         else
         {
-            if (zoneLoader)
+            if (!dead)
             {
                 Invoke("InitialLoad", extraZoneLoadDelay);
-            }    
+            }
         }
     }
 
