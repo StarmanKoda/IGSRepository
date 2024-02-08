@@ -30,6 +30,7 @@ public class MovingPlatform : MonoBehaviour
         else
         {
             transform.position = posB.position;
+            traveled = distance;
         }
 
         distance = Mathf.Abs((posA.position - posB.position).magnitude);
