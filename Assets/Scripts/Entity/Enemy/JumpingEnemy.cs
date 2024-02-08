@@ -34,6 +34,7 @@ public class JumpingEnemy : EntityScript
     private float timeToJump;
     private float jumpTimer;
     private bool isGrounded;
+    private bool isFalling;
 
     [Header("For Damage")]
     private float dmgTimer;
@@ -75,7 +76,10 @@ public class JumpingEnemy : EntityScript
         checkingWall4 = Physics.CheckSphere(wallCheckPoint4.position, circleRadius, wallLayer);
 
         if (isGrounded)
-        jumpTimer += Time.deltaTime;
+        {
+            jumpTimer += Time.deltaTime;
+            isFalling = false;
+        }
         
         if (dmgTimer <= InvincibilityTime)
         {
@@ -89,6 +93,11 @@ public class JumpingEnemy : EntityScript
         {
             isStaggered = 1;
             staggerTimer = 0;
+        }
+
+        if(isFalling)
+        {
+            enemyRB.AddForce(new Vector2(enemyRB.velocity.x, -jumpHeight), ForceMode.Impulse);
         }
 
         if (!HopperType)
@@ -180,6 +189,10 @@ public class JumpingEnemy : EntityScript
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
             dmgTimer = 0f;
             isStaggered = 0;
+            if (!isGrounded)
+            {
+                isFalling = true;
+            }
         }
     }
 }

@@ -109,5 +109,13 @@ public class WalkingEnemy : EntityScript
             
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((other.gameObject.tag == "Player" || other.gameObject.layer == 6) && (dmgTimer >= InvincibilityTime))
+        {
+            isStaggered = 0;
+
+        }
+    }
 
 }
