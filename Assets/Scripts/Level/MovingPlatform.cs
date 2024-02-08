@@ -23,10 +23,6 @@ public class MovingPlatform : MonoBehaviour
         posA.gameObject.SetActive(false);
         posB.gameObject.SetActive(false);
 
-
-
-        distance = Mathf.Abs((posA.position - posB.position).magnitude);
-
         if (AtoB)
         {
             transform.position = posA.position;
@@ -34,8 +30,9 @@ public class MovingPlatform : MonoBehaviour
         else
         {
             transform.position = posB.position;
-            traveled = distance;
         }
+
+        distance = Mathf.Abs((posA.position - posB.position).magnitude);
 
         rig = GetComponent<Rigidbody>();
 
