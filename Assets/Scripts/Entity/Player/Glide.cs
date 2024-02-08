@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Glide : Upgrades
@@ -33,10 +34,15 @@ public class Glide : Upgrades
         //Null Checks
         if (Movement.getinstance() == null) { return; }
         //If jumped and left grace period
-        if (Movement.getinstance().grounded) { gliding = false;}
+        if (Movement.getinstance().grounded) { gliding = false; return; }
+        
         if (Input.GetButton("Glide"))
         {
             gliding = true;
+        }
+        else
+        {
+            gliding = false;
         }
         if (Input.GetButtonUp("Glide")){
             glideCooldown = glideCooldownTime;
