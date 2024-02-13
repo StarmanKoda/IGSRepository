@@ -584,9 +584,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 0
   moveSpeed: 5
   atkDMG: 5
-  knockBackForce: 0
+  knockBackForce: 1500
   startFacingRight: 1
   groundCheckPoint: {fileID: 758971446658379485}
   wallCheckPoint: {fileID: 8690180032506802567}
@@ -606,7 +607,7 @@ MonoBehaviour:
   boxSize: {x: 1.99, y: 1}
   trackPlayerJump: 0
   HopperType: 0
-  timeToJump: 3
+  maxTimeToJump: 3
 --- !u!54 &2311093007096183943
 Rigidbody:
   m_ObjectHideFlags: 0

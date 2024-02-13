@@ -448,9 +448,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 0
   moveSpeed: 5
   atkDMG: 5
-  knockBackForce: 0
+  knockBackForce: 1500
   startFacingRight: 1
   groundCheckPoint: {fileID: 2147920025591071000}
   wallCheckPoint: {fileID: 6169706720373921533}
@@ -461,7 +462,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 136
-  walksOffLedge: 0
+  fallsOffLedge: 0
 --- !u!54 &8342508806858068024
 Rigidbody:
   m_ObjectHideFlags: 0

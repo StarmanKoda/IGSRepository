@@ -21,6 +21,14 @@ public class HumanoidPatrol : EntityScript
     [SerializeField] Transform leftBound;
     [SerializeField] Transform rightBound;
 
+    [Header("For Random Movement")]
+    public float timeToFlipCheck = 0f;
+    public float minTimeToFlipCheck = 3f;
+    public float maxTimeToFlipCheck = 5f;
+    public float flipCheckTimer;
+    private int flipProb;
+
+
     [Header("For Jumping")]
     [SerializeField] float jumpHeight;
     [SerializeField] Transform player;
@@ -33,6 +41,7 @@ public class HumanoidPatrol : EntityScript
     private float jumpTimer;
     private bool isGrounded;
     private bool isFalling;
+    public bool canJump;
 
     [Header("For Stagger Time")]
     private float staggerTimer;
@@ -50,7 +59,11 @@ public class HumanoidPatrol : EntityScript
             Flip();
 
         }
+        if(canJump)
         timeToJump = Random.Range(1.5f, maxTimeToJump);
+
+        timeToFlipCheck = Random.Range(minTimeToFlipCheck, maxTimeToFlipCheck);
+
         enemyRB = GetComponent<Rigidbody>();
         dmgTimer = InvincibilityTime;
         staggerTimer = staggerTime;
@@ -69,10 +82,33 @@ public class HumanoidPatrol : EntityScript
 
         if (isGrounded)
         {
+            if(canJump)
             jumpTimer += Time.deltaTime;
+
             isFalling = false;
         }
 
+        
+        //to randomize enemy movement
+        if (flipCheckTimer >= timeToFlipCheck)
+        {
+            flipProb = Random.Range(0, 2);
+            timeToFlipCheck = Random.Range(minTimeToFlipCheck, maxTimeToFlipCheck);
+            flipCheckTimer = 0;
+        }
+        else
+        {
+            flipCheckTimer += Time.deltaTime;
+        }
+
+        if(flipProb >= 1)
+        {
+            Flip();
+            flipProb = 0;
+        }
+
+
+        //damage and staggering
         if (dmgTimer <= InvincibilityTime)
         {
             dmgTimer += Time.deltaTime;
@@ -98,11 +134,11 @@ public class HumanoidPatrol : EntityScript
         }
 
         Patrolling();
-        if (Input.GetButtonDown("Jump") && trackPlayerJump)
+        if (Input.GetButtonDown("Jump") && trackPlayerJump && canJump)
         {
             Jump();
         }
-        else if (!trackPlayerJump && jumpTimer >= timeToJump && isStaggered != 0)
+        else if (!trackPlayerJump && jumpTimer >= timeToJump && isStaggered != 0 &&  canJump)
         {
             jumpTimer = 0;
             Jump();

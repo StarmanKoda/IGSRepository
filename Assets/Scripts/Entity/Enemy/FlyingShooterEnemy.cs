@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemy : EntityScript
+public class FlyingShooterEnemy : EntityScript
 {
     public Rigidbody enemyRB;
     public List<Transform> waypoints;
@@ -10,7 +10,8 @@ public class FlyingEnemy : EntityScript
     Transform nextWaypoint;
     public bool randomWaypoint;
     public int waypointIndex = 0;
-    public float waypointReachedDistance = 0.25f;
+    public float waypointReachedDistance;
+    
     [Header("For Damage")]
     private float dmgTimer;
     private float InvincibilityTime = 0.5f;
@@ -35,18 +36,18 @@ public class FlyingEnemy : EntityScript
     private void Flying()
     {
         Vector2 directiontoWaypoint = (nextWaypoint.position - transform.position).normalized;
-        
+
 
         float distance = Vector2.Distance(nextWaypoint.position, transform.position);
 
-        
+
 
         enemyRB.velocity = directiontoWaypoint * moveSpeed;
 
         if (distance <= waypointReachedDistance)
         {
-            if(!randomWaypoint)
-            { 
+            if (!randomWaypoint)
+            {
                 waypointIndex++;
 
                 if (waypointIndex >= waypoints.Count)
@@ -61,10 +62,10 @@ public class FlyingEnemy : EntityScript
 
             Debug.Log(waypointIndex);
             nextWaypoint = waypoints[waypointIndex];
-            
+
         }
 
-        
+
     }
     void OnCollisionEnter(Collision coll)
     {
