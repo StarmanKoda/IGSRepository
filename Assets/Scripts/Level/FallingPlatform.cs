@@ -9,6 +9,7 @@ public class FallingPlatform : MonoBehaviour
     public float shakeSpeed;
     public float shakeDistance;
     public float fallMod;
+    public float replaceTime;
     float maxShake;
     float shake;
     bool incr = true;
@@ -16,6 +17,8 @@ public class FallingPlatform : MonoBehaviour
     bool falling = false;
 
     Rigidbody rig;
+    Respawns respawner;
+    public int replaceNum = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,14 @@ public class FallingPlatform : MonoBehaviour
         shake = maxShake / 2;
 
         rig = GetComponent<Rigidbody>();
+
+        Transform topParent = transform;
+        while (topParent.parent != null)
+        {
+            topParent = topParent.parent;
+        }
+
+        respawner = topParent.GetComponent<Respawns>();
     }
 
     // Update is called once per frame
@@ -53,14 +64,30 @@ public class FallingPlatform : MonoBehaviour
                     incr = true;
                 }
             }
+
             transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Lerp(-shakeDistance, shakeDistance, shake/maxShake));
             timeToFall -= Time.deltaTime;
+
             if (timeToFall < 0)
             {
+                if (respawner)
+                {
+                    if (replaceNum >= 0)
+                    {
+                        GameObject replacement = respawner.earlyRespawn(replaceTime + timeToFall, replaceNum);
+                        replacement.GetComponent<FallingPlatform>().replaceNum = replaceNum;
+                    }
+                    else
+                    {
+
+                        replaceNum = respawner.getObjNum(gameObject);
+                        GameObject replacement = respawner.earlyRespawn(replaceTime + timeToFall, replaceNum);
+                        replacement.GetComponent<FallingPlatform>().replaceNum = replaceNum;
+                    }
+                }
+
                 falling = true;
-                //rig.useGravity = true;
-                //rig.isKinematic = false;
-                Destroy(gameObject, 10);
+                Destroy(gameObject, 3);
             }
         }
     }

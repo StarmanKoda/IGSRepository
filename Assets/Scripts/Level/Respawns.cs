@@ -24,6 +24,7 @@ public class Respawns : MonoBehaviour
             GameObject newObj = Instantiate(objectsToRespawn[i]);
             newObj.transform.position = objectsToRespawn[i].transform.position;
             newObj.transform.rotation = objectsToRespawn[i].transform.rotation;
+            newObj.transform.parent = transform;
             newObj.SetActive(true);
             copies[i] = newObj;
         }
@@ -35,6 +36,42 @@ public class Respawns : MonoBehaviour
         {
             Destroy(obj);
         }
+    }
+
+    public GameObject earlyRespawn(float delay, int objNum)
+    {
+        GameObject newObj = Instantiate(objectsToRespawn[objNum]);
+        newObj.transform.position = objectsToRespawn[objNum].transform.position;
+        newObj.transform.rotation = objectsToRespawn[objNum].transform.rotation;
+        newObj.transform.parent = transform;
+        newObj.SetActive(false);
+        copies[objNum] = newObj;
+
+        StartCoroutine(enable(delay, objNum));
+
+        return newObj;
+    }
+
+    public int getObjNum(GameObject obj)
+    {
+        int objNum = -1;
+        for (int i = 0; i <= copies.Length; i++)
+        {
+            if (obj == copies[i])
+            {
+                objNum = i;
+                break;
+            }
+        }
+
+        return objNum;
+    }
+
+    private IEnumerator enable(float delay, int objNum)
+    {
+        yield return new WaitForSeconds(delay);
+
+        copies[objNum].SetActive(true);
     }
 
     // Start is called before the first frame update

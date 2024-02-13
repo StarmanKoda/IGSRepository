@@ -120,7 +120,6 @@ public class RoomLoader : MonoBehaviour
         player.SetActive(true);
         move.enabled = true;
 
-
         move.resetVelocity();
         if (enterDir == direction.UP)
         {
