@@ -8,7 +8,6 @@ public class Spear : Upgrades
 {
 
     Melee melee = null;
-    direction dir = direction.LEFT;
 
     public float attkDel = 0.1f;  //Time between player input and attack damaging
     public float attkDur = 0.2f;  //Time attack collider is active
@@ -17,7 +16,6 @@ public class Spear : Upgrades
     bool canAtk = false;
 
     GameObject spearObj;
-    double damage = 20;
 
     public UpgradeEnum getId()
     {
