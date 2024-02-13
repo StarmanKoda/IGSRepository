@@ -84,4 +84,17 @@ public class PlayerHealth : EntityScript
     {
         dmgAnim.SetBool("Acid", active);
     }
+
+    public void heal(double hp)
+    {
+        health += hp;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        if (healthBar)
+        {
+            healthBar.value = (float)health;
+        }
+    }
 }
