@@ -16,6 +16,13 @@ public class FlyingShooterEnemy : EntityScript
     private float dmgTimer;
     private float InvincibilityTime = 0.5f;
 
+    [Header("For Shooting")]
+    public GameObject smartBullet;
+    public Transform smartShotPosition;
+    public float shotTimer;
+    public float timeToShoot = 3f;
+    public bool isSmartShot = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +37,15 @@ public class FlyingShooterEnemy : EntityScript
         if (dmgTimer < InvincibilityTime)
         {
             dmgTimer += Time.deltaTime;
+        }
+        if (shotTimer < timeToShoot)
+        {
+            shotTimer += Time.deltaTime;
+        }
+        else
+        {
+            shotTimer = 0;
+            Shoot();
         }
     }
 
@@ -74,6 +90,14 @@ public class FlyingShooterEnemy : EntityScript
             coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
             dmgTimer = 0f;
+        }
+    }
+    
+    void Shoot()
+    {
+        if(isSmartShot)
+        {
+            Instantiate(smartBullet, smartShotPosition.position , Quaternion.identity);
         }
     }
 }
