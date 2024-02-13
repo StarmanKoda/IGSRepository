@@ -63,14 +63,14 @@ public class WallClimbEnemy : EntityScript
                 {
                     
                     transform.position = new Vector2(transform.position.x + 0.3f, transform.position.y - 0.3f);
-                    Debug.Log("Turning!");
+                    //Debug.Log("Turning!");
                     direction = 2;
                     hasTurn = true;
                 }
                 else if (direction == 2)
                 {
                     transform.position = new Vector2(transform.position.x - 0.3f, transform.position.y - 0.3f);
-                    Debug.Log("Turning!");
+                    //Debug.Log("Turning!");
                     direction = 3;
                     hasTurn = true;
                 }
@@ -78,7 +78,7 @@ public class WallClimbEnemy : EntityScript
                 {
 
                     transform.position = new Vector2(transform.position.x - 0.3f, transform.position.y + 0.3f);
-                    Debug.Log("Turning!");
+                    //Debug.Log("Turning!");
                     direction = 4;
                     hasTurn = true;
                 }
@@ -86,7 +86,7 @@ public class WallClimbEnemy : EntityScript
                 {
 
                     transform.position = new Vector2(transform.position.x + 0.3f, transform.position.y + 0.3f);
-                    Debug.Log("Turning!");
+                    //Debug.Log("Turning!");
                     direction = 1;
                     hasTurn = true;
                 }
@@ -107,7 +107,7 @@ public class WallClimbEnemy : EntityScript
                 {
 
                     transform.position = new Vector2(transform.position.x, transform.position.y);
-                    Debug.Log("Turning from 1 to 4");
+                    //Debug.Log("Turning from 1 to 4");
                     hasTurn = true;
                     direction = 4;
 
@@ -116,7 +116,7 @@ public class WallClimbEnemy : EntityScript
                 {
 
                     transform.position = new Vector2(transform.position.x, transform.position.y);
-                    Debug.Log("Turning from 2 to 1");
+                    //Debug.Log("Turning from 2 to 1");
                     hasTurn = true;
                     direction = 1;
                     
@@ -125,7 +125,7 @@ public class WallClimbEnemy : EntityScript
                 {
 
                     transform.position = new Vector2(transform.position.x, transform.position.y);
-                    Debug.Log("Turning from 3 to 2");
+                    //Debug.Log("Turning from 3 to 2");
                     hasTurn = true;
                     direction = 2;
                 }
@@ -133,7 +133,7 @@ public class WallClimbEnemy : EntityScript
                 {
 
                     transform.position = new Vector2(transform.position.x, transform.position.y);
-                    Debug.Log("Turning from 4 to 3");
+                    //Debug.Log("Turning from 4 to 3");
                     hasTurn = true;
                     direction = 3;
                     
