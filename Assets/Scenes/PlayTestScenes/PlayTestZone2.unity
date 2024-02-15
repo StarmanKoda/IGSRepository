@@ -3484,6 +3484,10 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: circleRadius
       value: 0.1
       objectReference: {fileID: 0}
@@ -3592,6 +3596,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: health
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
@@ -3739,6 +3747,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3928774155506182548, guid: 458df34d71b482e499d5c076b1788fc5, type: 3}
       propertyPath: health
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928774155506182548, guid: 458df34d71b482e499d5c076b1788fc5, type: 3}
+      propertyPath: maxHealth
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3928774155506182548, guid: 458df34d71b482e499d5c076b1788fc5, type: 3}
@@ -3898,6 +3910,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: health
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
@@ -6500,6 +6516,10 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: circleRadius
       value: 0.1
       objectReference: {fileID: 0}
@@ -7635,6 +7655,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: health
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
@@ -10126,6 +10150,10 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: circleRadius
       value: 0.1
       objectReference: {fileID: 0}
@@ -11068,6 +11096,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: health
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
@@ -14448,6 +14480,10 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: circleRadius
       value: 0.1
       objectReference: {fileID: 0}
@@ -15021,6 +15057,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: health
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}

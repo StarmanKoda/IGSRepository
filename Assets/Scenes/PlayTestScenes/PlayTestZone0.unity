@@ -713,6 +713,10 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: circleRadius
       value: 0.1
       objectReference: {fileID: 0}
@@ -1745,6 +1749,10 @@ PrefabInstance:
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3928774155506182548, guid: 458df34d71b482e499d5c076b1788fc5, type: 3}
+      propertyPath: maxHealth
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928774155506182548, guid: 458df34d71b482e499d5c076b1788fc5, type: 3}
       propertyPath: jumpHeight
       value: 10
       objectReference: {fileID: 0}
@@ -2456,7 +2464,7 @@ GameObject:
   - component: {fileID: 351376366}
   - component: {fileID: 351376365}
   - component: {fileID: 351376364}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5490,6 +5498,10 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: circleRadius
       value: 0.1
       objectReference: {fileID: 0}
@@ -7061,7 +7073,7 @@ GameObject:
   - component: {fileID: 953272013}
   - component: {fileID: 953272012}
   - component: {fileID: 953272011}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8711,6 +8723,10 @@ PrefabInstance:
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3928774155506182548, guid: 458df34d71b482e499d5c076b1788fc5, type: 3}
+      propertyPath: maxHealth
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928774155506182548, guid: 458df34d71b482e499d5c076b1788fc5, type: 3}
       propertyPath: jumpHeight
       value: 10
       objectReference: {fileID: 0}
@@ -9924,7 +9940,7 @@ GameObject:
   - component: {fileID: 1403673261}
   - component: {fileID: 1403673260}
   - component: {fileID: 1403673259}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10541,7 +10557,7 @@ Transform:
   m_GameObject: {fileID: 1560153714}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.326271, y: -9.43, z: 0}
+  m_LocalPosition: {x: 10.326271, y: -9.201574, z: 0}
   m_LocalScale: {x: 4.7093096, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11610,6 +11626,7 @@ Transform:
   - {fileID: 1788116604}
   - {fileID: 853604345}
   - {fileID: 1184899133}
+  - {fileID: 1864968355}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1754285901
@@ -11831,7 +11848,7 @@ Transform:
   m_GameObject: {fileID: 1768309091}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.32, y: -16.201569, z: 0}
+  m_LocalPosition: {x: 1.4300007, y: -16.201574, z: 0}
   m_LocalScale: {x: 20.755812, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12073,6 +12090,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: health
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
@@ -13041,6 +13062,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863480922}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1864968355 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+  m_PrefabInstance: {fileID: 1915133646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1904653464
 GameObject:
   m_ObjectHideFlags: 0
@@ -13336,6 +13362,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913869080}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1915133646
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1754285900}
+    m_Modifications:
+    - target: {fileID: 1409665915981352972, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: knockBackForce
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088177297667084199, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_Name
+      value: WallClimbenemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -15.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856313021345718762, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a68c31478205d3d489eb3a4c375ad3e6, type: 3}
 --- !u!1 &1917533997 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 295068049301696008, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
@@ -13523,7 +13610,7 @@ GameObject:
   - component: {fileID: 1926993559}
   - component: {fileID: 1926993558}
   - component: {fileID: 1926993557}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14198,6 +14285,10 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: circleRadius
       value: 0.1
       objectReference: {fileID: 0}
@@ -14301,6 +14392,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
       propertyPath: health
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
+      propertyPath: maxHealth
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 8617550224005286486, guid: c26a7cff9645ebd429159f685292f1fa, type: 3}
