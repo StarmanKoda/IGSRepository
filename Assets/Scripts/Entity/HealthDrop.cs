@@ -6,15 +6,13 @@ using UnityEngine;
 public class HealthDrop : MonoBehaviour
 {
     public double amount;
-    float basicAmount = 10;
-    public float scaleBy = 0.05f;
 
     public float startForce;
     public int degreeRange;
     Rigidbody rig;
 
-    public static int[] dropAmounts = { 0, 5, 10, 50 };
-    public static float[] dropSizes = { .1f, .2f, .3f, .7f, 1f };
+    public static int[] dropAmounts = { 5, 10, 50 }; //{ 1, 5, 10, 50 };
+    public static float[] dropSizes = { .2f, .3f, .7f, 1f }; //{ .1f, .2f, .3f, .7f, 1f };
 
     private void OnDisable()
     {
@@ -24,9 +22,6 @@ public class HealthDrop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //float scale = scaleBy * (float)(amount / basicAmount - 1);
-        //transform.localScale += new Vector3(scale, scale, scale);
-
         rig = GetComponent<Rigidbody>();
 
         int degree = Random.Range(-1 * degreeRange / 2, degreeRange / 2);

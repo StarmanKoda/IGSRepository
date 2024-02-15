@@ -39,10 +39,10 @@ public class EntityScript : MonoBehaviour
         {
             if (healthDrop)
             {
-                double amount = maxHealth * Random.Range(lowerPercDrop, upperPercDrop);
-                for (int i = HealthDrop.dropAmounts.Length - 1; i >= 1;)
+                int amount = (int)(maxHealth * Random.Range(lowerPercDrop, upperPercDrop));
+                for (int i = HealthDrop.dropAmounts.Length - 1; i >= 0;)
                 {
-                    if (amount > HealthDrop.dropAmounts[i])
+                    if (amount >= HealthDrop.dropAmounts[i])
                     {
                         GameObject drop = Instantiate(healthDrop, transform.position, Quaternion.identity);
                         drop.GetComponent<HealthDrop>().amount = HealthDrop.dropAmounts[i];
@@ -57,16 +57,16 @@ public class EntityScript : MonoBehaviour
                         i--;
                     }
                 }
-                if (amount > 0)
-                {
-                    GameObject drop = Instantiate(healthDrop, transform.position, Quaternion.identity);
-                    drop.GetComponent<HealthDrop>().amount = amount;
-                    drop.transform.localScale = Vector3.one * HealthDrop.dropSizes[0];
+                //if (amount > 0)
+                //{
+                //    GameObject drop = Instantiate(healthDrop, transform.position, Quaternion.identity);
+                //    drop.GetComponent<HealthDrop>().amount = amount;
+                //    drop.transform.localScale = Vector3.one * HealthDrop.dropSizes[0];
 
-                    amount = 0;
+                //    amount = 0;
 
-                    drop.transform.parent = transform.parent;
-                }
+                //    drop.transform.parent = transform.parent;
+                //}
             }
 
             Destroy(gameObject);
