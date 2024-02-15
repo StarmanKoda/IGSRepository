@@ -12294,6 +12294,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2686441744092152439, guid: e29cfc7f14fda48468bc313a5f9c047c, type: 3}
+      propertyPath: noPogo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686441744092152439, guid: e29cfc7f14fda48468bc313a5f9c047c, type: 3}
       propertyPath: attkDur
       value: 0.1
       objectReference: {fileID: 0}
@@ -14036,6 +14040,14 @@ PrefabInstance:
     - target: {fileID: 2256230177466053740, guid: 84f3d51597b70794e8db22fdc984cf42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148940205322843033, guid: 84f3d51597b70794e8db22fdc984cf42, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0805768
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148940205322843033, guid: 84f3d51597b70794e8db22fdc984cf42, type: 3}
+      propertyPath: m_Center.y
+      value: 0.40482575
       objectReference: {fileID: 0}
     - target: {fileID: 4092655878255387908, guid: 84f3d51597b70794e8db22fdc984cf42, type: 3}
       propertyPath: m_Name
