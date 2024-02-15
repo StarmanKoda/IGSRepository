@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class UpgradeInventory : MonoBehaviour
 {
-    public Upgrades[] obtainedUpgrades = new Upgrades[sizeof(UpgradeEnum)];
+    public Upgrades[] obtainedUpgrades = new Upgrades[7];
     static UpgradeInventory instance;
+    public GameObject spearObj;
     void Start()
     {
         //Load Save Data

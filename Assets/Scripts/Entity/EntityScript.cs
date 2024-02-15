@@ -14,6 +14,10 @@ public class EntityScript : MonoBehaviour
 
     Rigidbody rig;
 
+    public GameObject healthDrop;
+    public float lowerPercDrop;
+    public float upperPercDrop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,38 @@ public class EntityScript : MonoBehaviour
         //WILL NEED TO IMPROVE DEATH EFFECTS
         if (health <= 0)
         {
+            if (healthDrop)
+            {
+                int amount = (int)(maxHealth * Random.Range(lowerPercDrop, upperPercDrop));
+                for (int i = HealthDrop.dropAmounts.Length - 1; i >= 0;)
+                {
+                    if (amount >= HealthDrop.dropAmounts[i])
+                    {
+                        GameObject drop = Instantiate(healthDrop, transform.position, Quaternion.identity);
+                        drop.GetComponent<HealthDrop>().amount = HealthDrop.dropAmounts[i];
+                        drop.transform.localScale = Vector3.one * HealthDrop.dropSizes[i];
+
+                        amount -= HealthDrop.dropAmounts[i];
+
+                        drop.transform.parent = transform.parent;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                //if (amount > 0)
+                //{
+                //    GameObject drop = Instantiate(healthDrop, transform.position, Quaternion.identity);
+                //    drop.GetComponent<HealthDrop>().amount = amount;
+                //    drop.transform.localScale = Vector3.one * HealthDrop.dropSizes[0];
+
+                //    amount = 0;
+
+                //    drop.transform.parent = transform.parent;
+                //}
+            }
+
             Destroy(gameObject);
         }
 

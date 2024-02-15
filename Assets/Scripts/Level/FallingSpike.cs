@@ -47,7 +47,7 @@ public class FallingSpike : MonoBehaviour
             {
                 Destroy(gameObject, timeToDestroy);
             }
-            Destroy(this);
+            Destroy(this, .1f);
         }
     }
 }
