@@ -8,6 +8,8 @@ public class UpgradeInventory : MonoBehaviour
     public Upgrades[] obtainedUpgrades = new Upgrades[7];
     static UpgradeInventory instance;
     public GameObject spearObj;
+    public GameObject BulletObj;
+    public bool attacking = false;
     void Start()
     {
         //Load Save Data
@@ -49,5 +51,10 @@ public class UpgradeInventory : MonoBehaviour
     public static UpgradeInventory getInstance()
     {
         return instance;
+    }
+
+    public GameObject ShootBullet()
+    {
+        return Instantiate(BulletObj, this.gameObject.transform);
     }
 }

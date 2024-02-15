@@ -32,7 +32,7 @@ static class UpgradeEnumMethods
             case UpgradeEnum.SPEAR:
                 return new Spear();
             case UpgradeEnum.GUN:
-                break;
+                return new Gun();
             case UpgradeEnum.BLASTER:
                 break;
         }
