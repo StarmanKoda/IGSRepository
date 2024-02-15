@@ -699,6 +699,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5f4db4eae3ae84cbf6080ca91e6e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 649
   movement: {fileID: 5615398073744922638}
   meleeL: {fileID: 876471541006107593}
   meleeR: {fileID: 4108371780179646603}
@@ -708,9 +711,11 @@ MonoBehaviour:
   spriteR: {fileID: 8446183586461653971}
   spriteU: {fileID: 5911377160942248486}
   spriteD: {fileID: 5417407875958047556}
+  noPogo: 0
   attkDel: 0.1
   attkDur: 0.1
   attkRate: 0.1
+  nextAttack: 0
   knockBackForce: 750
 --- !u!114 &4966103902073993831
 MonoBehaviour:
@@ -729,6 +734,9 @@ MonoBehaviour:
   moveSpeed: 1
   atkDMG: 35
   knockBackForce: 0
+  healthDrop: {fileID: 0}
+  lowerPercDrop: 0
+  upperPercDrop: 0
   invincTime: 0.75
   dmgAnim: {fileID: 5655535278541696699}
   healthBar: {fileID: 0}

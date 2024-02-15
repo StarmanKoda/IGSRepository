@@ -10,6 +10,8 @@ public enum direction
 
 public class Melee : MonoBehaviour
 {
+    public LayerMask hitMask;
+    
     EntityScript playerEntity;
 
     public Movement movement;
@@ -34,6 +36,7 @@ public class Melee : MonoBehaviour
 
     Rigidbody2D playerRig;
     bool knockBack;
+    bool knocked = false;
     public float knockBackForce;
 
     List<Collider> hits = new List<Collider>();
@@ -135,22 +138,24 @@ public class Melee : MonoBehaviour
 
         hits.Clear();
         knockBack = false;
+        knocked = false;
         movement.pogoing = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (noPogo) return;
-        if (other.gameObject.layer == 6 || hits.Contains(other))
+        if ((hitMask & (1 << other.gameObject.layer)) == 0 || hits.Contains(other)) //other.gameObject.layer == 6
         {
             return;
         }
 
         hits.Add(other);
 
-        if (knockBack)
+        if (knockBack && !knocked)
         {
             movement.knockBack(other.transform, knockBackForce);
+            knocked = true;
         }
 
         EntityScript entity = other.GetComponent<EntityScript>();
