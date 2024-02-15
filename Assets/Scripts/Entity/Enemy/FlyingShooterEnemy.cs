@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class FlyingShooterEnemy : EntityScript
 {
     public Rigidbody enemyRB;
     public List<Transform> waypoints;
+    public GameObject player;
+    private bool facingRight = true;
 
     Transform nextWaypoint;
     public bool randomWaypoint;
@@ -28,6 +32,13 @@ public class FlyingShooterEnemy : EntityScript
     {
         enemyRB = GetComponent<Rigidbody>();
         nextWaypoint = waypoints[waypointIndex];
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
     }
 
     // Update is called once per frame
@@ -38,7 +49,7 @@ public class FlyingShooterEnemy : EntityScript
         {
             dmgTimer += Time.deltaTime;
         }
-        if (shotTimer < timeToShoot)
+        if (shotTimer < timeToShoot && player.gameObject.transform.position.y < gameObject.transform.position.y)
         {
             shotTimer += Time.deltaTime;
         }
@@ -95,7 +106,7 @@ public class FlyingShooterEnemy : EntityScript
     
     void Shoot()
     {
-        if(isSmartShot)
+        if(isSmartShot && player.gameObject.transform.position.y < gameObject.transform.position.y)
         {
             Instantiate(smartBullet, smartShotPosition.position , Quaternion.identity);
         }

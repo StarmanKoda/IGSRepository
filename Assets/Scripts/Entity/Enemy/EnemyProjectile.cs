@@ -42,7 +42,7 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(gameObject);
 
         }
-        if(coll.gameObject.layer == 3)
+        if(coll.gameObject.layer == 3 || coll.gameObject.layer == 7)
         Destroy(gameObject);
     }
 }
