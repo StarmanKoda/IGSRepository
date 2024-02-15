@@ -21,13 +21,14 @@ public class Melee : MonoBehaviour
     public SpriteRenderer spriteR;
     public SpriteRenderer spriteU;
     public SpriteRenderer spriteD;
+    public bool noPogo = false;
 
     direction dir = direction.LEFT;
 
     public float attkDel;  //Time between player input and attack damaging
     public float attkDur;  //Time attack collider is active
     public float attkRate; //Time between attack end and next attack
-    float nextAttack = 0;
+    public float nextAttack = 0;
 
     double damage = 20;
 
@@ -139,6 +140,7 @@ public class Melee : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (noPogo) return;
         if (other.gameObject.layer == 6 || hits.Contains(other))
         {
             return;

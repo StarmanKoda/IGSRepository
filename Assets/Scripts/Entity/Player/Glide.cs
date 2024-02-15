@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Glide : Upgrades
 {
     Rigidbody body;
-    float fallSpeed = 0.3f;
+    float fallSpeed = 0.2f;
     float glideCooldown = 0;
     public float glideCooldownTime = 0.2f;
     bool gliding = false;
+    float maxSpeed = 10f;
     UpgradeEnum Upgrades.getId()
     {
         return UpgradeEnum.DBLJUMP;
@@ -33,10 +35,15 @@ public class Glide : Upgrades
         //Null Checks
         if (Movement.getinstance() == null) { return; }
         //If jumped and left grace period
-        if (Movement.getinstance().grounded) { gliding = false;}
+        if (Movement.getinstance().grounded) { gliding = false; return; }
+        
         if (Input.GetButton("Glide"))
         {
             gliding = true;
+        }
+        else
+        {
+            gliding = false;
         }
         if (Input.GetButtonUp("Glide")){
             glideCooldown = glideCooldownTime;
@@ -52,7 +59,7 @@ public class Glide : Upgrades
                 passiveMove = -passiveMove;
             }
             //TODO: Change physics of glide to be more slippery like ice (Slow momentum to turn around)
-            Vector3 newVel = new Vector3(body.velocity.x + passiveMove, body.velocity.y * fallSpeed, body.velocity.z);
+            Vector3 newVel = new Vector3(Mathf.Clamp(body.velocity.x + passiveMove, -maxSpeed, maxSpeed), body.velocity.y * fallSpeed, body.velocity.z);
             
             body.velocity = newVel;
         }
