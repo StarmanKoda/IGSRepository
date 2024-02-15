@@ -42,6 +42,7 @@ public class FlyingEnemy : EntityScript
         
 
         enemyRB.velocity = directiontoWaypoint * moveSpeed;
+        UpdateDirection();
 
         if (distance <= waypointReachedDistance)
         {
@@ -73,6 +74,26 @@ public class FlyingEnemy : EntityScript
             coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
             dmgTimer = 0f;
+        }
+    }
+
+    private void UpdateDirection()
+    {
+        Vector3 locScale = transform.localScale;
+
+        if(transform.localScale.x > 0)
+        {
+            if(enemyRB.velocity.x < 0)
+            {
+                transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
+            }
+        }
+        else
+        {
+            if (enemyRB.velocity.x > 0)
+            {
+                transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
+            }
         }
     }
 }

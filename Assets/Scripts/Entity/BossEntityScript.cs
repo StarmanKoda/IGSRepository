@@ -1,9 +1,8 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityScript : MonoBehaviour
+public class BossEntityScript : MonoBehaviour
 {
 
     public double health = 100;
@@ -11,6 +10,8 @@ public class EntityScript : MonoBehaviour
     public float moveSpeed = 1f;
     public double atkDMG = 1f;
     public double knockBackForce = 1500;
+    
+
 
     Rigidbody rig;
 
@@ -23,7 +24,7 @@ public class EntityScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public virtual bool takeDamage(double dmg)

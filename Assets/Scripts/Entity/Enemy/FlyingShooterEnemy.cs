@@ -66,6 +66,7 @@ public class FlyingShooterEnemy : EntityScript
 
 
         float distance = Vector2.Distance(nextWaypoint.position, transform.position);
+        UpdateDirection();
 
 
 
@@ -109,6 +110,26 @@ public class FlyingShooterEnemy : EntityScript
         if(isSmartShot && player.gameObject.transform.position.y < gameObject.transform.position.y)
         {
             Instantiate(smartBullet, smartShotPosition.position , Quaternion.identity);
+        }
+    }
+
+    private void UpdateDirection()
+    {
+        Vector3 locScale = transform.localScale;
+
+        if (transform.localScale.x > 0)
+        {
+            if (enemyRB.velocity.x < 0)
+            {
+                transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
+            }
+        }
+        else
+        {
+            if (enemyRB.velocity.x > 0)
+            {
+                transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
+            }
         }
     }
 }
