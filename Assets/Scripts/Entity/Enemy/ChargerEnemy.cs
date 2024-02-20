@@ -62,9 +62,15 @@ public class ChargerEnemy : EntityScript
         {
             dmgTimer += Time.deltaTime;
         }
+        
         checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude, groundLayer);
         checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude, wallLayer);
-        checkingPlayer = Physics.Raycast(enemyEyes.position, transform.right, sightRadius, playerLayer);
+        if (facingRight)
+            checkingPlayer = Physics.Raycast(enemyEyes.position, transform.right, sightRadius, playerLayer);
+        else
+            checkingPlayer = Physics.Raycast(enemyEyes.position, transform.right, sightRadius, playerLayer);
+
+
         FlipCheck();
 
         //incase there's a transition animation
@@ -115,8 +121,8 @@ public class ChargerEnemy : EntityScript
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
-        Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
+        Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude);
+        Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude);
     }
     void OnCollisionEnter(Collision coll)
     {
