@@ -68,12 +68,12 @@ public class JumpingEnemy : EntityScript
     // Update is called once per frame
     void FixedUpdate()
     {
-        checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius, groundLayer);
-        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, wallLayer);
+        checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude, groundLayer);
+        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude, wallLayer);
         isGrounded = Physics.CheckBox(groundCheck.position, boxSize, Quaternion.identity, groundLayer);
-        checkingWall2 = Physics.CheckSphere(wallCheckPoint2.position, circleRadius, wallLayer);
-        checkingWall3 = Physics.CheckSphere(wallCheckPoint3.position, circleRadius, wallLayer);
-        checkingWall4 = Physics.CheckSphere(wallCheckPoint4.position, circleRadius, wallLayer);
+        checkingWall2 = Physics.CheckSphere(wallCheckPoint2.position, circleRadius * gameObject.transform.localScale.magnitude, wallLayer);
+        checkingWall3 = Physics.CheckSphere(wallCheckPoint3.position, circleRadius * gameObject.transform.localScale.magnitude, wallLayer);
+        checkingWall4 = Physics.CheckSphere(wallCheckPoint4.position, circleRadius * gameObject.transform.localScale.magnitude, wallLayer);
 
         if (isGrounded)
         {
@@ -175,11 +175,11 @@ public class JumpingEnemy : EntityScript
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
-        Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
-        Gizmos.DrawWireSphere(wallCheckPoint2.position, circleRadius);
-        Gizmos.DrawWireSphere(wallCheckPoint3.position, circleRadius);
-        Gizmos.DrawWireSphere(wallCheckPoint4.position, circleRadius);
+        Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude);
+        Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude);
+        Gizmos.DrawWireSphere(wallCheckPoint2.position, circleRadius * gameObject.transform.localScale.magnitude);
+        Gizmos.DrawWireSphere(wallCheckPoint3.position, circleRadius * gameObject.transform.localScale.magnitude);
+        Gizmos.DrawWireSphere(wallCheckPoint4.position, circleRadius * gameObject.transform.localScale.magnitude);
         Gizmos.color = Color.green;
         Gizmos.DrawCube(groundCheck.position, boxSize);
     }

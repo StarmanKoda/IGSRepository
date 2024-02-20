@@ -60,7 +60,7 @@ public class FlyingEnemy : EntityScript
                 waypointIndex = Random.Range(0, waypoints.Count);
             }
 
-            Debug.Log(waypointIndex);
+            //Debug.Log(waypointIndex);
             nextWaypoint = waypoints[waypointIndex];
             
         }
