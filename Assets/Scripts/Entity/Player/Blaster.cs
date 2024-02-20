@@ -5,14 +5,15 @@ using UnityEngine;
 public class Blaster : Upgrades
 {
     Melee melee = null;
-    public float maxChargeSize;
-
-    float nextAttack = 0f;
+    public float maxChargeSize = 2.5f;
+    public float chargeSpeed = 2f;
+    float currentSize = 0f;
+    float damageMult = 2f;
     bool canAtk = false;
 
     public UpgradeEnum getId()
     {
-        return UpgradeEnum.GUN;
+        return UpgradeEnum.BLASTER;
     }
 
     public void upgradeUpdate(GameObject obj, UpgradeInventory inv)
@@ -21,20 +22,28 @@ public class Blaster : Upgrades
         {
             melee = obj.GetComponent<Melee>();
         }
-        if(nextAttack > 0f)
+
+        if(canAtk)
         {
-            nextAttack -= Time.deltaTime;
-            if (nextAttack <= 0)
+            if (Input.GetButton("Attack3") && currentSize < maxChargeSize)
             {
+                currentSize += Time.deltaTime * chargeSpeed;
+                if(currentSize > maxChargeSize)
+                {
+                    currentSize = maxChargeSize;
+                }
+            }
+            if (Input.GetButtonUp("Attack3"))
+            {
+                GameObject bullet = inv.ShootBullet();
+                canAtk = false;
                 melee.noPogo = false;
                 melee.enabled = true;
-                nextAttack = 0;
                 inv.attacking = false;
-            }
-            if (nextAttack <= attkRate && canAtk)
-            {
-                inv.ShootBullet();
-                canAtk = false;
+                Vector3 scale = new Vector3(currentSize + bullet.transform.localScale.x, currentSize + bullet.transform.localScale.y, currentSize + bullet.transform.localScale.z);
+                bullet.transform.localScale = scale;
+                PlayerProjectile shot = bullet.GetComponent<PlayerProjectile>();
+                shot.atkDMG = Mathf.Floor(shot.atkDMG * ((currentSize * damageMult) +1));
             }
         }
 
@@ -43,10 +52,10 @@ public class Blaster : Upgrades
             if (Input.GetButtonDown("Attack3")) //"Attack1"
             {
                 canAtk = true;
-                nextAttack = attkDel + attkRate;
                 melee.noPogo = true;
                 melee.enabled = false;
                 inv.attacking = true;
+                currentSize = 0f;
             }
         }
 

@@ -34,7 +34,7 @@ static class UpgradeEnumMethods
             case UpgradeEnum.GUN:
                 return new Gun();
             case UpgradeEnum.BLASTER:
-                break;
+                return new Blaster();
         }
         return val;
     }
