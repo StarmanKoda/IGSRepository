@@ -6,15 +6,10 @@ using UnityEngine.EventSystems;
 public class PlayerProjectile : MonoBehaviour
 {
 
-    private GameObject player;
     public float atkDMG = 3f;
-    public float knockBackForce = 1500;
-    public Rigidbody ProjRB;
-    public float moveSpeed = 3f;
-
-
-    public int moveDirectionX;
-    public int moveDirectionY;
+    public float moveSpeed = 100f;
+    public float life = 100;
+    Vector2 moveDirection;
 
     
 
@@ -35,21 +30,29 @@ public class PlayerProjectile : MonoBehaviour
             }
         }
 
-        ProjRB.velocity = new Vector2(x, y).normalized * moveSpeed;
-        float rot = Mathf.Atan2(-x, -y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rot);
+        moveDirection = new Vector2(x, y).normalized * moveSpeed;
     }
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag.ToLower().Equals("player")) return;
-        if (col.gameObject.layer.ToString().ToLower().Equals("enemy"))
-        {
 
-            col.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
-            col.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
+    private void Update()
+    {
+        Vector3 newPosition = new Vector3(moveDirection.x * Time.deltaTime * Time.timeScale * moveSpeed, moveDirection.y * Time.deltaTime * Time.timeScale * moveSpeed, 0);
+        transform.position += newPosition;
+        life -= Time.deltaTime;
+        if(life < 0)
+        {
             Destroy(gameObject);
         }
-        if (col.gameObject.layer == 3 || col.gameObject.layer == 7)
+    }
+    void OnTriggerEnter(Collider col)
+    {
+        
+        if (col.gameObject.tag.ToLower().Equals("player") || col.gameObject.tag.ToLower().Equals("melee")) return;
+        if (col.gameObject.layer == 7)
+        {
+            col.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
+            Destroy(gameObject);
+        }
+        else
         {
             Destroy(gameObject);
         }

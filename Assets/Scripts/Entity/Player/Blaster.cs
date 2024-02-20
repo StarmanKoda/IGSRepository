@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : Upgrades
+public class Blaster : Upgrades
 {
     Melee melee = null;
-
-    public float attkDel = 0.1f;  //Time between player input and attack damaging
-    public float attkRate = 0.1f; //Time between attack end and next attack
+    public float maxChargeSize;
 
     float nextAttack = 0f;
     bool canAtk = false;
@@ -19,7 +17,6 @@ public class Gun : Upgrades
 
     public void upgradeUpdate(GameObject obj, UpgradeInventory inv)
     {
-        if (inv.getUnlockedUpgrade(UpgradeEnum.BLASTER)) return;
         if (melee == null)
         {
             melee = obj.GetComponent<Melee>();
