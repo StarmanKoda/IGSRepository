@@ -76,8 +76,8 @@ public class HumanoidPatrol : EntityScript
     // Update is called once per frame
     void FixedUpdate()
     {
-        checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius, groundLayer);
-        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius, wallLayer);
+        checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude, groundLayer);
+        checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude, wallLayer);
         isGrounded = Physics.CheckBox(groundCheck.position, boxSize, Quaternion.identity, groundLayer);
 
         if (isGrounded)
@@ -188,8 +188,8 @@ public class HumanoidPatrol : EntityScript
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
-        Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
+        Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude);
+        Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude);
         Gizmos.color = Color.green;
         Gizmos.DrawCube(groundCheck.position, boxSize);
     }

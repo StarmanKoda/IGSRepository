@@ -7,7 +7,7 @@ public class WallClimbEnemy : EntityScript
 {
     private Rigidbody enemyRB;
     public bool startLeft;
-    private int startDir;
+    //private int startDir;
     private bool checkingGround;
     private bool checkingWall;
     [SerializeField] Transform groundCheckPoint;
@@ -26,12 +26,12 @@ public class WallClimbEnemy : EntityScript
     // Start is called before the first frame update
     void Start()
     {
-        if (startLeft)
-        {
-            startDir = -1;
-        }
-        else
-            startDir = 1;
+        //if (startLeft)
+        //{
+        //    startDir = -1;
+        //}
+        //else
+        //    startDir = 1;
         enemyRB = GetComponent<Rigidbody>();
     }
 

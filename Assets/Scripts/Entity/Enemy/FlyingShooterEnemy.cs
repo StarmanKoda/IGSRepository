@@ -67,6 +67,7 @@ public class FlyingShooterEnemy : EntityScript
 
         float distance = Vector2.Distance(nextWaypoint.position, transform.position);
         UpdateDirection();
+        UpdateDirection();
 
 
 
@@ -88,7 +89,7 @@ public class FlyingShooterEnemy : EntityScript
                 waypointIndex = Random.Range(0, waypoints.Count);
             }
 
-            Debug.Log(waypointIndex);
+            //Debug.Log(waypointIndex);
             nextWaypoint = waypoints[waypointIndex];
 
         }

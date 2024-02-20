@@ -13,8 +13,8 @@ public class EnemyProjectile : MonoBehaviour
     public float moveSpeed = 3f;
 
 
-    public int moveDirectionX;
-    public int moveDirectionY;
+    //public int moveDirectionX;
+    //public int moveDirectionY;
 
     
 
@@ -27,6 +27,7 @@ public class EnemyProjectile : MonoBehaviour
         float rot = Mathf.Atan2(-direction.x, -direction.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot);
     }
+
     private void FixedUpdate()
     {
         
