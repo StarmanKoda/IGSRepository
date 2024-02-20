@@ -49,6 +49,8 @@ public class Respawns : MonoBehaviour
 
         StartCoroutine(enable(delay, objNum));
 
+        print(newObj.name);
+
         return newObj;
     }
 
