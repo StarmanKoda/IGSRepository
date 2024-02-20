@@ -8723,6 +8723,10 @@ PrefabInstance:
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3928774155506182548, guid: 458df34d71b482e499d5c076b1788fc5, type: 3}
+      propertyPath: boxSize.x
+      value: 5.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928774155506182548, guid: 458df34d71b482e499d5c076b1788fc5, type: 3}
       propertyPath: maxHealth
       value: 120
       objectReference: {fileID: 0}

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2511457845752819885}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0.6, y: 1.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,8 +90,8 @@ Transform:
   m_GameObject: {fileID: 3221727203979820342}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.0082, z: 0}
+  m_LocalScale: {x: 1, y: 3.0165, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1188185273375971279}
@@ -282,8 +282,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3.034182, z: 1}
+  m_Center: {x: 0, y: 1.017091, z: 0}
 --- !u!114 &6973853930975922531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +301,9 @@ MonoBehaviour:
   moveSpeed: 5
   atkDMG: 1
   knockBackForce: 1500
+  healthDrop: {fileID: 0}
+  lowerPercDrop: 0
+  upperPercDrop: 0
   startFacingRight: 1
   groundCheckPoint: {fileID: 317855046790409523}
   wallCheckPoint: {fileID: 8190238750092857804}
