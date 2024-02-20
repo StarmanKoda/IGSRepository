@@ -165,7 +165,8 @@ public class Melee : MonoBehaviour
             entity.takeDamage(damage);
         }
 
-        if (dir == direction.DOWN && entity && !movement.pogoing) //ADD ANY OTHER POGO OBJECTS (e.g. spikes)
+        Spikes spike = other.GetComponent<Spikes>();
+        if (dir == direction.DOWN && !movement.pogoing && (entity || spike)) //ADD ANY OTHER POGO OBJECTS (e.g. spikes)
         {
             movement.pogo();
         }

@@ -37,6 +37,7 @@ public class Spear : Upgrades
                 melee.noPogo = false;
                 melee.enabled = true;
                 nextAttack = 0;
+                inv.attacking = false;
             }
             if(nextAttack <= attkRate + attkDur && canAtk)
             {
@@ -58,6 +59,7 @@ public class Spear : Upgrades
                 nextAttack = attkDel + attkDur + attkRate;
                 melee.noPogo = true;
                 melee.enabled = false;
+                inv.attacking = true;
             }
         }
     }

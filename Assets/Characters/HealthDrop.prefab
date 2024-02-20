@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8625717474490158026}
   - component: {fileID: 864232365312750857}
   - component: {fileID: 3681889960286809371}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: HealthDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 50
-  scaleBy: 0.05
   startForce: 200
   degreeRange: 90
 --- !u!1 &2957098674267170118
