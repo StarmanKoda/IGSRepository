@@ -55,6 +55,6 @@ public class UpgradeInventory : MonoBehaviour
 
     public GameObject ShootBullet()
     {
-        return Instantiate(BulletObj, this.gameObject.transform);
+        return Instantiate(BulletObj, this.gameObject.transform.position, Quaternion.identity);
     }
 }

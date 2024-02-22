@@ -814,6 +814,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spearObj: {fileID: 6621906308161266127}
+  BulletObj: {fileID: 5802685615628851062, guid: 283cd6fd2eadab444adb034a94a4cf28, type: 3}
+  attacking: 0
 --- !u!1 &7667707888417298973
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +828,7 @@ GameObject:
   - component: {fileID: 6209970155007005726}
   - component: {fileID: 3720650378662969271}
   - component: {fileID: 8394802430693002096}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: SpearHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

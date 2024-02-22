@@ -7,7 +7,7 @@ public class Gun : Upgrades
     Melee melee = null;
 
     public float attkDel = 0.1f;  //Time between player input and attack damaging
-    public float attkRate = 0.3f; //Time between attack end and next attack
+    public float attkRate = 0.1f; //Time between attack end and next attack
 
     float nextAttack = 0f;
     bool canAtk = false;
@@ -19,11 +19,11 @@ public class Gun : Upgrades
 
     public void upgradeUpdate(GameObject obj, UpgradeInventory inv)
     {
+        if (inv.getUnlockedUpgrade(UpgradeEnum.BLASTER)) return;
         if (melee == null)
         {
             melee = obj.GetComponent<Melee>();
         }
-
         if(nextAttack > 0f)
         {
             nextAttack -= Time.deltaTime;
@@ -43,7 +43,7 @@ public class Gun : Upgrades
 
         if(!inv.attacking &&  melee.nextAttack <= 0)
         {
-            if (Input.GetButtonDown("Attack2")) //"Attack1"
+            if (Input.GetButtonDown("Attack3")) //"Attack1"
             {
                 canAtk = true;
                 nextAttack = attkDel + attkRate;
