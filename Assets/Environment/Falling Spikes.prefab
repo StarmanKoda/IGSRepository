@@ -169,10 +169,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2121
   checkDistance: 30
   temporary: 0
-  timeToDestroy: 3
+  replaceTime: 0
+  replaceNum: -1
 --- !u!114 &3243729048455677778
 MonoBehaviour:
   m_ObjectHideFlags: 0

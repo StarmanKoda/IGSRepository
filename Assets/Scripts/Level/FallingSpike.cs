@@ -37,10 +37,13 @@ public class FallingSpike : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, checkDistance, mask))
         {
-            rig.isKinematic = false;
-            col.isTrigger = true;
-            col.enabled = false;
-            Invoke("reEnable", .1f);
+            if (hit.collider.GetComponent<Movement>())
+            {
+                rig.isKinematic = false;
+                col.isTrigger = true;
+                col.enabled = false;
+                Invoke("reEnable", .1f);
+            }
         }
     }
 
