@@ -202,18 +202,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 100
+  maxHealth: 70
   moveSpeed: 5
   atkDMG: 1
   knockBackForce: 1500
-  healthDrop: {fileID: 1590360216752905460, guid: 2adcf7bf8fd26fa41a86ac92810a3fb1, type: 3}
+  healthDrop: {fileID: 0}
   lowerPercDrop: 0
-  upperPercDrop: 0.2
+  upperPercDrop: 0
   enemyRB: {fileID: 0}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 3201016990435509459, guid: e29cfc7f14fda48468bc313a5f9c047c, type: 3}
   randomWaypoint: 0
   waypointIndex: 0
   waypointReachedDistance: 0.1

@@ -297,13 +297,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 100
+  maxHealth: 70
   moveSpeed: 5
   atkDMG: 1
   knockBackForce: 1500
-  healthDrop: {fileID: 1590360216752905460, guid: 2adcf7bf8fd26fa41a86ac92810a3fb1, type: 3}
+  healthDrop: {fileID: 0}
   lowerPercDrop: 0
-  upperPercDrop: 0.2
+  upperPercDrop: 0
   startFacingRight: 1
   groundCheckPoint: {fileID: 317855046790409523}
   wallCheckPoint: {fileID: 8190238750092857804}
