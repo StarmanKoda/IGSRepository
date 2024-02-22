@@ -679,7 +679,7 @@ MonoBehaviour:
   mesh: {fileID: 2300584151026361934}
   groundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 2056
   groundCheck: {fileID: 1397203081113871214}
   wallCheck: {fileID: 561480099335515094}
   grounded: 1
