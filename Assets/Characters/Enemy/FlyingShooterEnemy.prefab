@@ -213,7 +213,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 7274001543766895796, guid: e29cfc7f14fda48468bc313a5f9c047c, type: 3}
   randomWaypoint: 0
   waypointIndex: 0
   waypointReachedDistance: 0.1
