@@ -53,6 +53,10 @@ public class MainMenu : MonoBehaviour
         curView = newView;
     }
 
+    public void selectButton(GameObject button)
+    {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(button);
+    }
     public void quit()
     {
         Application.Quit();

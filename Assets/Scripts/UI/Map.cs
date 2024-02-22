@@ -196,4 +196,9 @@ public class Map : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
+
+    public void selectButton(GameObject button)
+    {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(button);
+    }
 }
