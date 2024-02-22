@@ -88,12 +88,12 @@ public class Map : MonoBehaviour
         }
 
         float time = 0;
-        float alpha = 0;
-        Vector2 dist = mapPos;
+        //float alpha = 0;
+        //Vector2 dist = mapPos;
         float scaleMod = 1;
         Vector2 diff = Vector2.zero;
-        Color col = fades[subMap].color;
-        Color textCol = texts[subMap].color;
+        //Color col = fades[subMap].color;
+        //Color textCol = texts[subMap].color;
 
         if (doFade)
         {
