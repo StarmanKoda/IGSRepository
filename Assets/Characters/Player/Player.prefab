@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spearObj: {fileID: 6621906308161266127}
-  BulletObj: {fileID: 0}
+  BulletObj: {fileID: 5802685615628851062, guid: 283cd6fd2eadab444adb034a94a4cf28, type: 3}
   attacking: 0
 --- !u!1 &7667707888417298973
 GameObject:
