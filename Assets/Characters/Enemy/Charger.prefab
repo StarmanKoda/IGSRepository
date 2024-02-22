@@ -106,7 +106,7 @@ MonoBehaviour:
   healthDrop: {fileID: 1590360216752905460, guid: 2adcf7bf8fd26fa41a86ac92810a3fb1, type: 3}
   lowerPercDrop: 0
   upperPercDrop: 0
-  startFacingRight: 0
+  startFacingRight: 1
   groundCheckPoint: {fileID: 5523698481727688266}
   wallCheckPoint: {fileID: 7949072199979567250}
   enemyEyes: {fileID: 4099141862486278104}
