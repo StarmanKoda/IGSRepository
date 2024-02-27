@@ -118,5 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca211354d1b5eb4aae2e926adc92d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dps: 5
+  dps: 15
   slowMod: 0.25

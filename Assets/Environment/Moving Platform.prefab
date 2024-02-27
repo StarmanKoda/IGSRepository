@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5670357270063443360}
   - component: {fileID: 6613697304092653841}
   - component: {fileID: 8768287742933702598}
-  m_Layer: 3
+  m_Layer: 11
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 7120259202667635140}
   - component: {fileID: 2697818200676600026}
   - component: {fileID: 8947171642641864884}
-  m_Layer: 3
+  m_Layer: 11
   m_Name: VisualizePosB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6269076178930668525}
-  m_Layer: 3
+  m_Layer: 11
   m_Name: Moving Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 4900443126850470692}
   - component: {fileID: 2806400816165421338}
   - component: {fileID: 3052125184257212835}
-  m_Layer: 3
+  m_Layer: 11
   m_Name: VisualizePosA
   m_TagString: Untagged
   m_Icon: {fileID: 0}

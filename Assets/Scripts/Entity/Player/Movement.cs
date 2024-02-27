@@ -135,7 +135,7 @@ public class Movement : MonoBehaviour
                 Flip();
             }
         }
-        if ((grounded && (jump || preJump > 0)) || (jumpGrace > 0 && jump))
+        if ((grounded && (jump || preJump > 0)) || (jumpGrace > 0 && jump) && Time.timeScale != 0)
         {
             grounded = false;
             jumping = true;

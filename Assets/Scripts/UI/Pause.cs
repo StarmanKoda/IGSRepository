@@ -40,6 +40,11 @@ public class Pause : MonoBehaviour
         }
     }
 
+    public void selectButton(GameObject button)
+    {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(button);
+    }
+
     public void LoadScene(string scene)
     {
         Time.timeScale = 1f;
