@@ -159,14 +159,19 @@ public class Melee : MonoBehaviour
         }
 
         EntityScript entity = other.GetComponent<EntityScript>();
-
         if (entity)
         {
             entity.takeDamage(damage);
         }
 
+        BossEntityScript boss = other.GetComponent<BossEntityScript>();
+        if (boss)
+        {
+            boss.takeDamage(damage);
+        }
+
         Spikes spike = other.GetComponent<Spikes>();
-        if (dir == direction.DOWN && !movement.pogoing && (entity || spike)) //ADD ANY OTHER POGO OBJECTS (e.g. spikes)
+        if (dir == direction.DOWN && !movement.pogoing && (entity || spike || boss)) //ADD ANY OTHER POGO OBJECTS (e.g. spikes)
         {
             movement.pogo();
         }
