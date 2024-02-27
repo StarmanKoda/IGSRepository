@@ -75,5 +75,27 @@ static class UpgradeEnumMethods
                 return 1000000000;
         }
     }
+
+    public static UpgradeEnum fromString(string s)
+    {
+        switch(s.ToLower())
+        {
+            case "dash":
+                return UpgradeEnum.DASH;
+            case "dbljump":
+                return UpgradeEnum.DBLJUMP;
+            case "glide":
+                return UpgradeEnum.GLIDE;
+            case "wallclimb":
+                return UpgradeEnum.WALLCLIMB;
+            case "spear":
+                return UpgradeEnum.SPEAR;
+            case "gun":
+                return UpgradeEnum.GUN;
+            case "blaster":
+                return UpgradeEnum.BLASTER;
+            default: return UpgradeEnum.DASH;
+        }
+    }
 }
 //}

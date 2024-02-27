@@ -57,4 +57,23 @@ public class UpgradeInventory : MonoBehaviour
     {
         return Instantiate(BulletObj, this.gameObject.transform.position, Quaternion.identity);
     }
+
+    public string[] toStringList()
+    {
+        List<string> s = new List<string>();
+        foreach(Upgrades u in obtainedUpgrades)
+        {
+            if (u == null) continue;
+            s.Add(u.getId().ToString());
+        }
+        return s.ToArray();
+    }
+
+    public void fromStringList(string[] s) { 
+        for(int i = 0;i < s.Length;i++)
+        {
+            UpgradeEnum e = UpgradeEnumMethods.fromString(s[i]);
+            unlockUpgrade(UpgradeEnumMethods.getUpgrade(e));
+        }
+    }
 }
