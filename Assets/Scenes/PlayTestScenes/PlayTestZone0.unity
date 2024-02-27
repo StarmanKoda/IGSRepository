@@ -8970,11 +8970,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5523698481727688266, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.13
+      value: 4.04
       objectReference: {fileID: 0}
     - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: maxHealth
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
+      propertyPath: moveSpeed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: fallsOffLedge
@@ -8991,6 +8995,10 @@ PrefabInstance:
     - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: startFacingRight
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949072199979567250, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.04
       objectReference: {fileID: 0}
     - target: {fileID: 9029508821228684659, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: m_LocalPosition.x

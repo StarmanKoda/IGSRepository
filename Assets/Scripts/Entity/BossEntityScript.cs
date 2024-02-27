@@ -7,8 +7,8 @@ public class BossEntityScript : MonoBehaviour
 
     public double health = 100;
     public double maxHealth;
-    public float[] moveSpeed;
-    public double[] atkDMG;
+    public float[] moveSpeed = { 1f };
+    public double[] atkDMG = { 1f };
     public double knockBackForce = 1500;
     
 
