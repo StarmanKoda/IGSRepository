@@ -57,6 +57,16 @@ public class EntityScript : MonoBehaviour
                         i--;
                     }
                 }
+                //if (amount > 0)
+                //{
+                //    GameObject drop = Instantiate(healthDrop, transform.position, Quaternion.identity);
+                //    drop.GetComponent<HealthDrop>().amount = amount;
+                //    drop.transform.localScale = Vector3.one * HealthDrop.dropSizes[0];
+
+                //    amount = 0;
+
+                //    drop.transform.parent = transform.parent;
+                //}
             }
 
             Destroy(gameObject);

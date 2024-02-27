@@ -8,12 +8,12 @@ public class RhinoScript : BossEntityScript
     private float moveDirection = 1f;
     private bool facingRight = true;
     public bool startFacingRight = true;
-    [SerializeField] Transform groundCheckPoint;
+    //[SerializeField] Transform groundCheckPoint;
     [SerializeField] Transform wallCheckPoint;
     [SerializeField] Transform enemyEyes;
     [SerializeField] float circleRadius = 0.1f;
     [SerializeField] float sightRadius = 0.5f;
-    [SerializeField] LayerMask groundLayer;
+    //[SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask wallLayer;
     [SerializeField] LayerMask playerLayer;
     private bool checkingGround;
@@ -30,6 +30,12 @@ public class RhinoScript : BossEntityScript
     private float staggerTimer;
     private float staggerTime = 0.5f;
     private int isStaggered = 0;
+
+    [Header("For Boss Phase Management")]
+    public int phasenumber = 0;
+    public double[] phasecaps = { 350, 150};
+    private bool[] phasereached = { false,false };
+    public float jumpHeight = 5f;
 
     private Rigidbody enemyRB;
     // Start is called before the first frame update
@@ -63,7 +69,7 @@ public class RhinoScript : BossEntityScript
             dmgTimer += Time.deltaTime;
         }
 
-        checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude, groundLayer);
+        //checkingGround = Physics.CheckSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude, groundLayer);
         checkingWall = Physics.CheckSphere(wallCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude, wallLayer);
         if (facingRight)
             checkingPlayer = Physics.Raycast(enemyEyes.position, transform.right, sightRadius, playerLayer);
@@ -80,32 +86,67 @@ public class RhinoScript : BossEntityScript
             Debug.Log("Sees Player!");
         }
 
+        //checks what phase the boss is on
+        if(health <= phasecaps[0] && !phasereached[0])
+        {
+            phasenumber = 1;
+            phasereached[0] = true;
+        }
+        if (health <= phasecaps[1] && !phasereached[1] && phasereached[0])
+        {
+            phasenumber = 2;
+            phasereached[1] = true;
+        }
+
+        if (!isCharging && takingDMG)
+        {
+            isCharging = true;
+        }
+
         if (isCharging)
         {
-            enemyRB.velocity = new Vector2(moveSpeed[0] * moveDirection * isStaggered, enemyRB.velocity.y);
+            enemyRB.velocity = new Vector2(moveSpeed[phasenumber] * moveDirection * isStaggered, enemyRB.velocity.y);
         }
+        
+       
 
         
     }
 
     void FlipCheck()
     {
-        if ((checkingWall && fallsOffLedge) || ((checkingWall || !checkingGround) && !fallsOffLedge))
+        if (checkingWall)
         {
             if (facingRight)
             {
                 Flip();
-                if (isCharging)
+                if (isCharging && phasenumber == 0)
+                { 
                     isCharging = !isCharging;
+                }
+                else if (!isCharging && takingDMG)
+                {
+                        isCharging = true;
+                }
+
             }
             else if (!facingRight)
             {
                 Flip();
-                if (isCharging)
+                if (isCharging && phasenumber == 0)
                     isCharging = !isCharging;
+                else if (!isCharging && takingDMG)
+                {
+                    isCharging = true;
+                }
             }
         }
+        
 
+    }
+    void Jump()
+    {
+        enemyRB.AddForce(new Vector2(enemyRB.velocity.x, jumpHeight), ForceMode.Impulse);
     }
 
 
@@ -114,6 +155,8 @@ public class RhinoScript : BossEntityScript
         moveDirection *= -1f;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+        if (phasenumber == 2)
+            Jump();
 
     }
 
@@ -122,7 +165,7 @@ public class RhinoScript : BossEntityScript
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude);
+        //Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude);
         Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius * gameObject.transform.localScale.magnitude);
     }
     void OnCollisionEnter(Collision coll)

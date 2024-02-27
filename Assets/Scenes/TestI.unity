@@ -443,7 +443,7 @@ Transform:
   m_GameObject: {fileID: 673508831}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0.13, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -545,22 +545,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2d77d1ba702b54081374ba4cbc5c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 500
   maxHealth: 75
   moveSpeed:
+  - 5
+  - 10
   - 10
   atkDMG:
+  - 10
+  - 20
   - 30
   knockBackForce: 1500
+  bossDrop: {fileID: 3101748396510214767, guid: f6ee0969358f53344a6c902091281c4f, type: 3}
+  upgradeType: 0
   startFacingRight: 0
-  groundCheckPoint: {fileID: 1585223502}
   wallCheckPoint: {fileID: 2015557802}
   enemyEyes: {fileID: 1151447963}
   circleRadius: 0.1
   sightRadius: 5
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
   wallLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -568,6 +570,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   fallsOffLedge: 0
+  phasenumber: 0
+  phasecaps:
+  - 350
+  - 150
+  jumpHeight: 200
 --- !u!4 &796280699
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,7 +1288,7 @@ Transform:
   m_GameObject: {fileID: 2015557801}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.46, y: 0.06, z: 0}
+  m_LocalPosition: {x: 2.54, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

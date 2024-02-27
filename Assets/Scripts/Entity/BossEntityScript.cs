@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class BossEntityScript : MonoBehaviour
 {
 
-    public double health = 100;
+    public double health = 1000;
     public double maxHealth;
     public float[] moveSpeed = { 1f };
-    public double[] atkDMG = { 1f };
+    public double[] atkDMG = { 1 };
     public double knockBackForce = 1500;
-    
+    public GameObject bossDrop;
+    public UpgradeEnum upgradeType;
+    public bool takingDMG = false;
+    public float counter = 0f;
+
 
 
     Rigidbody rig;
@@ -24,19 +29,29 @@ public class BossEntityScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
+        if(takingDMG)
+        {
+            counter += Time.deltaTime;  
+        }
+        if(counter >= 0.5f)
+        {
+            takingDMG = false;
+        }
     }
 
     public virtual bool takeDamage(double dmg)
     {
         health -= dmg;
-
+        takingDMG = true;
         //WILL NEED TO IMPROVE DEATH EFFECTS
         if (health <= 0)
         {
+            
+            GameObject drop = Instantiate(bossDrop, transform.position, Quaternion.identity);
+            drop.GetComponent<UpgradeUnlocker>().Upg = upgradeType;
             Destroy(gameObject);
         }
-
         return true;
     }
 
