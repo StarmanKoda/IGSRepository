@@ -20,6 +20,7 @@ public class RhinoScript : BossEntityScript
     private bool checkingWall;
     private bool checkingPlayer;
     private bool isCharging = false;
+    private bool isStill = true;
     public bool fallsOffLedge;
 
     [Header("For Damage")]
@@ -54,6 +55,8 @@ public class RhinoScript : BossEntityScript
     // Update is called once per frame
     void FixedUpdate()
     {
+        isStill = !isCharging;
+
         if (staggerTimer < staggerTime && isStaggered == 0)
         {
             staggerTimer += Time.deltaTime;
@@ -83,7 +86,7 @@ public class RhinoScript : BossEntityScript
         if (checkingPlayer)
         {
             isCharging = true;
-            Debug.Log("Sees Player!");
+            //Debug.Log("Sees Player!");
         }
 
         //checks what phase the boss is on
@@ -98,7 +101,7 @@ public class RhinoScript : BossEntityScript
             phasereached[1] = true;
         }
 
-        if (!isCharging && takingDMG)
+        if (isStill && takingDMG)
         {
             isCharging = true;
         }
@@ -121,24 +124,13 @@ public class RhinoScript : BossEntityScript
             {
                 Flip();
                 if (isCharging && phasenumber == 0)
-                { 
                     isCharging = !isCharging;
-                }
-                else if (!isCharging && takingDMG)
-                {
-                        isCharging = true;
-                }
-
             }
             else if (!facingRight)
             {
                 Flip();
                 if (isCharging && phasenumber == 0)
                     isCharging = !isCharging;
-                else if (!isCharging && takingDMG)
-                {
-                    isCharging = true;
-                }
             }
         }
         
@@ -149,7 +141,7 @@ public class RhinoScript : BossEntityScript
         enemyRB.AddForce(new Vector2(enemyRB.velocity.x, jumpHeight), ForceMode.Impulse);
     }
 
-
+    
     void Flip()
     {
         moveDirection *= -1f;
@@ -175,7 +167,11 @@ public class RhinoScript : BossEntityScript
             coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG[0]);
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
             dmgTimer = 0f;
-            isStaggered = 0;
+
+            if (!takingDMG)
+            {
+                isStaggered = 0;
+            }
 
 
         }
