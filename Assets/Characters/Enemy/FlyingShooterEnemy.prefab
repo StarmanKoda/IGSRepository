@@ -206,9 +206,9 @@ MonoBehaviour:
   moveSpeed: 5
   atkDMG: 1
   knockBackForce: 1500
-  healthDrop: {fileID: 0}
+  healthDrop: {fileID: 1590360216752905460, guid: 2adcf7bf8fd26fa41a86ac92810a3fb1, type: 3}
   lowerPercDrop: 0
-  upperPercDrop: 0
+  upperPercDrop: 0.2
   enemyRB: {fileID: 0}
   waypoints:
   - {fileID: 0}
