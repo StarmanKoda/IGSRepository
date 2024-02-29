@@ -8611,9 +8611,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Charger
       objectReference: {fileID: 0}
+    - target: {fileID: 5523698481727688266, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
+      propertyPath: maxHealth
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: fallsOffLedge
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
+      propertyPath: lowerPercDrop
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
+      propertyPath: upperPercDrop
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: startFacingRight

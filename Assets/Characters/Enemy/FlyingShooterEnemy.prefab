@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 100
+  maxHealth: 70
   moveSpeed: 5
   atkDMG: 1
   knockBackForce: 1500
@@ -213,7 +213,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 3201016990435509459, guid: e29cfc7f14fda48468bc313a5f9c047c, type: 3}
   randomWaypoint: 0
   waypointIndex: 0
   waypointReachedDistance: 0.1

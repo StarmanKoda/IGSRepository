@@ -8,7 +8,7 @@ public class FlyingShooterEnemy : EntityScript
 {
     public Rigidbody enemyRB;
     public List<Transform> waypoints;
-    public GameObject player;
+    public Transform player;
     private bool facingRight = true;
 
     Transform nextWaypoint;
@@ -32,7 +32,14 @@ public class FlyingShooterEnemy : EntityScript
     {
         enemyRB = GetComponent<Rigidbody>();
         nextWaypoint = waypoints[waypointIndex];
-        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = gameObject.transform.Find("Player");
+        }
     }
 
     void Flip()
@@ -49,7 +56,7 @@ public class FlyingShooterEnemy : EntityScript
         {
             dmgTimer += Time.deltaTime;
         }
-        if (shotTimer < timeToShoot && player.gameObject.transform.position.y < gameObject.transform.position.y)
+        if (shotTimer < timeToShoot && player.position.y < gameObject.transform.position.y)
         {
             shotTimer += Time.deltaTime;
         }
