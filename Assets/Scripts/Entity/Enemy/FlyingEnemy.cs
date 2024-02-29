@@ -14,6 +14,7 @@ public class FlyingEnemy : EntityScript
     [Header("For Damage")]
     private float dmgTimer;
     private float InvincibilityTime = 0.5f;
+    private bool facingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +95,15 @@ public class FlyingEnemy : EntityScript
             {
                 transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
             }
+        }
+
+        if (transform.localScale.x == -1)
+        {
+            facingRight = false;
+        }
+        else
+        {
+            facingRight = true;
         }
     }
 }
