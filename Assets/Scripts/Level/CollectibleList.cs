@@ -33,4 +33,18 @@ public class CollectibleList : MonoBehaviour
     {
         return instance;
     }
+
+    public String[] toStringArray()
+    {
+        return collected.ToArray();
+    }
+
+    public void fromStringArray(String[] data)
+    {
+        collected.Clear();
+        for(int i  = 0; i < data.Length; i++)
+        {
+            collected.Add(data[i]);
+        }
+    }
 }
