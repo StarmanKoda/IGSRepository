@@ -17,7 +17,7 @@ public static class SaveManager
         File.Delete($"{saveFolder}/{profile}");
     }
 
-    public static saveProfile<T> Load<T>(string profileName) where T : SaveProfileData
+    public static saveProfile Load(string profileName)
     {
         if (!File.Exists($"{saveFolder}/{profileName}"))
         {
@@ -25,11 +25,11 @@ public static class SaveManager
         }
 
         var fileContents = File.ReadAllText($"{saveFolder}/{profileName}");
-        Debug.Log("Successfully loaded profile");
-        return JsonUtility.FromJson<saveProfile<T>>(fileContents);
+        Debug.Log($"Successfully loaded profile: {saveFolder}/{profileName}");
+        return JsonUtility.FromJson<saveProfile>(fileContents);
     }
 
-    public static void Save<T>(saveProfile<T> save) where T : SaveProfileData
+    public static void Save(saveProfile save)
     {
         if (!Directory.Exists(saveFolder))
         {

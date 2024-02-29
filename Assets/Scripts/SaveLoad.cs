@@ -1,31 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 [System.Serializable]
-public sealed class saveProfile<T> where T : SaveProfileData
+public sealed class saveProfile
 {
     public string name;
-    public T data;
+    public int zoneIndex;
+    public int roomIndex;
+    public string[] collectibles;
+    public string[] upgrades;
 
     private saveProfile() { }
 
-    public saveProfile(string name, T data)
+    public saveProfile(string name, int roomIndex, string[] collectibles, string[] upgrades)
     {
         this.name = name;
-        this.data = data;
+
+        this.roomIndex = roomIndex;
+        this.collectibles = collectibles;
+        this.upgrades = upgrades;
     }
-}
-
-public abstract record SaveProfileData { }
-
-public record PlayerSaveData : SaveProfileData
-{
-    int roomIndex;
-    String[] collectibles;
-    private string[] upgrades;
-
     public int getRoomIndex()
     {
         return roomIndex;
@@ -39,12 +37,5 @@ public record PlayerSaveData : SaveProfileData
     public string[] getUpgrades()
     {
         return upgrades;
-    }
-
-    public PlayerSaveData(int roomIndex, string[] collectibles, string[] upgrades)
-    {
-        this.roomIndex = roomIndex;
-        this.collectibles = collectibles;
-        this.upgrades = upgrades;
     }
 }
