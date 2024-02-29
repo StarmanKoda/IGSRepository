@@ -172,6 +172,10 @@ public class RhinoScript : BossEntityScript
             {
                 isStaggered = 0;
             }
+            if(phasenumber == 0 && !isCharging)
+            {
+                isCharging = true;
+            }
 
 
         }
