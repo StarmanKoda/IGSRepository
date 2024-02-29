@@ -15,6 +15,7 @@ public class ZoneLoader : MonoBehaviour
     ZoneDoor entranceDoor;
 
     int doorTo = -1;
+    int loadRoom = -1;
 
     Vector2 velocity;
     Vector3 offset;
@@ -76,9 +77,9 @@ public class ZoneLoader : MonoBehaviour
 
         if (roomLoader == null)
         {
-            zoneLoader = null;
-            Destroy(this.gameObject);
-            dead = true;
+            //zoneLoader = null;
+            //Destroy(this.gameObject);
+            //dead = true;
             return;
         }
 
@@ -99,6 +100,7 @@ public class ZoneLoader : MonoBehaviour
             }
 
             doorTo = -1;
+            loadRoom = -1;
         }
         else
         {
@@ -118,6 +120,18 @@ public class ZoneLoader : MonoBehaviour
 
     void InitialLoad()
     {
-        roomLoader.LoadRoom(roomLoader.curRoom, direction.LEFT);
+        if (loadRoom >= 0)
+        {
+            roomLoader.LoadRoom(loadRoom, direction.LEFT);
+        }
+        else
+        {
+            roomLoader.LoadRoom(roomLoader.curRoom, direction.LEFT);
+        }
+    }
+
+    public void setLoadRoom(int roomIndex)
+    {
+        loadRoom = roomIndex;
     }
 }
