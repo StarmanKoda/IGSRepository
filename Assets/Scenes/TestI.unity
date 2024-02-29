@@ -338,7 +338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &631347838
 Transform:
   m_ObjectHideFlags: 0
@@ -348,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 631347837}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: -3, z: 0}
+  m_LocalPosition: {x: 7, y: -5.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -509,7 +509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &853074104
 Transform:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 853074103}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: 22.22, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -934,7 +934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1738746557
 Transform:
   m_ObjectHideFlags: 0
@@ -1228,6 +1228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rhino
       objectReference: {fileID: 0}
+    - target: {fileID: 3417123190569415284, guid: b958eea649c1144469ec4709ad4a4ad8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7670339337673161777, guid: b958eea649c1144469ec4709ad4a4ad8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.09
@@ -1383,6 +1387,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6060721094794557386, guid: 8d765e42cb83a8146ba6e5ee8705d579, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1779275372}
+    - target: {fileID: 6060721094794557386, guid: 8d765e42cb83a8146ba6e5ee8705d579, type: 3}
+      propertyPath: heightclamp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060721094794557386, guid: 8d765e42cb83a8146ba6e5ee8705d579, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
       objectReference: {fileID: 1738746557}
@@ -1396,7 +1408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6817699832154033997, guid: 8d765e42cb83a8146ba6e5ee8705d579, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

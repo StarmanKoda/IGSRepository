@@ -25,7 +25,7 @@ public class FlyingShooterEnemy : EntityScript
     public Transform smartShotPosition;
     public float shotTimer;
     public float timeToShoot = 3f;
-    public bool isSmartShot = true;
+    public float heightclamp = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -56,11 +56,14 @@ public class FlyingShooterEnemy : EntityScript
         {
             dmgTimer += Time.deltaTime;
         }
-        if (shotTimer < timeToShoot && player.position.y < gameObject.transform.position.y)
+        if (shotTimer < timeToShoot && ((facingRight && player.gameObject.transform.position.x > gameObject.transform.position.x) || (!facingRight && player.gameObject.transform.position.x < gameObject.transform.position.x)))
         {
-            shotTimer += Time.deltaTime;
+            if ((player.gameObject.transform.position.y >= gameObject.transform.position.y - heightclamp) || (player.gameObject.transform.position.y <= gameObject.transform.position.y + heightclamp))
+            {
+                shotTimer += Time.deltaTime;
+            }
         }
-        else
+        else if(shotTimer >= timeToShoot)
         {
             shotTimer = 0;
             Shoot();
@@ -73,7 +76,6 @@ public class FlyingShooterEnemy : EntityScript
 
 
         float distance = Vector2.Distance(nextWaypoint.position, transform.position);
-        UpdateDirection();
         UpdateDirection();
 
 
@@ -115,15 +117,15 @@ public class FlyingShooterEnemy : EntityScript
     
     void Shoot()
     {
-        if(isSmartShot && player.gameObject.transform.position.y < gameObject.transform.position.y)
-        {
-            Instantiate(smartBullet, smartShotPosition.position , Quaternion.identity);
-        }
+        
+        Instantiate(smartBullet, smartShotPosition.position , Quaternion.identity);
+        
     }
 
     private void UpdateDirection()
     {
         Vector3 locScale = transform.localScale;
+       
 
         if (transform.localScale.x > 0)
         {
@@ -138,6 +140,15 @@ public class FlyingShooterEnemy : EntityScript
             {
                 transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
             }
+        }
+
+        if (transform.localScale.x == -1)
+        {
+            facingRight = false;
+        }
+        else
+        {
+            facingRight = true;
         }
     }
 }
