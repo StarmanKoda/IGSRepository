@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveState : MonoBehaviour
 {
     public GameObject Player;
     public UpgradeInventory inventory;
     public CollectibleList collectibleList;
+    public ZoneLoader zoneLoader;
 
     public void load(string profileName)
     {
@@ -24,14 +26,7 @@ public class SaveState : MonoBehaviour
     public void save(string profileName, int roomIndex)
     {
 
-        saveProfile data = new saveProfile(profileName, roomIndex, collectibleList.toStringArray(), inventory.toStringList());
-        foreach(string s in data.getUpgrades()) {
-            Debug.Log(s);
-        }
-        foreach (string s in data.getCollectibles())
-        {
-            Debug.Log(s);
-        }
+        saveProfile data = new saveProfile(profileName, SceneManager.GetActiveScene().buildIndex, zoneLoader.roomLoader.curRoom, collectibleList.toStringArray(), inventory.toStringList());
         SaveManager.Save(data);
     }
 

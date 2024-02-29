@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ZoneLoader : MonoBehaviour
 {
     ZoneDoor[] zoneDoors;
-    RoomLoader roomLoader;
+    public RoomLoader roomLoader;
     Movement player;
     public static ZoneLoader zoneLoader;
 

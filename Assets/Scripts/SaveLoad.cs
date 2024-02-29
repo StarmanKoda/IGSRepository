@@ -16,10 +16,10 @@ public sealed class saveProfile
 
     private saveProfile() { }
 
-    public saveProfile(string name, int roomIndex, string[] collectibles, string[] upgrades)
+    public saveProfile(string name, int zoneIndex, int roomIndex, string[] collectibles, string[] upgrades)
     {
         this.name = name;
-
+        this.zoneIndex = zoneIndex;
         this.roomIndex = roomIndex;
         this.collectibles = collectibles;
         this.upgrades = upgrades;
