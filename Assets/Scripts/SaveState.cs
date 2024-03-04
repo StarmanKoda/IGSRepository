@@ -24,7 +24,7 @@ public class SaveState : MonoBehaviour
         }
 
         //Update ZoneLoader so that it knows proper room to load into
-
+        zoneLoader.setLoadRoom(data.roomIndex);
         //Reset timescale
         Time.timeScale = 1.0f;
         //Load Scene based on index
