@@ -11,7 +11,7 @@ public class ZoneLoader : MonoBehaviour
     public static ZoneLoader zoneLoader;
 
     public float extraZoneLoadDelay = 0f;
-
+    Vector3 loadLocation;
     ZoneDoor entranceDoor;
 
     int doorTo = -1;
@@ -20,7 +20,7 @@ public class ZoneLoader : MonoBehaviour
     Vector2 velocity;
     Vector3 offset;
 
-    public Upgrades[] obtainedUpgrades;
+    //public Upgrades[] obtainedUpgrades;
     public double health;
 
     bool dead = false;
@@ -84,6 +84,11 @@ public class ZoneLoader : MonoBehaviour
         }
 
         player = Movement.getinstance();
+        if(loadLocation != null)
+        {
+            player.transform.position = loadLocation;
+        }
+
         player.gameObject.SetActive(false);
         player.enabled = false;
         
@@ -113,7 +118,7 @@ public class ZoneLoader : MonoBehaviour
 
     void LoadRoom()
     {
-        player.GetComponent<UpgradeInventory>().obtainedUpgrades = obtainedUpgrades;
+        //player.GetComponent<UpgradeInventory>().obtainedUpgrades = obtainedUpgrades;
         player.GetComponent<EntityScript>().health = health;
         roomLoader.LoadRoom(entranceDoor.roomIn, entranceDoor.entranceDir);
     }
@@ -133,5 +138,10 @@ public class ZoneLoader : MonoBehaviour
     public void setLoadRoom(int roomIndex)
     {
         loadRoom = roomIndex;
+    }
+
+    public void setLoadLocation(Vector3 loc)
+    {
+        loadLocation = loc;
     }
 }

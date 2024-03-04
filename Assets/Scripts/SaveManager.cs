@@ -25,7 +25,6 @@ public static class SaveManager
         }
 
         var fileContents = File.ReadAllText($"{saveFolder}/{profileName}");
-        Debug.Log($"Successfully loaded profile: {saveFolder}/{profileName}");
         return JsonUtility.FromJson<saveProfile>(fileContents);
     }
 

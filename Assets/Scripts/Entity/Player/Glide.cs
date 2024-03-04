@@ -13,7 +13,7 @@ public class Glide : Upgrades
     float maxSpeed = 10f;
     UpgradeEnum Upgrades.getId()
     {
-        return UpgradeEnum.DBLJUMP;
+        return UpgradeEnum.GLIDE;
     }
 
     void Upgrades.upgradeUpdate(GameObject obj, UpgradeInventory inv)
