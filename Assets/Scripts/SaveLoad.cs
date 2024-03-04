@@ -9,8 +9,8 @@ using UnityEngine;
 public sealed class saveProfile
 {
     public string name;
-    public int zoneIndex;
-    public int roomIndex;
+    public int zoneIndex = 0;
+    public int roomIndex = 0;
     public string[] collectibles;
     public string[] upgrades;
 

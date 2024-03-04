@@ -5502,6 +5502,7 @@ MonoBehaviour:
   Player: {fileID: 2123128351}
   inventory: {fileID: 2123128352}
   collectibleList: {fileID: 1728203762}
+  zoneLoader: {fileID: 1728203760}
 --- !u!1 &1491092451
 GameObject:
   m_ObjectHideFlags: 0
@@ -6468,6 +6469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bdb41b6dfad9e41beea04e97c53876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomLoader: {fileID: 0}
   extraZoneLoadDelay: 0
   health: 0
 --- !u!4 &1728203761

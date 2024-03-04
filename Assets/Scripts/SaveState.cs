@@ -16,23 +16,31 @@ public class SaveState : MonoBehaviour
         if (data.getUpgrades() != null)
         {
             inventory.fromStringList(data.getUpgrades());
+            zoneLoader.obtainedUpgrades = inventory.obtainedUpgrades;
         }
         if (data.getCollectibles() != null)
         {
             collectibleList.fromStringArray(data.getCollectibles());
         }
+
+        //Update ZoneLoader so that it knows proper room to load into
+
+        //Reset timescale
+        Time.timeScale = 1.0f;
+        //Load Scene based on index
+        SceneManager.LoadScene(data.zoneIndex);
     }
 
-    public void save(string profileName, int roomIndex)
+    public void save(string profileName)
     {
 
         saveProfile data = new saveProfile(profileName, SceneManager.GetActiveScene().buildIndex, zoneLoader.roomLoader.curRoom, collectibleList.toStringArray(), inventory.toStringList());
         SaveManager.Save(data);
     }
 
-    public void save(int roomIndex)
+    public void save()
     {
-        save("data0", roomIndex);
+        save("data0");
     }
 
     public void load()
