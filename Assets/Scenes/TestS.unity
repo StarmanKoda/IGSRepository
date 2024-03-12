@@ -4981,7 +4981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1426005910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6045,6 +6045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bdb41b6dfad9e41beea04e97c53876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomLoader: {fileID: 0}
   extraZoneLoadDelay: 0
   health: 0
 --- !u!4 &1728203761
@@ -7611,10 +7612,6 @@ PrefabInstance:
       propertyPath: TestObj
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5301717581406454354, guid: e29cfc7f14fda48468bc313a5f9c047c, type: 3}
-      propertyPath: BulletObj
-      value: 
-      objectReference: {fileID: 5802685615628851062, guid: 283cd6fd2eadab444adb034a94a4cf28, type: 3}
     - target: {fileID: 5615398073744922638, guid: e29cfc7f14fda48468bc313a5f9c047c, type: 3}
       propertyPath: jumpForce
       value: 1000

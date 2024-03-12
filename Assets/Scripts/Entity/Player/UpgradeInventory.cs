@@ -5,19 +5,20 @@ using UnityEngine;
 
 public class UpgradeInventory : MonoBehaviour
 {
-    public Upgrades[] obtainedUpgrades = new Upgrades[7];
+    public static Upgrades[] obtainedUpgrades = new Upgrades[7];
     static UpgradeInventory instance;
     public GameObject spearObj;
     public GameObject BulletObj;
     public bool attacking = false;
     void Start()
     {
-        //Load Save Data
-
-        //Fill unlocked upgrade list
-
         if(instance == null)
         {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance);
             instance = this;
         }
     }
@@ -33,7 +34,7 @@ public class UpgradeInventory : MonoBehaviour
 
     public void unlockUpgrade(Upgrades upgrade)
     {
-        if (getUnlockedUpgrade(upgrade.getId())) { return; }
+        //if (getUnlockedUpgrade(upgrade.getId())) { return; }
         if(UpgradeEnumMethods.getId(upgrade.getId()) == -1) { return; }
         obtainedUpgrades[UpgradeEnumMethods.getId(upgrade.getId())] = upgrade;
         

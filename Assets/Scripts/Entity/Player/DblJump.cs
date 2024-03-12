@@ -9,7 +9,7 @@ public class DblJump : Upgrades
     bool doubleJump = false;
     UpgradeEnum Upgrades.getId()
     {
-        return UpgradeEnum.GLIDE;
+        return UpgradeEnum.DBLJUMP;
     }
 
     void Upgrades.upgradeUpdate(GameObject obj, UpgradeInventory inv)

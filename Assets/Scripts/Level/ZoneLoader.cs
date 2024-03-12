@@ -6,20 +6,21 @@ using UnityEngine.SceneManagement;
 public class ZoneLoader : MonoBehaviour
 {
     ZoneDoor[] zoneDoors;
-    RoomLoader roomLoader;
+    public RoomLoader roomLoader;
     Movement player;
     public static ZoneLoader zoneLoader;
 
     public float extraZoneLoadDelay = 0f;
-
+    Vector3 loadLocation;
     ZoneDoor entranceDoor;
 
     int doorTo = -1;
+    int loadRoom = -1;
 
     Vector2 velocity;
     Vector3 offset;
 
-    public Upgrades[] obtainedUpgrades;
+    //public Upgrades[] obtainedUpgrades;
     public double health;
 
     bool dead = false;
@@ -76,13 +77,18 @@ public class ZoneLoader : MonoBehaviour
 
         if (roomLoader == null)
         {
-            zoneLoader = null;
-            Destroy(this.gameObject);
-            dead = true;
+            //zoneLoader = null;
+            //Destroy(this.gameObject);
+            //dead = true;
             return;
         }
 
         player = Movement.getinstance();
+        if(loadLocation != null)
+        {
+            player.transform.position = loadLocation;
+        }
+
         player.gameObject.SetActive(false);
         player.enabled = false;
         
@@ -99,6 +105,7 @@ public class ZoneLoader : MonoBehaviour
             }
 
             doorTo = -1;
+            loadRoom = -1;
         }
         else
         {
@@ -111,13 +118,30 @@ public class ZoneLoader : MonoBehaviour
 
     void LoadRoom()
     {
-        player.GetComponent<UpgradeInventory>().obtainedUpgrades = obtainedUpgrades;
+        //player.GetComponent<UpgradeInventory>().obtainedUpgrades = obtainedUpgrades;
         player.GetComponent<EntityScript>().health = health;
         roomLoader.LoadRoom(entranceDoor.roomIn, entranceDoor.entranceDir);
     }
 
     void InitialLoad()
     {
-        roomLoader.LoadRoom(roomLoader.curRoom, direction.LEFT);
+        if (loadRoom >= 0)
+        {
+            roomLoader.LoadRoom(loadRoom, direction.LEFT);
+        }
+        else
+        {
+            roomLoader.LoadRoom(roomLoader.curRoom, direction.LEFT);
+        }
+    }
+
+    public void setLoadRoom(int roomIndex)
+    {
+        loadRoom = roomIndex;
+    }
+
+    public void setLoadLocation(Vector3 loc)
+    {
+        loadLocation = loc;
     }
 }
