@@ -12,7 +12,7 @@ public class HealthDrop : MonoBehaviour
     Rigidbody rig;
 
     public static int[] dropAmounts = { 5, 10, 50 }; //{ 1, 5, 10, 50 };
-    public static float[] dropSizes = { .2f, .3f, .7f, 1f }; //{ .1f, .2f, .3f, .7f, 1f };
+    public static float[] dropSizes = { .4f, .5f, .7f, 1f }; //{ .1f, .2f, .3f, .7f, 1f };
 
     private void OnDisable()
     {
@@ -32,7 +32,7 @@ public class HealthDrop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)

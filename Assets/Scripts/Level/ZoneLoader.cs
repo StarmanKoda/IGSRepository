@@ -11,6 +11,7 @@ public class ZoneLoader : MonoBehaviour
     public static ZoneLoader zoneLoader;
 
     public float extraZoneLoadDelay = 0f;
+    bool setLoad = false;
     Vector3 loadLocation;
     ZoneDoor entranceDoor;
 
@@ -84,7 +85,7 @@ public class ZoneLoader : MonoBehaviour
         }
 
         player = Movement.getinstance();
-        if(loadLocation != null)
+        if(setLoad)
         {
             player.transform.position = loadLocation;
         }
@@ -142,6 +143,7 @@ public class ZoneLoader : MonoBehaviour
 
     public void setLoadLocation(Vector3 loc)
     {
+        setLoad = true;
         loadLocation = loc;
     }
 }
