@@ -15,6 +15,7 @@ public class BossEntityScript : MonoBehaviour
     public UpgradeEnum upgradeType;
     public bool takingDMG = false;
     public float counter = 0f;
+    private int deathSound;
 
 
 
@@ -47,7 +48,7 @@ public class BossEntityScript : MonoBehaviour
         //WILL NEED TO IMPROVE DEATH EFFECTS
         if (health <= 0)
         {
-            
+            //SoundManager.Instance.blist[soundtoPlay] = true;
             GameObject drop = Instantiate(bossDrop, transform.position, Quaternion.identity);
             drop.GetComponent<UpgradeUnlocker>().Upg = upgradeType;
             Destroy(gameObject);
@@ -61,6 +62,7 @@ public class BossEntityScript : MonoBehaviour
 
         if (health <= 0)
         {
+            //SoundManager.Instance.blist[soundtoPlay] = true;
             Destroy(gameObject);
         }
     }

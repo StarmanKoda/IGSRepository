@@ -17,6 +17,7 @@ public class EntityScript : MonoBehaviour
     public GameObject healthDrop;
     public float lowerPercDrop;
     public float upperPercDrop;
+    private int deathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +70,7 @@ public class EntityScript : MonoBehaviour
                 //}
             }
 
+            //SoundManager.Instance.blist[soundtoPlay] = true;
             Destroy(gameObject);
         }
 
@@ -81,6 +83,7 @@ public class EntityScript : MonoBehaviour
 
         if (health <= 0)
         {
+            //SoundManager.Instance.blist[soundtoPlay] = true;
             Destroy(gameObject);
         }
     }

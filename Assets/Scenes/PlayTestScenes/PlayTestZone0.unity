@@ -8485,12 +8485,16 @@ PrefabInstance:
       value: 4.04
       objectReference: {fileID: 0}
     - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
+      propertyPath: atkDMG
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: maxHealth
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: moveSpeed
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7880428518550758022, guid: 9599be7af62b41444bc79ed4cfa0921f, type: 3}
       propertyPath: fallsOffLedge
