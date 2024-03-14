@@ -17,6 +17,8 @@ public class EntityScript : MonoBehaviour
     public GameObject healthDrop;
     public float lowerPercDrop;
     public float upperPercDrop;
+    public bool takingDMG = false;
+
     private int deathSound;
 
     // Start is called before the first frame update
@@ -28,12 +30,13 @@ public class EntityScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public virtual bool takeDamage(double dmg)
     {
         health -= dmg;
+        takingDMG = true;
 
         //WILL NEED TO IMPROVE DEATH EFFECTS
         if (health <= 0)
@@ -79,6 +82,7 @@ public class EntityScript : MonoBehaviour
 
     public virtual void constantDamage(double dps)
     {
+        takingDMG = true;
         health -= dps * Time.deltaTime;
 
         if (health <= 0)
