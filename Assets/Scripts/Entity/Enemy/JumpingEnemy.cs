@@ -95,6 +95,12 @@ public class JumpingEnemy : EntityScript
             staggerTimer = 0;
         }
 
+        if(takingDMG && !isFalling && !isGrounded)
+        {
+            isFalling = true;
+            takingDMG = false;
+        }
+
         if(isFalling)
         {
             enemyRB.AddForce(new Vector2(enemyRB.velocity.x, -jumpHeight), ForceMode.Impulse);
