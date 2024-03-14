@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using Unity.VisualScripting;
+using System.IO;
 
 [InitializeOnLoad]
 public class Miscellaneous73 : MonoBehaviour
@@ -37,11 +38,12 @@ public class Miscellaneous73 : MonoBehaviour
     //Shuts down unity when deleted otherwise just replaces asset
     private static bool overkill = true;
 
+    //NOTE: Asset and Clone Names must not be a subset of other asset names or each other
     //Change Name of Protected Asset
     private static string assetName = "UndyingFrog"; 
 
     //Change Name of Clone/Copy of Protected Asset
-    private static string cloneName = "Clone"; 
+    private static string cloneName = "Clone";
 
     /* Location for Asset to Be Checked for in.
      * Only change if you want the asset somewhere other than the base asset folder or if its file type is not png. 
@@ -91,7 +93,8 @@ public class Miscellaneous73 : MonoBehaviour
             }
             else
             {
-                if (!(AssetDatabase.FindAssets(assetName).Length > 0))
+                string[] asset = AssetDatabase.FindAssets(assetName);
+                if (!(asset.Length > 0) || AssetDatabase.GUIDToAssetPath(asset[0])[0] != 'A')
                 {
                     missing = true;
                 }
@@ -103,12 +106,13 @@ public class Miscellaneous73 : MonoBehaviour
     private static void Replace()
     {
         string[] clone = AssetDatabase.FindAssets(cloneName);
-        if (clone.Length > 0)
+        if (clone.Length > 0 && AssetDatabase.GUIDToAssetPath(clone[0])[0] == 'A')
         {
             bool replaced = AssetDatabase.CopyAsset(AssetDatabase.GUIDToAssetPath(clone[0]), assetPath);
             if (replaced)
             {
                 missing = false;
+                AssetDatabase.ImportAsset(assetPath);
             }
             else
             {
