@@ -78,6 +78,12 @@ public class ChargerEnemy : EntityScript
         {
             isCharging = true;
         }
+        if (takingDMG && !isCharging) 
+        {
+            takingDMG = false;
+            isCharging = true;
+            
+        }
 
         if(isCharging)
         {
@@ -131,7 +137,10 @@ public class ChargerEnemy : EntityScript
             coll.gameObject.GetComponent<EntityScript>().takeDamage(atkDMG);
             coll.gameObject.GetComponent<Movement>().knockBack(transform, (float)knockBackForce);
             dmgTimer = 0f;
-            isStaggered = 0;
+            if (isCharging)
+                isStaggered = 0;
+            else
+                isCharging = true;
 
 
         }
