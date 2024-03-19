@@ -737,6 +737,8 @@ MonoBehaviour:
   healthDrop: {fileID: 0}
   lowerPercDrop: 0
   upperPercDrop: 0
+  takingDMG: 0
+  soundtoPlay: 4
   invincTime: 0.75
   dmgAnim: {fileID: 5655535278541696699}
   healthBar: {fileID: 0}
