@@ -29,7 +29,8 @@ public class BirdScript : BossEntityScript
     public int phasenumber = 0;
     public double[] phasecaps = { 350, 150 };
     private bool[] phasereached = { false, false };
-    public float jumpHeight = 5f;
+    public bool swoopdirectionforward = true;
+    private int dirSwitch;
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +84,7 @@ public class BirdScript : BossEntityScript
         {
             phasenumber = 2;
             phasereached[1] = true;
+            randomWaypoint = true;
         }
     }
 
@@ -102,12 +104,35 @@ public class BirdScript : BossEntityScript
         {
             if (!randomWaypoint)
             {
+                if((waypointIndex == 0 || waypointIndex == waypoints.Count - 1) && phasenumber > 0)
+                {
+                    dirSwitch = Random.Range(0, 2);
+                }
+
+                if(dirSwitch == 0)
+                {
+                    swoopdirectionforward = true;
+                }
+                else if (dirSwitch == 1)
+                {
+                    swoopdirectionforward = false;
+                }
+
+                if (swoopdirectionforward)
                 waypointIndex++;
+                else
+                waypointIndex--;
 
                 if (waypointIndex >= waypoints.Count)
                 {
                     waypointIndex = 0;
                 }
+                if (waypointIndex < 0)
+                {
+                    waypointIndex = (waypoints.Count - 1);
+                }
+
+                
             }
             else
             {
@@ -134,7 +159,9 @@ public class BirdScript : BossEntityScript
     void Shoot()
     {
 
-        Instantiate(smartBullet, smartShotPosition.position, Quaternion.identity);
+        GameObject bullet = Instantiate(smartBullet, smartShotPosition.position, Quaternion.identity);
+        bullet.GetComponent<EnemyProjectile>().moveSpeed = 2 * moveSpeed[phasenumber];
+        bullet.GetComponent<EnemyProjectile>().atkDMG = (float)atkDMG[phasenumber];
 
     }
 

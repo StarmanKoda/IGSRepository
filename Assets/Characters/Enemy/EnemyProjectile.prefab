@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dab7c23a482a22248b26a06d87031292, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180,7 +180,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atkDMG: 3
   knockBackForce: 1500
-  ProjRB: {fileID: 0}
+  ProjRB: {fileID: 4899076009493327122}
   moveSpeed: 10
-  moveDirectionX: 0
-  moveDirectionY: 0
