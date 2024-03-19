@@ -47,16 +47,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AS: {fileID: 6051953912119828767}
   soundsource:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  blist: 000000000000000000
+  - {fileID: 8300000, guid: b82fedda793d1fb4d85b7765d2f30926, type: 3}
+  - {fileID: 8300000, guid: 92f4497ed210d8047b8e052d2e7246d2, type: 3}
+  - {fileID: 8300000, guid: 324f2f513e4a7e541aa87c3b01caf41a, type: 3}
+  - {fileID: 8300000, guid: 255785f7d77efbc4799f5cd9b85e5ccd, type: 3}
+  - {fileID: 8300000, guid: 2a00b641c334d6a4b8013ef7f1648229, type: 3}
+  - {fileID: 8300000, guid: 1387af832d4b6d447a00d34c34eab9fe, type: 3}
+  - {fileID: 8300000, guid: 5ac95dbecf2a63347b218bf8bc34c12f, type: 3}
+  - {fileID: 8300000, guid: cacad56450d605e408493d67e64dfc34, type: 3}
+  blist: 0000000000000000
 --- !u!82 &6051953912119828767
 AudioSource:
   m_ObjectHideFlags: 0
