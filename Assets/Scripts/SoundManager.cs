@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
     public bool[] blist;
     public static SoundManager Instance;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class SoundManager : MonoBehaviour
         {
             if (blist[i] == true)
             {
-                AS.PlayOneShot(soundsource[i], 1f);
+                AS.PlayOneShot(soundsource[i], 1f * ZoneLoader.zoneLoader.master_volume * ZoneLoader.zoneLoader.sfx_volume);
                 blist[i] = false;
                 Debug.Log("Sound " + i + " Played");
             }

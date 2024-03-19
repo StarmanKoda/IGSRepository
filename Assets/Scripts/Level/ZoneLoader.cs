@@ -21,14 +21,41 @@ public class ZoneLoader : MonoBehaviour
     Vector2 velocity;
     Vector3 offset;
 
+    public float master_volume = 1;
+    public float music_volume = 1;
+    public float sfx_volume = 1;
+
+    AudioSource musicSource;
+
     //public Upgrades[] obtainedUpgrades;
     public double health;
 
     bool dead = false;
 
+    public void setMasterVolume(float volume)
+    {
+        master_volume = volume;
+        if (musicSource != null)
+        {
+            musicSource.volume = master_volume * music_volume;
+        }
+    }
+    public void setMusicVolume(float vol)
+    {
+        music_volume = vol;
+        if (musicSource != null)
+        {
+            musicSource.volume = master_volume * music_volume;
+        }
+    }
+    public void setSfxVolume(float vol)
+    {
+        sfx_volume = vol;
+    }
+
     public void Awake()
     {
-
+        
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -54,6 +81,10 @@ public class ZoneLoader : MonoBehaviour
         {
             Destroy(this.gameObject);
             dead = true;
+        }
+        if (musicSource != null)
+        {
+            musicSource.volume = master_volume * music_volume;
         }
     }
 
