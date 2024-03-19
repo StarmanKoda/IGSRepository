@@ -72,6 +72,18 @@ public class BirdScript : BossEntityScript
             shotTimer = 0;
             Shoot();
         }
+
+        //checks what phase the boss is on
+        if (health <= phasecaps[0] && !phasereached[0])
+        {
+            phasenumber = 1;
+            phasereached[0] = true;
+        }
+        if (health <= phasecaps[1] && !phasereached[1] && phasereached[0])
+        {
+            phasenumber = 2;
+            phasereached[1] = true;
+        }
     }
 
     private void Flying()
