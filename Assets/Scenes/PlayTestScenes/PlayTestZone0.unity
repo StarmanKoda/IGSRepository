@@ -863,6 +863,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7692d308e1d569478ae0105abfb8281, type: 3}
+--- !u!1 &128590001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6021167756436871085, guid: c7692d308e1d569478ae0105abfb8281, type: 3}
+  m_PrefabInstance: {fileID: 128590000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &145862245
 GameObject:
   m_ObjectHideFlags: 0
@@ -5973,7 +5978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 128590001}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &852419908
@@ -13004,6 +13009,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomLoader: {fileID: 0}
   extraZoneLoadDelay: 0
+  master_volume: 1
+  music_volume: 1
+  sfx_volume: 1
   health: 0
 --- !u!4 &1925490239
 Transform:
