@@ -27,7 +27,7 @@ public class SoundManager : MonoBehaviour
             {
                 AS.PlayOneShot(soundsource[i], 1f * ZoneLoader.zoneLoader.master_volume * ZoneLoader.zoneLoader.sfx_volume);
                 blist[i] = false;
-                Debug.Log("Sound " + i + " Played");
+                //Debug.Log("Sound " + i + " Played");
             }
         }
 

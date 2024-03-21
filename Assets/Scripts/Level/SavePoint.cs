@@ -20,6 +20,7 @@ public class SavePoint : MonoBehaviour
         if(other.gameObject.GetComponent<PlayerHealth>() == null) { return;  }
         active = true;
         PlayerHealth player = other.gameObject.GetComponent<PlayerHealth>();
+        SoundManager.Instance.blist[10] = true;
         saveState.save();
         displayBeam.SetActive(true);
         Invoke("disableBeam", beamTime);

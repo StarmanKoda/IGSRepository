@@ -13,6 +13,7 @@ public class Acid : MonoBehaviour
         if (entity)
         {
             entity.constantDamage(dps);
+            SoundManager.Instance.blist[8] = true;
             Rigidbody rig = other.GetComponent<Rigidbody>();
             if (rig)
             {
@@ -32,6 +33,7 @@ public class Acid : MonoBehaviour
         PlayerHealth player = other.GetComponent<PlayerHealth>();
         if (player)
         {
+            SoundManager.Instance.blist[8] = true;
             player.acidAnim(true);
         }
     }

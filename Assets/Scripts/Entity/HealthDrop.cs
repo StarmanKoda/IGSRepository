@@ -41,6 +41,7 @@ public class HealthDrop : MonoBehaviour
         if (player)
         {
             player.heal(amount);
+            SoundManager.Instance.blist[9] = true;
             Destroy(this.gameObject, .1f);
         }
     }

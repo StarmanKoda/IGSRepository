@@ -55,7 +55,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1387af832d4b6d447a00d34c34eab9fe, type: 3}
   - {fileID: 8300000, guid: 5ac95dbecf2a63347b218bf8bc34c12f, type: 3}
   - {fileID: 8300000, guid: cacad56450d605e408493d67e64dfc34, type: 3}
-  blist: 0000000000000000
+  - {fileID: 8300000, guid: 412324cb409f0084d817db549e283548, type: 3}
+  - {fileID: 8300000, guid: ef574ef554b5e6b42870217f1c50a657, type: 3}
+  - {fileID: 8300000, guid: 42f15d93c33ded8468a07ab30cefa00e, type: 3}
+  blist: 0000000000000000000000
 --- !u!82 &6051953912119828767
 AudioSource:
   m_ObjectHideFlags: 0
