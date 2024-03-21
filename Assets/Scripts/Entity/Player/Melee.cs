@@ -72,6 +72,7 @@ public class Melee : MonoBehaviour
     public void enableAttk()
     {
         float upDown = Input.GetAxisRaw("Vertical");
+        SoundManager.Instance.blist[1] = true;
         if (upDown < -0.5f && !movement.grounded)
         {
             dir = direction.DOWN;
@@ -162,12 +163,14 @@ public class Melee : MonoBehaviour
         if (entity)
         {
             entity.takeDamage(damage);
+            SoundManager.Instance.blist[6] = true;
         }
 
         BossEntityScript boss = other.GetComponent<BossEntityScript>();
         if (boss)
         {
             boss.takeDamage(damage);
+            SoundManager.Instance.blist[6] = true;
         }
 
         Spikes spike = other.GetComponent<Spikes>();

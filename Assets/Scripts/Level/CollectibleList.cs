@@ -26,6 +26,7 @@ public class CollectibleList : MonoBehaviour
 
     public int getCollected()
     {
+        SoundManager.Instance.blist[3] = true;
         return collected.Count;
     }
 

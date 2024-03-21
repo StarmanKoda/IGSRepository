@@ -13,6 +13,7 @@ public class UpgradeUnlocker : MonoBehaviour
         UpgradeInventory inv = player.GetComponent<UpgradeInventory>();
         //Determine which upgrade to give
         inv.unlockUpgrade(UpgradeEnumMethods.getUpgrade(Upg));
+        SoundManager.Instance.blist[3] = true;
         Destroy(this.gameObject);
     }
 }

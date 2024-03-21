@@ -2355,6 +2355,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280278986}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &298677698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6817699832154033997, guid: 8d765e42cb83a8146ba6e5ee8705d579, type: 3}
+  m_PrefabInstance: {fileID: 226757228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &402444504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10085,6 +10090,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomLoader: {fileID: 0}
   extraZoneLoadDelay: 0
+  master_volume: 1
+  music_volume: 1
+  sfx_volume: 1
   health: 0
 --- !u!4 &1407119089
 Transform:
@@ -11224,8 +11232,9 @@ MonoBehaviour:
   - {fileID: 1901339420}
   - {fileID: 1432884960}
   - {fileID: 1794629799}
-  - {fileID: 0}
+  - {fileID: 298677698}
   - {fileID: 1367782428}
+  - {fileID: 1601086884}
 --- !u!4 &1542739206 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3364432543862403990, guid: 5793ddc6edbecf14ab94a5362c2535c6, type: 3}
@@ -11336,6 +11345,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579417332}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1601086884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6817699832154033997, guid: 8d765e42cb83a8146ba6e5ee8705d579, type: 3}
+  m_PrefabInstance: {fileID: 1860803559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1617692000
 GameObject:
   m_ObjectHideFlags: 0

@@ -12889,7 +12889,7 @@ PrefabInstance:
     - target: {fileID: 2076803627974093293, guid: 5a0f448ef6bda5345aae53da102c257d, type: 3}
       propertyPath: soundsource.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 324f2f513e4a7e541aa87c3b01caf41a, type: 3}
+      objectReference: {fileID: 8300000, guid: 977461e4f67ccdf40b635c3aea1c3d45, type: 3}
     - target: {fileID: 2076803627974093293, guid: 5a0f448ef6bda5345aae53da102c257d, type: 3}
       propertyPath: soundsource.Array.data[3]
       value: 
@@ -13101,6 +13101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomLoader: {fileID: 0}
   extraZoneLoadDelay: 0
+  master_volume: 1
+  music_volume: 1
+  sfx_volume: 1
   health: 0
 --- !u!4 &1925490239
 Transform:
