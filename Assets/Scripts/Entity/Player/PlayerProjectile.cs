@@ -54,6 +54,7 @@ public class PlayerProjectile : MonoBehaviour
         }
         else
         {
+            if (col.gameObject.tag.ToLower().Equals("bulletignored")) { return; }
             Destroy(gameObject);
         }
     }
