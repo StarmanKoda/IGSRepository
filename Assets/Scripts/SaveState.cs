@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,30 +11,42 @@ public class SaveState : MonoBehaviour
 
     public void load(string profileName)
     {
-        saveProfile data = SaveManager.Load(profileName);
-        if (data.getUpgrades() != null)
+        try
         {
-            UpgradeInventory.getInstance().fromStringList(data.getUpgrades());
-            //zoneLoader.obtainedUpgrades = UpgradeInventory.getInstance().obtainedUpgrades;
-            foreach(Upgrades u in UpgradeInventory.obtainedUpgrades){
-                Debug.Log("Obtained upgrades contains " + u);
+            saveProfile data = SaveManager.Load(profileName);
+            if (data.getUpgrades() != null)
+            {
+                UpgradeInventory.getInstance().fromStringList(data.getUpgrades());
+                //zoneLoader.obtainedUpgrades = UpgradeInventory.getInstance().obtainedUpgrades;
+                foreach (Upgrades u in UpgradeInventory.obtainedUpgrades)
+                {
+                    Debug.Log("Obtained upgrades contains " + u);
+                }
             }
-        }
-        if (data.getCollectibles() != null)
-        {
-            CollectibleList.getInstance().fromStringArray(data.getCollectibles());
-        }
+            if (data.getCollectibles() != null)
+            {
+                CollectibleList.getInstance().fromStringArray(data.getCollectibles());
+            }
 
-        //Update ZoneLoader so that it knows proper room to load into
-        ZoneLoader.zoneLoader.setLoadRoom(data.roomIndex);
-        if (data.location != null)
+            //Update ZoneLoader so that it knows proper room to load into
+            ZoneLoader.zoneLoader.setLoadRoom(data.roomIndex);
+            if (data.location != null)
+            {
+                ZoneLoader.zoneLoader.setLoadLocation(data.location);
+            }
+            else
+            {
+                throw new IOException();
+            }
+            //Reset timescale
+            Time.timeScale = 1.0f;
+            //Load Scene based on index
+            SceneManager.LoadScene(data.zoneIndex);
+        }catch(NullReferenceException e)
         {
-            ZoneLoader.zoneLoader.setLoadLocation(data.location);
+            Debug.Log(e.StackTrace);
+            return;
         }
-        //Reset timescale
-        Time.timeScale = 1.0f;
-        //Load Scene based on index
-        SceneManager.LoadScene(data.zoneIndex);
     }
     
     public void save(string profileName)

@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     bool onController = true;
     public Button keyBtn;
     public Button contrBtn;
+    public GameObject[] firstSelect;
 
     public void switchScene(string sceneName)
     {
@@ -60,5 +61,25 @@ public class MainMenu : MonoBehaviour
     public void quit()
     {
         Application.Quit();
+    }
+
+    public void Update()
+    {
+        if (Input.GetButtonDown("Attack2"))
+        {
+            if(curView > 0)
+            {
+                toggleView(0);
+                selectButton(firstSelect[0]);
+            }
+        }
+        
+        if(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == null)
+        {
+            if (Input.GetAxis("Horizontal") > 0.1 || Input.GetAxis("Horizontal") < -0.1 || Input.GetAxis("Vertical") > 0.1 || Input.GetAxis("Vertical") < -0.1)
+            {
+                selectButton(firstSelect[curView]);
+            }
+        }
     }
 }
