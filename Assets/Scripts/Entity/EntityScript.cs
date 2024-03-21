@@ -19,7 +19,7 @@ public class EntityScript : MonoBehaviour
     public float upperPercDrop;
     public bool takingDMG = false;
 
-    private int deathSound;
+    public int soundtoPlay = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,7 @@ public class EntityScript : MonoBehaviour
     {
         health -= dmg;
         takingDMG = true;
-
+        SoundManager.Instance.blist[soundtoPlay] = true;
         //WILL NEED TO IMPROVE DEATH EFFECTS
         if (health <= 0)
         {
@@ -73,7 +73,7 @@ public class EntityScript : MonoBehaviour
                 //}
             }
 
-            //SoundManager.Instance.blist[soundtoPlay] = true;
+            
             Destroy(gameObject);
         }
 
