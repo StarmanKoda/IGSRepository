@@ -27,6 +27,15 @@ public class FlyingEnemy : EntityScript
     void FixedUpdate()
     {
         Flying();
+        if (transform.localScale.x <= 0)
+        {
+            facingRight = false;
+        }
+        else if (transform.localScale.x >= 0)
+        {
+            facingRight = true;
+        }
+
         if (dmgTimer < InvincibilityTime)
         {
             dmgTimer += Time.deltaTime;
@@ -97,13 +106,6 @@ public class FlyingEnemy : EntityScript
             }
         }
 
-        if (transform.localScale.x == -1)
-        {
-            facingRight = false;
-        }
-        else
-        {
-            facingRight = true;
-        }
+        
     }
 }
