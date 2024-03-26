@@ -15,6 +15,8 @@ public class FallingSpike : MonoBehaviour
     Respawns respawner;
     public int replaceNum = -1;
 
+    public float reEnableTime = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,7 @@ public class FallingSpike : MonoBehaviour
                 rig.isKinematic = false;
                 col.isTrigger = true;
                 col.enabled = false;
-                Invoke("reEnable", .1f);
+                Invoke("reEnable", reEnableTime);
             }
         }
     }
@@ -59,6 +61,11 @@ public class FallingSpike : MonoBehaviour
             rig.isKinematic = true;
             col.isTrigger = false;
             transform.Rotate(0, 0, 180);
+
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, checkDistance);
+            transform.position = hit.point;
+
             if (temporary)
             {
                 if (respawner)

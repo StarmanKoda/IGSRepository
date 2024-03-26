@@ -123,6 +123,8 @@ MonoBehaviour:
   shakeSpeed: 15
   shakeDistance: 0.1
   fallMod: 2
+  replaceTime: 3
+  replaceNum: -1
 --- !u!54 &1807531603340472581
 Rigidbody:
   m_ObjectHideFlags: 0
