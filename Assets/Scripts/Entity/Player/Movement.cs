@@ -145,6 +145,7 @@ public class Movement : MonoBehaviour
         {
             grounded = false;
             jumping = true;
+            if(SoundManager.Instance)
             SoundManager.Instance.blist[2] = true;
             rig.velocity = new Vector2(rig.velocity.x, 0);
             rig.AddForce(new Vector2(0f, jumpForce));
