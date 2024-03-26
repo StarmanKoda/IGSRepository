@@ -2319,7 +2319,7 @@ GameObject:
   - component: {fileID: 328454263}
   - component: {fileID: 328454265}
   m_Layer: 0
-  m_Name: Door Zone0toZone4
+  m_Name: Door Zone0toForest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2392,7 +2392,7 @@ MonoBehaviour:
   doorNum: 4
   roomIn: 1
   doorTo: 1
-  sceneTo: PlayTestZone4
+  sceneTo: Forest
   entranceDir: 3
 --- !u!1001 &342251137
 PrefabInstance:
@@ -14778,7 +14778,7 @@ MonoBehaviour:
   doorNum: 3
   roomIn: 0
   doorTo: 0
-  sceneTo: PlayTestZone4
+  sceneTo: Forest
   entranceDir: 2
 --- !u!1 &2095324269
 GameObject:
