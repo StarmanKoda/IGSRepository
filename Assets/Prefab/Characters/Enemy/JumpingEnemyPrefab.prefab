@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 5093618901896170232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3900003, y: -0.1, z: 0}
+  m_LocalPosition: {x: 2.3900003, y: -0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -676,6 +676,8 @@ MonoBehaviour:
   healthDrop: {fileID: 1590360216752905460, guid: 2adcf7bf8fd26fa41a86ac92810a3fb1, type: 3}
   lowerPercDrop: 0
   upperPercDrop: 0.2
+  takingDMG: 0
+  soundtoPlay: 0
   startFacingRight: 1
   groundCheckPoint: {fileID: 758971446658379485}
   wallCheckPoint: {fileID: 8690180032506802567}

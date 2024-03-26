@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 248559570100766719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2700001, y: -1, z: 0}
+  m_LocalPosition: {x: 1.3, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 7329401902467629285}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.27, y: 0, z: 0}
+  m_LocalPosition: {x: 1.2999995, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -478,6 +478,8 @@ MonoBehaviour:
   healthDrop: {fileID: 1590360216752905460, guid: 2adcf7bf8fd26fa41a86ac92810a3fb1, type: 3}
   lowerPercDrop: 0
   upperPercDrop: 0.2
+  takingDMG: 0
+  soundtoPlay: 0
   startFacingRight: 1
   groundCheckPoint: {fileID: 2147920025591071000}
   wallCheckPoint: {fileID: 6169706720373921533}
