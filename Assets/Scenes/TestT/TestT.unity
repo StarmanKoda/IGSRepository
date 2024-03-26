@@ -991,7 +991,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 948bc1cb292c9ba49b0cb2ba5bdc9007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.4021015
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 948bc1cb292c9ba49b0cb2ba5bdc9007, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11084,6 +11084,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomLoader: {fileID: 0}
   extraZoneLoadDelay: 0
+  master_volume: 1
+  music_volume: 1
+  sfx_volume: 1
   health: 0
 --- !u!1 &1862373341
 GameObject:
